@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="كلية الهندسة" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Archive</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard-ar.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard-ar.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="dashboard-ar.html">اللوحة الرئيسية</a></li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="archive-ar.html">محتوياتي</a></li>
+                <li class="breadcrumb-item active">&nbsp;&nbsp;الأرشيف</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="archive-uel.html">
+                    <div style="color: white" class="icon secondary">English</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications-ar.html" class="notification-header btn btn-primary float-right" title="التنبيهات">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806-ar.html" class="btn btn-primary float-right" title="ناقش المشرف الأكاديمي">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile-ar.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>صفحة شخصية</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications-ar.html" class="btn btn-primary">التنبيهات</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">تسجيل الخروج</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">خالد المرسى رفعت السعداوى</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard-ar.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">اللوحة الرئيسية</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help-ar.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">تعليمات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-tabs-outline"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>الأرشيف</h5>
+                    <h6 class="sub-heading">عرض محتوي الأرشيف</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="main-content">
+            <div class="card" id="archive1_div">
+              <div class="card-header" role="tab">
+                <span id="parents_ids"><a title="UEL Documents">UEL Documents</a></span>
+              </div>
+              <div>
+                <div id="upload_files_progress_bar" style="background-color: green; width: 0%; height: 2px"></div>
+              </div>
+              <div class="card-body">
+                <div id="archive_table_wrapper" class="dataTables_wrapper no-footer">
+                  <div class="dataTables_length" id="archive_table_length">
+                    <label
+                      >عرض
+                      <select name="archive_table_length" aria-controls="archive_table" class="">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select>
+                      عنصر</label
+                    >
+                  </div>
+                  <div id="archive_table_filter" class="dataTables_filter">
+                    <label>بحث:<input type="search" class="" placeholder="" aria-controls="archive_table" /></label>
+                  </div>
+                  <div id="archive_table_processing" class="dataTables_processing" style="display: none">تجهيز...</div>
+                  <div class="dataTables_scroll">
+                    <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                      <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1143.61px; padding-left: 0px">
+                        <table class="display dataTable no-footer" style="width: 1143.61px; margin-left: 0px" role="grid">
+                          <thead>
+                            <tr role="row">
+                              <th
+                                width="50%"
+                                class="sorting_asc"
+                                tabindex="0"
+                                aria-controls="archive_table"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 565.562px"
+                                aria-sort="ascending"
+                                aria-label="الإسم: activate to sort column descending"
+                              >
+                                الإسم
+                              </th>
+                              <th width="20%" class="sorting" tabindex="0" aria-controls="archive_table" rowspan="1" colspan="1" style="width: 204.508px" aria-label="حجم: activate to sort column ascending">حجم</th>
+                              <th width="20%" class="sorting" tabindex="0" aria-controls="archive_table" rowspan="1" colspan="1" style="width: 204.594px" aria-label="التاريخ: activate to sort column ascending">
+                                التاريخ
+                              </th>
+                              <th width="5%" class="sorting" tabindex="0" aria-controls="archive_table" rowspan="1" colspan="1" style="width: 24.9453px" aria-label=": activate to sort column ascending"></th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                      <table id="archive_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="archive_table_info">
+                        <thead>
+                          <tr role="row" style="height: 0px">
+                            <th
+                              width="50%"
+                              class="sorting_asc"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 565.562px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-sort="ascending"
+                              aria-label="الإسم: activate to sort column descending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden">الإسم</div>
+                            </th>
+                            <th
+                              width="20%"
+                              class="sorting"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 204.508px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-label="حجم: activate to sort column ascending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden">حجم</div>
+                            </th>
+                            <th
+                              width="20%"
+                              class="sorting"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 204.594px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-label="التاريخ: activate to sort column ascending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden">التاريخ</div>
+                            </th>
+                            <th
+                              width="5%"
+                              class="sorting"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 24.9453px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-label=": activate to sort column ascending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="dataTables_info" id="archive_table_info" role="status" aria-live="polite">عرض 0 إلى 0 من 0</div>
+                  <div class="dataTables_paginate paging_simple_numbers" id="archive_table_paginate">
+                    <a class="paginate_button previous disabled" aria-controls="archive_table" data-dt-idx="0" tabindex="0" id="archive_table_previous">السابق</a><span></span
+                    ><a class="paginate_button next disabled" aria-controls="archive_table" data-dt-idx="3" tabindex="0" id="archive_table_next">التالي</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        حقوق النشر,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="وحدة نظم المعلومات">وحدة نظم المعلومات</a>, <a href="https://eng.asu.edu.eg/" title="كلية الهندسة">كلية الهندسة</a>,
+        <a href="https://www.asu.edu.eg/ar" title="جامعة عين شمس">جامعة عين شمس</a>.
+      </footer>
+    </div>
+
+    <!-- === Archive Functionality Script === -->
+    <script>
+      (function () {
+        // ===== ARCHIVE DATA STRUCTURE =====
+        const archiveData = {
+          root: {
+            id: 'root',
+            title: 'UEL Documents',
+            parentId: null,
+            items: [
+              { id: '2661029', type: 'folder', title: 'BLDG', size: '-', date: '9/21/2025, 7:40:22 PM' },
+              { id: '2657341', type: 'folder', title: 'CESS', size: '-', date: '9/20/2025, 7:34:24 PM' },
+              { id: '2663721', type: 'folder', title: 'CISE', size: '-', date: '9/22/2025, 12:07:42 PM' },
+              { id: '2657388', type: 'folder', title: 'COMM', size: '-', date: '9/20/2025, 8:43:29 PM' },
+              { id: '2657275', type: 'folder', title: 'ENVR', size: '-', date: '9/20/2025, 6:42:41 PM' },
+              { id: '2657308', type: 'folder', title: 'ERGY', size: '-', date: '9/20/2025, 7:00:23 PM' },
+              { id: '2658432', type: 'folder', title: 'HOUD', size: '-', date: '9/20/2025, 11:49:21 PM' },
+              {
+                id: '2754189',
+                type: 'file',
+                title: 'ICHEP Students Complaint Policy',
+                size: '268 KB',
+                date: '10/22/2025, 8:56:58 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=vSe%2FRYYNJXwpfpTl6x8Lb8AlPopVKb%2FtvMXRy268qnA%3D',
+              },
+              { id: '2663570', type: 'folder', title: 'LAAR', size: '-', date: '9/22/2025, 10:26:20 AM' },
+              { id: '2663716', type: 'folder', title: 'MANF', size: '-', date: '9/22/2025, 12:07:23 PM' },
+              { id: '2663722', type: 'folder', title: 'MATL', size: '-', date: '9/22/2025, 12:08:00 PM' },
+              { id: '2663723', type: 'folder', title: 'MCTA', size: '-', date: '9/22/2025, 12:08:15 PM' },
+              {
+                id: '2754190',
+                type: 'file',
+                title: "Student's Guidline Booklet_V25-26 R2",
+                size: '-',
+                date: '10/22/2025, 9:05:00 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=dg67q4X8TBOpmj0J%2FncLvEsEBDcQ6H4ofo1%2F9DCrv6Q%3D',
+              },
+            ],
+          },
+          2661029: {
+            id: '2661029',
+            title: 'BLDG',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663724',
+                type: 'file',
+                title: 'BLDG NAF_Module Specs',
+                size: '1 MB',
+                date: '9/22/2025, 12:08:29 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=myVpf38ClGvgIrIJV8%2Bkx3em6ZVVpE7GtVAU6hSoHDg%3D',
+              },
+              {
+                id: '2663725',
+                type: 'file',
+                title: 'New 25-26 -Collaborative Course Handbook May 2025_BLDG',
+                size: '1 MB',
+                date: '10/22/2025, 9:04:48 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=VMnLrdS%2B5z0dIaa5sb5LlS7NwFQUY6SLBZrbLStzdbs%3D',
+              },
+            ],
+          },
+          2657341: {
+            id: '2657341',
+            title: 'CESS',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663727',
+                type: 'file',
+                title: 'CESS-CAIE NAF_Module Specs',
+                size: '4 MB',
+                date: '9/22/2025, 12:10:15 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=rHSswX%2FH8CojCcRIqUJltJcbXovaj6OUh087Zbm24zc%3D',
+              },
+              {
+                id: '2663728',
+                type: 'file',
+                title: 'Collaborative Course Handbook CAIE 25-26',
+                size: '1001 KB',
+                date: '9/22/2025, 12:10:46 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=NGkTelsIbIPQGCnkbfZQkE0TQ%2Bdeql6fF8Wj%2BO65Pmc%3D',
+              },
+              {
+                id: '2663729',
+                type: 'file',
+                title: 'Collaborative Course Handbook CESS 25-26',
+                size: '916 KB',
+                date: '9/22/2025, 12:10:46 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=WlvUtqH89Uzs%2BsNbU9TLJk0TQ%2Bdeql6fF8Wj%2BO65Pmc%3D',
+              },
+            ],
+          },
+          2663721: {
+            id: '2663721',
+            title: 'CISE',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663730',
+                type: 'file',
+                title: 'CISE NAF_Module Specs',
+                size: '935 KB',
+                date: '9/22/2025, 12:11:12 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=SeoNfpURQgWKVQ8SOcKvITJ6KFF4B5s2W2ufNUXNxNs%3D',
+              },
+              {
+                id: '2663731',
+                type: 'file',
+                title: 'New 25-26 -Collaborative CISE Course Handbook',
+                size: '1 MB',
+                date: '10/22/2025, 9:04:17 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=f5ETSSKLjvTGGhyZEi%2BKrzlFo4TNADfBeBWif7554s8%3D',
+              },
+            ],
+          },
+          2657388: {
+            id: '2657388',
+            title: 'COMM',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663733',
+                type: 'file',
+                title: 'COMM NAF_Module Specs',
+                size: '1 MB',
+                date: '9/22/2025, 12:12:07 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=zkOc18iGWXziKE%2BSCTFSQ3MMgOM7%2B2IzStS7otWbYpM%3D',
+              },
+              {
+                id: '2663732',
+                type: 'file',
+                title: 'New 25-26 -Collaborative Course Handbook May 2025',
+                size: '1 MB',
+                date: '10/22/2025, 9:04:03 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=fSCTQjzT8Csd0a8C0OU0xjLtkh657VjMHIbm4rTmKmk%3D',
+              },
+            ],
+          },
+          2657275: {
+            id: '2657275',
+            title: 'ENVR',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663726',
+                type: 'file',
+                title: 'ENVR NAF_Module Specs',
+                size: '1 MB',
+                date: '9/22/2025, 12:09:43 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=HZR1VuVd2uqW8BxaIhAJoSclrqfQ9XeVF1r7xQUUWII%3D',
+              },
+              {
+                id: '2657278',
+                type: 'file',
+                title: 'ENVR New 25-26 -Collaborative Course Handbook May 2025',
+                size: '5 MB',
+                date: '10/22/2025, 9:03:49 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=FM1WdhTq5wbG5n%2BZ8%2FwlPiXipRgUng63fKYEKoMKaa8%3D',
+              },
+            ],
+          },
+          2657308: {
+            id: '2657308',
+            title: 'ERGY',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663737',
+                type: 'file',
+                title: 'ERGY NAF_Module Specs',
+                size: '1 MB',
+                date: '9/22/2025, 12:12:29 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=ExSqCjO1C9sovGipkBVENXiOuvLsw76J7DkToFPfuSo%3D',
+              },
+              {
+                id: '2663741',
+                type: 'file',
+                title: 'New 25-26 -Collaborative Course Handbook May 2025_ERGY_V01',
+                size: '1 MB',
+                date: '10/22/2025, 9:03:32 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=I3B5cE4v56K0Ql3Ead9TK9KaA2CYxEXDv%2F5qTQ3TGhQ%3D',
+              },
+            ],
+          },
+          2658432: {
+            id: '2658432',
+            title: 'HOUD',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663743',
+                type: 'file',
+                title: 'HAUD NAF_Module Specs',
+                size: '1 MB',
+                date: '9/22/2025, 12:13:32 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=VQcDMbg6i%2BzwSjC4BOMVwzNUzdmxjyAR0vIYnIcLO4o%3D',
+              },
+              {
+                id: '2663742',
+                type: 'file',
+                title: 'HOUD 25-26 -Collaborative Course Handbook May 2025',
+                size: '1 MB',
+                date: '10/22/2025, 9:03:13 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=D20OoSQWH72lv013VcuDFA%2BR8KvNlye7uarKkzpgBmY%3D',
+              },
+            ],
+          },
+          2663570: {
+            id: '2663570',
+            title: 'LAAR',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663745',
+                type: 'file',
+                title: 'LAAR 25-26 -Collaborative Course Handbook',
+                size: '1 MB',
+                date: '10/22/2025, 9:02:51 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=K4AjRCYJoAeJwYvggBuo3u9DzEoLo826e6hbaJ3DYOc%3D',
+              },
+              {
+                id: '2663744',
+                type: 'file',
+                title: 'LAAR NAF_Module Specs',
+                size: '6 MB',
+                date: '9/22/2025, 12:13:56 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=G1xFZxnlJXZqxgiXz0BwOzVoIxulRlziWm3nVZWjphM%3D',
+              },
+            ],
+          },
+          2663716: {
+            id: '2663716',
+            title: 'MANF',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663746',
+                type: 'file',
+                title: 'MANF Collaborative Course Handbook 25-26',
+                size: '1012 KB',
+                date: '10/22/2025, 9:02:37 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=BMcds7q8daFmr1Ql5KNOul7UGKUN2n3KYCDbfE6lEzk%3D',
+              },
+              {
+                id: '2663748',
+                type: 'file',
+                title: 'MANF NAF_Module Specs',
+                size: '2 MB',
+                date: '9/22/2025, 12:14:54 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=T0Rp%2FEOgr%2ByqjB1scq3sd58%2FB25WE26VhNYVKeus5hc%3D',
+              },
+            ],
+          },
+          2663722: {
+            id: '2663722',
+            title: 'MATL',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663749',
+                type: 'file',
+                title: 'MATL NAF_Module Specs',
+                size: '6 MB',
+                date: '9/22/2025, 12:15:21 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=TUqpgF5lHB6AjgamsqMvlzJQuAyyz6%2FWGiMRChgRomU%3D',
+              },
+              {
+                id: '2663750',
+                type: 'file',
+                title: 'New 25-26 -Collaborative Course Handbook May 2025',
+                size: '1008 KB',
+                date: '10/22/2025, 9:02:11 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=%2FvDECMR%2BrwFmaQ1h1B%2FNlGnImrB8MkvzIxZHmB2T5Xk%3D',
+              },
+            ],
+          },
+          2663723: {
+            id: '2663723',
+            title: 'MCTA',
+            parentId: 'root',
+            items: [
+              {
+                id: '2663751',
+                type: 'file',
+                title: 'Collaborative Course Handbook 25-26 MCTA',
+                size: '1 MB',
+                date: '10/22/2025, 9:01:48 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=4jKZfPb3XDrsjmwEHNSt89IulhJzTbYgAVhz%2BiS2OB8%3D',
+              },
+              {
+                id: '2663752',
+                type: 'file',
+                title: 'MCTA NAF_Module Specs',
+                size: '918 KB',
+                date: '9/22/2025, 12:16:15 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=7oHxXZ%2F0TQ8IRihjonII58G3vVHb1CFgHQ0XSdvT2eg%3D',
+              },
+            ],
+          },
+        };
+
+        // ===== STATE =====
+        let currentFolderId = 'root';
+        let currentPage = 1;
+        let entriesPerPage = 10;
+        let searchTerm = '';
+
+        // ===== DOM ELEMENTS =====
+        const tableBody = document.querySelector('#archive_table tbody');
+        const searchInput = document.querySelector('#archive_table_filter input');
+        const entriesSelect = document.querySelector('#archive_table_length select');
+        const parentsSpan = document.getElementById('parents_ids');
+        const tableInfo = document.getElementById('archive_table_info');
+        const paginateContainer = document.getElementById('archive_table_paginate');
+
+        // ===== HELPER FUNCTIONS =====
+        function getBreadcrumbPath(folderId) {
+          const path = [];
+          let currentId = folderId;
+
+          while (currentId) {
+            const folder = archiveData[currentId];
+            if (folder) {
+              path.unshift({ id: currentId, title: folder.title });
+              currentId = folder.parentId;
+            } else {
+              break;
+            }
+          }
+          return path;
+        }
+
+        function filterItems(items, term) {
+          if (!term) return items;
+          const lowerTerm = term.toLowerCase();
+          return items.filter((item) => item.title.toLowerCase().includes(lowerTerm));
+        }
+
+        function paginateItems(items, page, perPage) {
+          const start = (page - 1) * perPage;
+          const end = start + perPage;
+          return items.slice(start, end);
+        }
+
+        // ===== RENDER FUNCTIONS =====
+        function renderBreadcrumb() {
+          const path = getBreadcrumbPath(currentFolderId);
+          parentsSpan.innerHTML = '';
+
+          path.forEach((item, index) => {
+            if (index < path.length - 1) {
+              const link = document.createElement('a');
+              link.href = 'javascript:void(0)';
+              link.title = item.title;
+              link.textContent = item.title;
+              link.className = 'breadcrumb-link';
+              link.dataset.folderId = item.id;
+              link.addEventListener('click', () => navigateToFolder(item.id));
+              parentsSpan.appendChild(link);
+              parentsSpan.appendChild(document.createTextNode(' / '));
+            } else {
+              const span = document.createElement('a');
+              span.title = item.title;
+              span.textContent = item.title;
+              parentsSpan.appendChild(span);
+            }
+          });
+        }
+
+        function renderTableRows() {
+          const folder = archiveData[currentFolderId];
+          if (!folder) return;
+
+          let items = filterItems(folder.items, searchTerm);
+          const totalItems = items.length;
+          const totalPages = Math.ceil(totalItems / entriesPerPage);
+
+          // Adjust current page if needed
+          if (currentPage > totalPages) currentPage = totalPages || 1;
+
+          const paginatedItems = paginateItems(items, currentPage, entriesPerPage);
+
+          tableBody.innerHTML = '';
+
+          if (paginatedItems.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="4" class="dataTables_empty">لا يوجد بيان مطابق</td>';
+            tableBody.appendChild(row);
+          } else {
+            paginatedItems.forEach((item, index) => {
+              const row = document.createElement('tr');
+              row.id = item.id;
+              row.className = index % 2 === 0 ? 'odd' : 'even';
+              row.setAttribute('role', 'row');
+
+              const iconClass = item.type === 'folder' ? 'icon-folder' : 'icon-file-empty';
+
+              let nameCell;
+              if (item.type === 'folder') {
+                nameCell = `
+            <td class="sorting_1">
+              <div style="display: inline-block"><i class="${iconClass} archive-icon"></i></div>
+              <div style="display: inline-block">
+                <a title="${item.title}" class="archive_link folder-link" href="javascript:void(0)" data-folder-id="${item.id}">${item.title}</a>
+              </div>
+            </td>`;
+              } else {
+                nameCell = `
+            <td class="sorting_1">
+              <div style="display: inline-block"><i class="${iconClass} archive-icon"></i></div>
+              <div style="display: inline-block">
+                <a title="${item.title}" href="${item.url}">${item.title}</a>
+              </div>
+            </td>`;
+              }
+
+              row.innerHTML = `
+          ${nameCell}
+          <td>${item.size}</td>
+          <td><span>${item.date}</span></td>
+          <td><span class="action-column"></span></td>
+        `;
+
+              tableBody.appendChild(row);
+            });
+          }
+
+          // Attach folder click handlers
+          document.querySelectorAll('.folder-link').forEach((link) => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              navigateToFolder(link.dataset.folderId);
+            });
+          });
+
+          // Update info and pagination
+          renderTableInfo(totalItems, paginatedItems.length);
+          renderPagination(totalPages);
+        }
+
+        function renderTableInfo(totalItems, displayedItems) {
+          if (totalItems === 0) {
+            tableInfo.textContent = 'عرض 0 إلى 0 من 0';
+          } else {
+            const start = (currentPage - 1) * entriesPerPage + 1;
+            const end = start + displayedItems - 1;
+            tableInfo.textContent = `عرض ${start} إلى ${end} من ${totalItems}`;
+          }
+        }
+
+        function renderPagination(totalPages) {
+          paginateContainer.innerHTML = '';
+
+          // Previous button
+          const prevBtn = document.createElement('a');
+          prevBtn.className = `paginate_button previous ${currentPage === 1 ? 'disabled' : ''}`;
+          prevBtn.textContent = 'السابق';
+          prevBtn.href = 'javascript:void(0)';
+          if (currentPage > 1) {
+            prevBtn.addEventListener('click', () => {
+              currentPage--;
+              renderTableRows();
+            });
+          }
+          paginateContainer.appendChild(prevBtn);
+
+          // Page numbers
+          const pageSpan = document.createElement('span');
+          for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('a');
+            pageBtn.className = `paginate_button ${i === currentPage ? 'current' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.href = 'javascript:void(0)';
+            if (i !== currentPage) {
+              pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderTableRows();
+              });
+            }
+            pageSpan.appendChild(pageBtn);
+          }
+          paginateContainer.appendChild(pageSpan);
+
+          // Next button
+          const nextBtn = document.createElement('a');
+          nextBtn.className = `paginate_button next ${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}`;
+          nextBtn.textContent = 'التالي';
+          nextBtn.href = 'javascript:void(0)';
+          if (currentPage < totalPages) {
+            nextBtn.addEventListener('click', () => {
+              currentPage++;
+              renderTableRows();
+            });
+          }
+          paginateContainer.appendChild(nextBtn);
+        }
+
+        // ===== NAVIGATION =====
+        function navigateToFolder(folderId) {
+          if (archiveData[folderId]) {
+            currentFolderId = folderId;
+            currentPage = 1;
+            searchTerm = '';
+            searchInput.value = '';
+            renderBreadcrumb();
+            renderTableRows();
+          }
+        }
+
+        // ===== EVENT LISTENERS =====
+        // Real-time search
+        searchInput.addEventListener('input', (e) => {
+          searchTerm = e.target.value;
+          currentPage = 1;
+          renderTableRows();
+        });
+
+        // Entries per page change
+        entriesSelect.addEventListener('change', (e) => {
+          entriesPerPage = parseInt(e.target.value);
+          currentPage = 1;
+          renderTableRows();
+        });
+
+        // ===== INITIAL RENDER =====
+        renderBreadcrumb();
+        renderTableRows();
+      })();
+    </script>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

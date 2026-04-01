@@ -1,0 +1,406 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Electricity and Magnetism</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1268.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- BEGIN .app-wrap -->
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="courses.html">My Courses</a></li>
+                <li class="breadcrumb-item active">&nbsp; Electricity and Magnetism</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="courses-phm122-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-file-text"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Electricity and Magnetism</h5>
+                    <h6 class="sub-heading">Course Information</h6>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mt-2">
+                  <div class="btn-group float-right">
+                    <!-- <div class="btn-group">
+                      <button type="button" class="btn btn-primary">More</button>
+                      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 38px, 0px); top: 0px; left: 0px; will-change: transform">
+                        <a href="#" class="dropdown-item" target="_blank">tr.Course Specifications PDF</a>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="main-content">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="stats-widget">
+                      <div class="stats-widget-header">
+                        <i class="icon-clipboard2"></i>
+                      </div>
+                      <div class="stats-widget-body">
+                        <ul class="row no-gutters">
+                          <li class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col" style="text-align: left; font-size: 150%">Midterm</li>
+                          <li class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col" style="text-align: right; font-size: 150%">17 / 20</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="stats-widget">
+                      <div class="stats-widget-header">
+                        <i class="icon-clipboard2"></i>
+                      </div>
+                      <div class="stats-widget-body">
+                        <ul class="row no-gutters">
+                          <li class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col" style="text-align: left; font-size: 150%">Activities</li>
+                          <li class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col" style="text-align: right; font-size: 150%">37 / 40</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="stats-widget">
+                      <a href="#" class="stats-label" style="color: white; font-weight: bold" data-toggle="tooltip" data-placement="top" title="" data-original-title="Control Status">Final</a>
+                      <div class="stats-widget-header">
+                        <i class="icon-clipboard2"></i>
+                      </div>
+                      <div class="stats-widget-body">
+                        <ul class="row no-gutters">
+                          <li class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col" style="text-align: left; font-size: 150%">Total</li>
+                          <li class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col" style="text-align: right; font-size: 150%">B+ (3.3)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Course Information</div>
+              <div class="card-body">
+                <table class="table table-striped m-0">
+                  <tbody>
+                    <tr>
+                      <th scope="row" width="150px">Code</th>
+                      <td>PHM111</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">English Name</th>
+                      <td>Electricity and Magnetism</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Arabic Name</th>
+                      <td>
+                        <span style="direction: rtl">Electricity and Magnetism</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Term</th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Department</th>
+                      <td>Engineering Physics and Mathematics</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Bylaw</th>
+                      <td>UG2023</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" style="font-size: 14px">Prerequisites</th>
+                      <td style="direction: ltr"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row" style="font-size: 14px">Postrequisites</th>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row" style="font-size: 14px">Grades (W/O/E)</th>
+                      <td style="direction: ltr">
+                        <b>Total ( 100 ) </b> = Final [ W( <b>0</b> =&gt; M:17 + A:37 + P:0 ) + O( <b>0</b> ) + E( <b>40</b> ) ] -
+                        <b>Credit Hours (3)</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row" style="font-size: 14px">Hours (L/O/W)</th>
+                      <td style="direction: ltr"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <b>English Describtion</b><br /><br />
+                        Basic principles of electricity and magnetism including electric charges, electric fields, electric potential, current, resistance, capacitors, magnetic fields, electromagnetic induction, and
+                        their applications in engineering systems.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <b>Arabic Describtion</b><br /><br />
+                        Basic principles of electricity and magnetism including electric charges, electric fields, electric potential, current, resistance, capacitors, magnetic fields, electromagnetic induction, and
+                        their applications in engineering systems.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <b>Course Aims</b><br /><br />
+                        This course aims to introduce students to the fundamental concepts of electricity and magnetism and develop their ability to analyze and understand electrical and electromagnetic phenomena.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <b>References</b><br /><br />
+                        <ul>
+                          <li></li>
+                        </ul>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">Class BN</th>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseInfoCard" class="collapsed"> <span class="icon-media-play"></span> Course Outcomes </a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseInfoCard" class="collapsed"> <span class="icon-media-play"></span> Course Topics </a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseInfoCard" class="collapsed"> <span class="icon-media-play"></span> Teaching and Learning Methods </a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseInfoCard" class="collapsed"> <span class="icon-media-play"></span> Assessment and Feedback Strategy </a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseInfoCard" class="collapsed"> <span class="icon-media-play"></span> Programs </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        Copyright,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+        <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

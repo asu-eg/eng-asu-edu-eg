@@ -1,0 +1,1296 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="كلية الهندسة" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - خالد المرسى رفعت السعداوى</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard-ar.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard-ar.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item active">&nbsp;&nbsp;خالد المرسى رفعت السعداوى</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="profile.html">
+                    <div style="color: white" class="icon secondary">English</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications-ar.html" class="notification-header btn btn-primary float-right" title="التنبيهات">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806-ar.html" class="btn btn-primary float-right" title="ناقش المشرف الأكاديمي">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile-ar.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>صفحة شخصية</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications-ar.html" class="btn btn-primary">التنبيهات</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">تسجيل الخروج</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">خالد المرسى رفعت السعداوى</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard-ar.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">اللوحة الرئيسية</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help-ar.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">تعليمات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-user"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>خالد المرسى رفعت السعداوى</h5>
+                    <h6 class="sub-heading">معلومات الطالب</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="main-content">
+            <div class="alert alert-warning">
+              <i class="icon-flash"></i><strong>انتباه!</strong> هذه المعلومات مفقوده ويجب ادخالها. <br />
+              لا توجد معلومات الدرجات, نوع الشهادة الثانوية, موافقة الكلية, موافقة الجامعة, التخصص, الشعبه,
+            </div>
+
+            <div class="row gutters ComBody">
+              <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+                <div class="card">
+                  <div class="card-header">معلومات المستخدم (الطلاب)</div>
+
+                  <div class="card-body">
+                    <table class="table table-striped m-0">
+                      <tbody>
+                        <tr>
+                          <th scope="row" width="150px">الاسم بالإنجليزية</th>
+                          <td>KHALED ELMORSSY REFAAT ELSADAAWY</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" width="150px">الاسم بالعربية</th>
+                          <td style="direction: rtl">خالد المرسى رفعت السعداوى</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">البريد الإلكتروني</th>
+                          <td style="direction: ltr">2401479@eng.asu.edu.eg, khaledalmorsi2007@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">الهاتف المحمول</th>
+                          <td>01108800674,</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">الكود</th>
+                          <td>2401479</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">الرقم القومي</th>
+                          <td>30703128801311</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                <div class="card">
+                  <div class="card-header"></div>
+                  <div>
+                    <div id="upload_files_progress_bar" style="background-color: green; width: 0%; height: 2px"></div>
+                  </div>
+                  <div class="card-body">
+                    <img src="./files/pages/profile/personal_photo.jpeg" width="100%" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Tables -->
+            <div style="visibility: visible">
+              <!-- Student Information Table -->
+              <div class="row gutters ComBody">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="alert alert-warning">
+                    <i class="icon-warning2"></i>
+                    تم إرسال طلب التعديل الخاص بك ، سيتم التحقق منه قريبًا
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header" role="tab" id="cardheadingTwo">
+                      <a data-toggle="collapse" href="" aria-expanded="true" aria-controls="collapseCardTwo" class=""> <span class="icon-media-play"></span> معلومات الطالب </a>
+
+                      <a href="" class="btn stdf-btn btn-sm float-right"> <span class="icon-edit"></span> تعديل </a>
+                    </div>
+
+                    <div id="collapseStudentInformation" class="collapse" role="tabpanel" aria-labelledby="cardheadingTwo">
+                      <div class="card-body">
+                        <table class="table table-striped m-0">
+                          <tbody>
+                            <tr>
+                              <th scope="row" width="180px">الكود</th>
+                              <td>2401479</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" width="180px">First Name</th>
+
+                              <td>KHALED ELMORSSY REFAAT ELSADAAWY</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" width="180px">Middle Name</th>
+                              <td>KHALED ELMORSSY REFAAT ELSADAAWY</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" width="180px">Last Name</th>
+                              <td>KHALED ELMORSSY REFAAT ELSADAAWY</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">الاسم بالعربية</th>
+                              <td>
+                                <div style="direction: rtl">خالد المرسى رفعت السعداوى</div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">الفرقة</th>
+                              <td>لائحة 2023, UG2023, ساعات معتمدة, البرامج البينية, الهندسة الكهربائية, برنامج هندسة نظم الاتصالات</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Expected Graduation Year</th>
+                              <td>
+                                <div>Fall 2028/2029</div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">تاريخ الميلاد</th>
+                              <td>
+                                <div style="direction: rtl">2007-03-12 , مصر , جده المملكة العربية السعودية</div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">النوع</th>
+                              <td>ذكر</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">الرقم القومي</th>
+                              <td>30703128801311</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">الجنسية</th>
+                              <td>مصر</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">البريد الإلكتروني</th>
+                              <td style="direction: ltr">2401479@eng.asu.edu.eg, khaledalmorsi2007@gmail.com</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">الثانوية العامة المصرية</th>
+                              <td>, الشبل الثانوية الاهلية , 410</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">حالة التجنيد</th>
+                              <td>
+                                <b>الحالة</b>: مؤجل<br />
+                                <b>الرقم الثلاثي</b>: 1359/300/2007<br />
+                                <b>رقم القرار</b>: 8660<br />
+                                <b>تاريخ القرار</b>
+                                : 2025/7/6<br />
+                                <b>سن التجنيد</b>: 28<br />
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">الهاتف</th>
+                              <td><strong>الهاتف المحمول</strong>: 01108800674</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">العنوان</th>
+                              <td>
+                                <div style="direction: rtl">القاهرة المنيلشازع متحف المنيل</div>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">معلومات ولى الامر</th>
+                              <td>
+                                <b>اسم ولى الامر</b>: المرسى رفعت المرسى السعداوى<br />
+                                <b>صلة ولى الامر</b>
+                                : الاب<br />
+                                <b>الرقم القومي</b>: 26901291200473<br />
+                                <b>الهاتف</b>: 01070131846<br />
+                                <b>البريد الإلكتروني</b>: ppppppppppsssss4444@gmail.com<br />
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row" width="180px">Advisor</th>
+                              <td><u>محمود ابراهيم زكى عصيمى</u>, m_ossaimee@eng.asu.edu.eg , الفيزيقا والرياضيات الهندسية.</td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row" width="180px">Training Weeks</th>
+                              <td><b>معتمد</b>: 0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Taken Courses Table -->
+              <div class="row gutters ComBody">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="card">
+                    <div class="card-header" role="tab" id="cardheadingCourses">
+                      <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseCardCourses" class=""> <span class="icon-media-play"></span> المواد التي تم دراستها </a>
+                    </div>
+
+                    <div id="collapseCardCourses" class="collapse" role="tabpanel" aria-labelledby="cardheadingCourses">
+                      <div class="card-body">
+                        <table class="table m-0" style="width: 100%; border-collapse: collapse">
+                          <thead class="thead-default">
+                            <tr>
+                              <th>الكود</th>
+                              <th>لائحة</th>
+                              <th>الإسم</th>
+                              <th>درجة النجاح</th>
+                              <th>الدرجة العظمى</th>
+                              <th>الساعات</th>
+                              <th>آخر درجة</th>
+                              <th>آخر فصل دراسي</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASU001s" id="ASU001s"></a>ASU001s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">امتحان تحديد مستوى في اللغة الإنجليزية</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>0</td>
+                              <td>ناجح</td>
+                              <td>Admission 2024</td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>001s</td>
+                                      <td>امتحان تحديد مستوى في اللغة الإنجليزية</td>
+                                      <td>Admission 2024</td>
+                                      <td>P</td>
+                                      <td>-</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx11s" id="ASUx11s"></a>ASUx11s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">Societal Issues</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>0</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x11s</td>
+                                      <td>Societal Issues</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx14s" id="ASUx14s"></a>ASUx14s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">مقدمة إلى أهداف التنمية المستدامة</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>3</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x14s</td>
+                                      <td>مقدمة إلى أهداف التنمية المستدامة</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>3 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx21s" id="ASUx21s"></a>ASUx21s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">History of Civilizations</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x21s</td>
+                                      <td>History of Civilizations</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx32s" id="ASUx32s"></a>ASUx32s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">Critical Thinking</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>ناجح</td>
+                              <td>ربيع 2025</td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x32s</td>
+                                      <td>Critical Thinking</td>
+                                      <td>ربيع 2025</td>
+                                      <td>B</td>
+                                      <td>3</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx41s" id="ASUx41s"></a>ASUx41s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">Report Writing and Communication Skills</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>3</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x41s</td>
+                                      <td>Report Writing and Communication Skills</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>3 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx44s" id="ASUx44s"></a>ASUx44s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="">Introduction to Accounting</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>ناجح</td>
+                              <td>ربيع 2025</td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x44s</td>
+                                      <td>Introduction to Accounting</td>
+                                      <td>ربيع 2025</td>
+                                      <td>B+</td>
+                                      <td>3.3</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="ASUx45s" id="ASUx45s"></a>ASUx45s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="courses-ar.html">Business Administration</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x45s</td>
+                                      <td>Business Administration</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="CEP111s" id="CEP111s"></a>CEP111s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="courses-ar.html">Projection and Engineering Graphics</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>هدش111s</td>
+                                      <td>Projection and Engineering Graphics</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>هدش111s</td>
+                                      <td>Projection and Engineering Graphics</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="MDP111s" id="MDP111s"></a>MDP111s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="courses-ar.html">Engineering Drawing</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>همج111s</td>
+                                      <td>Engineering Drawing</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>همج111s</td>
+                                      <td>Engineering Drawing</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="MDP181s" id="MDP181s"></a>MDP181s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="courses-ar.html">Production Engineering</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>2</td>
+                              <td>-</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>همج181s</td>
+                                      <td>Production Engineering</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>همج181s</td>
+                                      <td>Production Engineering</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="PHM001s" id="PHM001s"></a>PHM001s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="courses-ar.html">امتحان تحديد مستوى في الرياضيات</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>0</td>
+                              <td>راسب</td>
+                              <td>Admission 2024</td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="hide">
+                                      <td>فره001s</td>
+                                      <td>امتحان تحديد مستوى في الرياضيات</td>
+                                      <td>Admission 2024</td>
+                                      <td>F</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a class="hidden_anchor" name="PHM011s" id="PHM011s"></a>PHM011s</td>
+                              <td>UG2023</td>
+                              <td>
+                                <a href="courses-ar.html">Basic Mathematics</a>
+                              </td>
+                              <td></td>
+                              <td>100</td>
+                              <td>0</td>
+                              <td>راسب</td>
+                              <td>ربيع 2025</td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="hide">
+                                      <td>فره011s</td>
+                                      <td>Basic Mathematics</td>
+                                      <td>ربيع 2025</td>
+                                      <td>F</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>فره011s</td>
+                                      <td>Basic Mathematics</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Study Grades Table -->
+              <div class="row gutters ComBody">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="card">
+                    <div class="card-header" role="tab" id="cardheadingTerms">
+                      <a data-toggle="collapse" href="" aria-expanded="false" aria-controls="collapseCardTerms" class="">
+                        <span class="icon-media-play"></span>
+                        درجات المواد
+                      </a>
+
+                      <label class="float-right" style="visibility: hidden">
+                        <input type="checkbox" class="success-year" />
+                        <i class="icon icon-bookmarks2"></i> Success Courses
+                      </label>
+                    </div>
+
+                    <div id="collapseCardTerms" class="collapse" role="tabpanel" aria-labelledby="cardheadingTerms">
+                      <div class="card-body">
+                        <table class="table m-0" style="width: 100%; border-collapse: collapse">
+                          <thead class="thead-default">
+                            <tr>
+                              <th width="15%">لائجة الدراسة</th>
+                              <th width="10%">فصل</th>
+                              <th width="10%">العام الدراسى</th>
+                              <th width="10%">المستوى</th>
+                              <th width="18%">Term GPA / Hours</th>
+                              <th width="22%">Cumulative GPA / Hours</th>
+                              <th width="15%">Passed Hours</th>
+                              <th width="5%"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>المستوى التحضيري</td>
+                              <td>الصيف 2025</td>
+                              <td>2024/2025</td>
+                              <td>العام</td>
+                              <td>0 / الساعات</td>
+                              <td>3.15 / 4 الساعات</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                                </table>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>المستوى التحضيري</td>
+                              <td>ربيع 2025</td>
+                              <td>2024/2025</td>
+                              <td>العام</td>
+                              <td>3.15 / 4 الساعات</td>
+                              <td>3.15 / 4 الساعات</td>
+                              <td>4 Passed Hours</td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x11s</td>
+                                      <td>Societal Issues</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>x14s</td>
+                                      <td>مقدمة إلى أهداف التنمية المستدامة</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>3 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>x32s</td>
+                                      <td>Critical Thinking</td>
+                                      <td>ربيع 2025</td>
+                                      <td>B</td>
+                                      <td>3</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>x44s</td>
+                                      <td>Introduction to Accounting</td>
+                                      <td>ربيع 2025</td>
+                                      <td>B+</td>
+                                      <td>3.3</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>هدش111s</td>
+                                      <td>Projection and Engineering Graphics</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>همج111s</td>
+                                      <td>Engineering Drawing</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>همج181s</td>
+                                      <td>Production Engineering</td>
+                                      <td>ربيع 2025</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr class="hide">
+                                      <td>فره011s</td>
+                                      <td>Basic Mathematics</td>
+                                      <td>ربيع 2025</td>
+                                      <td>F</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>المستوى التحضيري</td>
+                              <td>خريف 2024</td>
+                              <td>2024/2025</td>
+                              <td>العام</td>
+                              <td>0 / 0 الساعات</td>
+                              <td>0 / 0 الساعات</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>x21s</td>
+                                      <td>History of Civilizations</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>x41s</td>
+                                      <td>Report Writing and Communication Skills</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>3 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>x45s</td>
+                                      <td>Business Administration</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>هدش111s</td>
+                                      <td>Projection and Engineering Graphics</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>همج111s</td>
+                                      <td>Engineering Drawing</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>همج181s</td>
+                                      <td>Production Engineering</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>2 الساعات</td>
+                                    </tr>
+                                    <tr>
+                                      <td>فره011s</td>
+                                      <td>Basic Mathematics</td>
+                                      <td>خريف 2024</td>
+                                      <td>W</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>المستوى التحضيري</td>
+                              <td>Admission 2024</td>
+                              <td>2024/2025</td>
+                              <td>العام</td>
+                              <td>0 / 0 الساعات</td>
+                              <td>0 / 0 الساعات</td>
+                              <td></td>
+                              <td class="show" style="cursor: pointer">
+                                <i class="icon-eye"></i>
+                              </td>
+                            </tr>
+                            <tr style="display: none">
+                              <td colspan="8" style="padding: 0px">
+                                <table class="table table-sm m-0">
+                                  <thead class="thead-default">
+                                    <tr>
+                                      <th width="10%">كود المادة</th>
+                                      <th width="35%">اسم المادة</th>
+                                      <th width="15%">فصل</th>
+                                      <th width="5%">التقدير</th>
+                                      <th width="5%">GPA</th>
+                                      <th width="15%">الساعات المعتمدة</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>001s</td>
+                                      <td>امتحان تحديد مستوى في اللغة الإنجليزية</td>
+                                      <td>Admission 2024</td>
+                                      <td>P</td>
+                                      <td>-</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                    <tr class="hide">
+                                      <td>فره001s</td>
+                                      <td>امتحان تحديد مستوى في الرياضيات</td>
+                                      <td>Admission 2024</td>
+                                      <td>F</td>
+                                      <td>0</td>
+                                      <td>0 الساعات</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Footer === -->
+    <footer class="main-footer fixed-btm">
+      حقوق النشر,
+      <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="وحدة نظم المعلومات">وحدة نظم المعلومات</a>, <a href="https://eng.asu.edu.eg/" title="كلية الهندسة">كلية الهندسة</a>,
+      <a href="http://asu.edu.eg/" title="جامعة عين شمس">جامعة عين شمس</a>.
+    </footer>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

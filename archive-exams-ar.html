@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="كلية الهندسة" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Archive</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard-ar.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard-ar.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="dashboard-ar.html">اللوحة الرئيسية</a></li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="archive-ar.html">محتوياتي</a></li>
+                <li class="breadcrumb-item active">&nbsp;&nbsp;الامتحانات السابقة</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="archive-exams.html">
+                    <div style="color: white" class="icon secondary">English</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications-ar.html" class="notification-header btn btn-primary float-right" title="التنبيهات">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806-ar.html" class="btn btn-primary float-right" title="ناقش المشرف الأكاديمي">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile-ar.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>صفحة شخصية</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications-ar.html" class="btn btn-primary">التنبيهات</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">تسجيل الخروج</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">خالد المرسى رفعت السعداوى</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard-ar.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">اللوحة الرئيسية</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help-ar.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">تعليمات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <!-- BEGIN .main-heading -->
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-folder"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>الامتحانات السابقة</h5>
+                    <h6 class="sub-heading"></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="main-content">
+            <div class="row gutters">
+              <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="card-body pb-0">
+                    <form action="https://eng.asu.edu.eg/ar/dashboard/my_archive/previous_exams" method="post" id="filter_form">
+                      <input type="hidden" name="_token" value="A697cJOrgMSmpxvvDqCv2Y5QHVIHPQIr8X0c7FLb" />
+
+                      <div class="row filter-box">
+                        <div class="form-group col-md-2">
+                          <select class="form-control" id="search_term_id" title="فصل" name="search_term_id">
+                            <option value="" selected="selected">اختر الفصل</option>
+                            <option value="187">الربيع 2026</option>
+                            <option value="176">الخريف 2025</option>
+                            <option value="182">نقل 2025</option>
+                            <option value="185">القبول 2025</option>
+                            <option value="184">نوفمبر 2025</option>
+                            <option value="178">الصيف 2025</option>
+                            <option value="171">ربيع 2025</option>
+                            <option value="181">جامعة بنسلفانيا أمريكا ربيع 2025</option>
+                            <option value="186">جامعة غالاتي الرومانية ربيع 2025</option>
+                            <option value="161">خريف 2024</option>
+                            <option value="179">جامعة ميديترينيا بإيطاليا خريف 2024</option>
+                            <option value="180">جامعة بنسلفانيا أمريكا خريف 2024</option>
+                            <option value="167">نوفمبر 2024</option>
+                            <option value="168">Admission 2024</option>
+                            <option value="169">Transfer 2024</option>
+                            <option value="162">صيف 2024</option>
+                            <option value="170">جامعة بنسلفانيا أمريكا - صيف 2024</option>
+                            <option value="177">جامعة ميديترينيا بإيطاليا - ربيع 2024</option>
+                            <option value="156">ربيع 2024</option>
+                            <option value="164">جامعة بنسلفانيا أمريكا - ربيع 2024</option>
+                            <option value="151">خريف 2023</option>
+                            <option value="160">جامعة ميديترينيا بإيطاليا - خريف 2023</option>
+                            <option value="163">جامعة بنسلفانيا أمريكا - خريف 2023</option>
+                            <option value="155">Transfer 2023</option>
+                            <option value="153">Admission 2023</option>
+                            <option value="154">نوفمبر 2023</option>
+                            <option value="152">صيف 2023</option>
+                            <option value="175">جامعة ميديترينيا بإيطاليا - ربيع 2023</option>
+                            <option value="150">ربيع 2023</option>
+                            <option value="166">جامعة بنسلفانيا أمريكا - ربيع 2023</option>
+                            <option value="143">خريف 2022</option>
+                            <option value="159">جامعة ميديترينيا بإيطاليا - خريف 2022</option>
+                            <option value="165">جامعة بنسلفانيا أمريكا - خريف 2022</option>
+                            <option value="147">نوفمبر 2022</option>
+                            <option value="148">Admission 2022</option>
+                            <option value="149">نقل 2022</option>
+                            <option value="145">صيف 2022</option>
+                            <option value="142">ربيع 2022</option>
+                            <option value="158">جامعة ميديترينيا بإيطاليا - ربيع 2022</option>
+                            <option value="137">خريف 2021</option>
+                            <option value="157">جامعة ميديترينيا بإيطاليا - خريف 2021</option>
+                            <option value="139">نوفمبر 2021</option>
+                            <option value="141">Admission 2021</option>
+                            <option value="140">نقل 2021</option>
+                            <option value="138">صيف 2021</option>
+                            <option value="136">ربيع ٢٠٢١</option>
+                            <option value="132">خريف 2020</option>
+                            <option value="134">نوفمبر 2020</option>
+                            <option value="135">نقل 2020</option>
+                            <option value="174">جامعة ميديترينيا بإيطاليا - خريف 2020</option>
+                            <option value="133">قبول ٢٠٢٠</option>
+                            <option value="131">صيف 2020</option>
+                            <option value="173">جامعة ميديترينيا بإيطاليا - ربيع 2020</option>
+                            <option value="129">ربيع 2020</option>
+                            <option value="128">نوفمبر 2019</option>
+                            <option value="125">خريف 2019</option>
+                            <option value="172">جامعة ميديترينيا بإيطاليا - خريف 2019</option>
+                            <option value="127">قبول 2019</option>
+                            <option value="121">صيف 2019</option>
+                            <option value="126">نقل 2019</option>
+                            <option value="120">ربيع 2019</option>
+                            <option value="71">نوفمبر 2018</option>
+                            <option value="72">خريف 2018</option>
+                            <option value="123">قبول 2018</option>
+                            <option value="110">صيف 2018</option>
+                            <option value="98">نقل 2018</option>
+                            <option value="69">ربيع 2018</option>
+                            <option value="119">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2018</option>
+                            <option value="67">نوفمبر 2017</option>
+                            <option value="68">خريف 2017</option>
+                            <option value="109">صيف 2017</option>
+                            <option value="97">نقل 2017</option>
+                            <option value="65">ربيع 2017</option>
+                            <option value="118">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2017</option>
+                            <option value="63">نوفمبر 2016</option>
+                            <option value="64">خريف 2016</option>
+                            <option value="108">صيف 2016</option>
+                            <option value="96">نقل 2016</option>
+                            <option value="61">ربيع 2016</option>
+                            <option value="117">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2016</option>
+                            <option value="59">نوفمبر 2015</option>
+                            <option value="60">خريف 2015</option>
+                            <option value="107">صيف 2015</option>
+                            <option value="95">نقل 2015</option>
+                            <option value="57">ربيع 2015</option>
+                            <option value="116">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2015</option>
+                            <option value="55">نوفمبر 2014</option>
+                            <option value="56">خريف 2014</option>
+                            <option value="106">صيف 2014</option>
+                            <option value="94">نقل 2014</option>
+                            <option value="54">ربيع 2014</option>
+                            <option value="115">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2014</option>
+                            <option value="51">نوفمبر 2013</option>
+                            <option value="53">خريف 2013</option>
+                            <option value="105">صيف 2013</option>
+                            <option value="93">نقل 2013</option>
+                            <option value="50">ربيع 2013</option>
+                            <option value="114">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2013</option>
+                            <option value="48">نوفمبر 2012</option>
+                            <option value="49">خريف 2012</option>
+                            <option value="104">صيف 2012</option>
+                            <option value="92">نقل 2012</option>
+                            <option value="47">ربيع 2012</option>
+                            <option value="113">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2012</option>
+                            <option value="45">نوفمبر 2011</option>
+                            <option value="46">خريف 2011</option>
+                            <option value="103">صيف 2011</option>
+                            <option value="91">نقل 2011</option>
+                            <option value="44">ربيع 2011</option>
+                            <option value="112">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2011</option>
+                            <option value="42">نوفمبر 2010</option>
+                            <option value="43">خريف 2010</option>
+                            <option value="102">صيف 2010</option>
+                            <option value="90">نقل 2010</option>
+                            <option value="41">ربيع 2010</option>
+                            <option value="111">جامعة كلاوستال للتكنولوجيا في ألمانيا - 2010</option>
+                            <option value="39">نوفمبر 2009</option>
+                            <option value="40">خريف 2009</option>
+                            <option value="101">صيف 2009</option>
+                            <option value="89">نقل 2009</option>
+                            <option value="38">ربيع 2009</option>
+                            <option value="36">نوفمبر 2008</option>
+                            <option value="37">خريف 2008</option>
+                            <option value="100">صيف 2008</option>
+                            <option value="88">نقل 2008</option>
+                            <option value="35">ربيع 2008</option>
+                            <option value="33">نوفمبر 2007</option>
+                            <option value="34">خريف 2007</option>
+                            <option value="99">صيف 2007</option>
+                            <option value="87">نقل 2007</option>
+                            <option value="32">ربيع 2007</option>
+                            <option value="30">نوفمبر 2006</option>
+                            <option value="31">خريف 2006</option>
+                            <option value="29">ربيع 2006</option>
+                            <option value="27">نوفمبر 2005</option>
+                            <option value="28">خريف 2005</option>
+                            <option value="26">ربيع 2005</option>
+                            <option value="24">نوفمبر 2004</option>
+                            <option value="25">خريف 2004</option>
+                            <option value="23">ربيع 2004</option>
+                            <option value="21">نوفمبر 2003</option>
+                            <option value="22">خريف 2003</option>
+                            <option value="20">ربيع 2003</option>
+                            <option value="18">نوفمبر 2002</option>
+                            <option value="19">خريف 2002</option>
+                            <option value="17">ربيع 2002</option>
+                            <option value="15">نوفمبر 2001</option>
+                            <option value="16">خريف 2001</option>
+                            <option value="14">ربيع 2001</option>
+                            <option value="12">نوفمبر 2000</option>
+                            <option value="13">خريف 2000</option>
+                            <option value="11">ربيع 2000</option>
+                            <option value="9">نوفمبر 1999</option>
+                            <option value="10">خريف 1999</option>
+                            <option value="8">ربيع 1999</option>
+                            <option value="6">نوفمبر 1998</option>
+                            <option value="7">خريف 1998</option>
+                            <option value="5">ربيع 1998</option>
+                            <option value="3">نوفمبر 1997</option>
+                            <option value="4">خريف 1997</option>
+                            <option value="2">ربيع 1997</option>
+                            <option value="1">خريف 1996</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-2">
+                          <select id="search_bylaw" name="search_bylaw" class="form-control">
+                            <option value="">اختر اللائحة</option>
+                            <option value="UG2023">UG2023</option>
+                            <option value="UG2018">UG2018</option>
+                            <option value="UG2013">UG2013</option>
+                            <option value="UG2007">UG2007</option>
+                            <option value="UG2003">UG2003</option>
+                            <option value="PG2024">PG2024</option>
+                            <option value="PG2015">PG2015</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4">
+                          <select id="search_plan_id" name="search_plan_id" class="form-control">
+                            <option value="">اختر الخطة الدراسية</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                          <select class="form-control" id="search_exam_type" name="search_exam_type">
+                            <option value="">اختر نوع الامتحان</option>
+                            <option value="1">نصف العام</option>
+                            <option value="2">الأخير</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                          <input class="form-control typeahead" type="text" data-placement="top" name="text_search" id="text_search" autocomplete="off" placeholder="نص البحث" />
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button class="btn btn-primary" type="button" id="search_button">بحث</button>
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button
+                            class="btn btn-danger"
+                            type="button"
+                            id="reset_button"
+                            onclick="
+                              document.getElementById('text_search').value = '';
+                              document.getElementById('search_term_id').value = '';
+                              document.getElementById('search_bylaw').value = '';
+                              document.getElementById('search_plan_id').value = '';
+                              document.getElementById('search_exam_type').value = '';
+                            "
+                          >
+                            إعادة تعيين
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row gutters">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="card-header">
+                    الامتحانات السابقة <button class="btn btn-sm btn-success float-right download" href="javascript:void(0)" disabled="">تحميل <span class="badge badge-pill badge-danger" id="num_files">0</span></button>
+                  </div>
+
+                  <div class="card-body">
+                    <div id="data_table_wrapper" class="dataTables_wrapper no-footer">
+                      <div class="dataTables_length" id="data_table_length">
+                        <label
+                          >عرض
+                          <select name="data_table_length" aria-controls="data_table" class="">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                          </select>
+                          عنصر</label
+                        >
+                      </div>
+                      <div id="data_table_filter" class="dataTables_filter" style="display: none">
+                        <label>بحث : <input type="search" class="" placeholder="" aria-controls="data_table" /></label>
+                      </div>
+                      <div class="dataTables_scroll">
+                        <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                          <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1143.61px; padding-left: 0px">
+                            <table class="display dataTable no-footer" style="width: 1143.61px; margin-left: 0px" role="grid">
+                              <thead>
+                                <tr role="row">
+                                  <th
+                                    width="5%"
+                                    class="sorting_asc"
+                                    tabindex="0"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 21.9609px"
+                                    aria-sort="ascending"
+                                    aria-label="#: activate to sort column descending"
+                                  >
+                                    #
+                                  </th>
+                                  <th class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" style="width: 991.695px" aria-label="الإسم: activate to sort column ascending">الإسم</th>
+                                  <th width="5%" class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" style="width: 21.9531px" aria-label=": activate to sort column ascending"></th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                          <table id="data_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="data_table_info">
+                            <thead>
+                              <tr role="row" style="height: 0px">
+                                <th
+                                  width="5%"
+                                  class="sorting_asc"
+                                  aria-controls="data_table"
+                                  rowspan="1"
+                                  colspan="1"
+                                  style="width: 21.9609px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                  aria-sort="ascending"
+                                  aria-label="#: activate to sort column descending"
+                                >
+                                  <div class="dataTables_sizing" style="height: 0; overflow: hidden">#</div>
+                                </th>
+                                <th
+                                  class="sorting"
+                                  aria-controls="data_table"
+                                  rowspan="1"
+                                  colspan="1"
+                                  style="width: 991.695px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                  aria-label="الإسم: activate to sort column ascending"
+                                >
+                                  <div class="dataTables_sizing" style="height: 0; overflow: hidden">الإسم</div>
+                                </th>
+                                <th
+                                  width="5%"
+                                  class="sorting"
+                                  aria-controls="data_table"
+                                  rowspan="1"
+                                  colspan="1"
+                                  style="width: 21.9531px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                  aria-label=": activate to sort column ascending"
+                                >
+                                  <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                                </th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr class="odd">
+                                <td valign="top" colspan="3" class="dataTables_empty">لا يوجد بيان مطابق</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="dataTables_info" id="data_table_info" role="status" aria-live="polite">لا يوجد بيانات</div>
+                      <div class="dataTables_paginate paging_simple_numbers" id="data_table_paginate">
+                        <a class="paginate_button previous disabled" aria-controls="data_table" data-dt-idx="0" tabindex="0" id="data_table_previous">السابق</a><span></span
+                        ><a class="paginate_button next disabled" aria-controls="data_table" data-dt-idx="1" tabindex="0" id="data_table_next">التالي</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form method="POST" action="https://eng.asu.edu.eg/ar/dashboard/my_archive/previous_exams/download" id="download_form" style="display: none">
+              <input type="hidden" name="_token" value="A697cJOrgMSmpxvvDqCv2Y5QHVIHPQIr8X0c7FLb" />
+              <input type="hidden" id="form_files" name="form_files" />
+              <input type="hidden" id="form_max_download" name="form_max_download" value="10" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        حقوق النشر,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="وحدة نظم المعلومات">وحدة نظم المعلومات</a>, <a href="https://eng.asu.edu.eg/" title="كلية الهندسة">كلية الهندسة</a>,
+        <a href="https://www.asu.edu.eg/ar" title="جامعة عين شمس">جامعة عين شمس</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

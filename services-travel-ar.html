@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="كلية الهندسة" />
+    <meta name="author" content="مركز نظم المعلومات" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>نظم المعلومات الطلابية, كلية الهندسة - Travel Requests</title>
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard-ar.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard-ar.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="dashboard-ar.html">اللوحة الرئيسية</a></li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="services-ar.html">خدماتي</a></li>
+                <li class="breadcrumb-item active">&nbsp;&nbsp;Travel Requests</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="services-travel.html">
+                    <div style="color: white" class="icon secondary">English</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications-ar.html" class="notification-header btn btn-primary float-right" title="التنبيهات">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806-ar.html" class="btn btn-primary float-right" title="ناقش المشرف الأكاديمي">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile-ar.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>صفحة شخصية</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications-ar.html" class="btn btn-primary">التنبيهات</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">تسجيل الخروج</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">خالد المرسى رفعت السعداوى</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard-ar.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">اللوحة الرئيسية</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help-ar.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">تعليمات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <!-- BEGIN .main-heading -->
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-office"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Travel Requests</h5>
+                    <h6 class="sub-heading">tr.InternationalMobilityInformation</h6>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                  <div class="right-actions">
+                    <div class="btn-group float-right">
+                      <div class="btn-group">
+                        <a href="services-travel-add-ar.html" type="button" class="btn btn-primary"> <i class="icon-plus"></i> اضافة طلب </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <!-- END: .main-heading -->
+
+          <!-- BEGIN .main-content -->
+          <div class="main-content">
+            <div class="row gutters">
+              <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="card-body pb-0">
+                    <div class="filter-box">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <select id="search_country_id" class="form-control" title="البلد" name="search_country_id">
+                            <option value="" selected="selected">اختار دولة</option>
+                            <option value="AFG">أفغانستان</option>
+                            <option value="AX">جزر آلاند</option>
+                            <option value="ALB">ألبانيا</option>
+                            <option value="DZA">الجزائر</option>
+                            <option value="ASM">ساموا الأمريكية</option>
+                            <option value="AND">أندورا</option>
+                            <option value="AGO">أنغولا</option>
+                            <option value="AIA">أنغيلا</option>
+                            <option value="ATA">القارة القطبية الجنوبية</option>
+                            <option value="ATG">أنتيغوا وباربودا</option>
+                            <option value="ARG">الأرجنتين</option>
+                            <option value="ARM">أرمينيا</option>
+                            <option value="ABW">أروبا</option>
+                            <option value="AUS">أستراليا</option>
+                            <option value="AUT">النمسا</option>
+                            <option value="AZE">أذربيجان</option>
+                            <option value="BHS">باهاماس</option>
+                            <option value="BHR">البحرين</option>
+                            <option value="BGD">بنغلاديش</option>
+                            <option value="BRB">باربادوس</option>
+                            <option value="BLR">بيلاروسيا</option>
+                            <option value="BEL">بلجيكا</option>
+                            <option value="BLZ">بليزي</option>
+                            <option value="BEN">بنين</option>
+                            <option value="BMU">برمودا</option>
+                            <option value="BTN">بوتان</option>
+                            <option value="BOL">بوليفيا</option>
+                            <option value="BIH">البوسنة و الهرسك</option>
+                            <option value="BWA">بوتسوانا</option>
+                            <option value="BVT">جزيرة بوفيه</option>
+                            <option value="BRA">البرازيل</option>
+                            <option value="IOT">إقليم المحيط الهندي البريطاني</option>
+                            <option value="BRN">بروناي</option>
+                            <option value="BN">بروني</option>
+                            <option value="BGR">بلغاريا</option>
+                            <option value="BFA">بوركينافاسو</option>
+                            <option value="BDI">برونداي</option>
+                            <option value="KHM">كمبوديا</option>
+                            <option value="CMR">الكاميرون</option>
+                            <option value="CAN">كندا</option>
+                            <option value="CPV">الرأس الأخضر</option>
+                            <option value="CYM">جزر كايمان</option>
+                            <option value="CAF">إفريقيا الوسطى</option>
+                            <option value="TCD">تشاد</option>
+                            <option value="CHL">شيلي</option>
+                            <option value="CHN">الصين</option>
+                            <option value="CXR">جزيرة الكريسماس</option>
+                            <option value="CCK">جزر كوكوس (كيلينغ)</option>
+                            <option value="COL">كولومبيا</option>
+                            <option value="COM">كوموروس</option>
+                            <option value="COG">جمهورية الكونغو</option>
+                            <option value="COD">ج. الكونغو الديمقراطية (زائير سابقا)</option>
+                            <option value="COK">جزر كوك</option>
+                            <option value="CRI">كوستا ريكا</option>
+                            <option value="CIV">الساحل العاج</option>
+                            <option value="HRV">كرواتيا</option>
+                            <option value="CUB">كوبا</option>
+                            <option value="CYP">قبرص</option>
+                            <option value="CZE">التشيك</option>
+                            <option value="DNK">الدانمارك</option>
+                            <option value="DJI">دجيبوتي</option>
+                            <option value="DMA">الدومينكان</option>
+                            <option value="DOM">جمهورية الدومينكان</option>
+                            <option value="TMP">تيمور الشرقية</option>
+                            <option value="ECU">الإكوادور</option>
+                            <option value="EGY">مصر</option>
+                            <option value="SLV">السلفادور</option>
+                            <option value="GNQ">غينيا الإستوائية</option>
+                            <option value="ERI">إيريتيريا</option>
+                            <option value="EST">إستونيا</option>
+                            <option value="ETH">إثيوبيا</option>
+                            <option value="FLK">جزر فلكلاند</option>
+                            <option value="FRO">جزر فارو</option>
+                            <option value="FJI">فيجي</option>
+                            <option value="FIN">فنلندا</option>
+                            <option value="FRA">فرنسا</option>
+                            <option value="GUF">غويانا الفرنسية</option>
+                            <option value="PYF">بولينزيا الفرنسية</option>
+                            <option value="TF">أراض فرنسية جنوبية وأنتارتيكية</option>
+                            <option value="ATF">المقاطعات الجنوبية الفرنسية</option>
+                            <option value="GAB">الغابون</option>
+                            <option value="GMB">غامبيا</option>
+                            <option value="GEO">جورجيا</option>
+                            <option value="DEU">ألمانيا</option>
+                            <option value="GHA">غانا</option>
+                            <option value="GIB">جبل طارق</option>
+                            <option value="GRC">اليونان</option>
+                            <option value="GRL">جرينلاند</option>
+                            <option value="GRD">غرندا</option>
+                            <option value="GLP">جوادلوب</option>
+                            <option value="GUM">غوام</option>
+                            <option value="GTM">غواتيمالا</option>
+                            <option value="GG">غيرنزي</option>
+                            <option value="GIN">غينيا</option>
+                            <option value="GNB">غينيا بيساو</option>
+                            <option value="GUY">غويانا</option>
+                            <option value="HTI">هايتي</option>
+                            <option value="HMD">جزيرة هيرد وجزر ماكدونالد</option>
+                            <option value="VAT">الكرسي الرسولي</option>
+                            <option value="HND">هندوراس</option>
+                            <option value="HKG">هونج كونج</option>
+                            <option value="HUN">هنغاريا</option>
+                            <option value="ISL">إيسلندا</option>
+                            <option value="IND">الهند</option>
+                            <option value="IDN">إندونيسيا</option>
+                            <option value="IRN">إيران</option>
+                            <option value="IRQ">العراق</option>
+                            <option value="IRL">إيرلندا</option>
+                            <option value="IM">جزيرة مان</option>
+                            <option value="ISR">إسرائيل</option>
+                            <option value="ITA">إيطاليا</option>
+                            <option value="JAM">جمايكا</option>
+                            <option value="JPN">اليابان</option>
+                            <option value="JE">جيرزي</option>
+                            <option value="JOR">الأردن</option>
+                            <option value="KAZ">كازخستان</option>
+                            <option value="KZ">كازاخستان</option>
+                            <option value="KEN">كينيا</option>
+                            <option value="KIR">كيريباس</option>
+                            <option value="XK">كوسوفو</option>
+                            <option value="KWT">الكويت</option>
+                            <option value="KGZ">قرغيزستان</option>
+                            <option value="LAO">لاوس</option>
+                            <option value="LVA">لاتفيا</option>
+                            <option value="LBN">لبنان</option>
+                            <option value="LSO">ليسوتو</option>
+                            <option value="LBR">ليبريا</option>
+                            <option value="LBY">ليبيا</option>
+                            <option value="LIE">ليختنشتاين</option>
+                            <option value="LTU">لتوانيا</option>
+                            <option value="LUX">لكسمبورغ</option>
+                            <option value="MAC">ماكاو</option>
+                            <option value="MKD">مقدونيا</option>
+                            <option value="MDG">مدغشقر</option>
+                            <option value="MWI">ملاوي</option>
+                            <option value="MYS">ماليزيا</option>
+                            <option value="MDV">جزر المالديف</option>
+                            <option value="MLI">مالي</option>
+                            <option value="MLT">مالطا</option>
+                            <option value="MHL">جزر مارشال</option>
+                            <option value="MTQ">مارتينيك</option>
+                            <option value="MRT">موريطانيا</option>
+                            <option value="MUS">موريشيوس</option>
+                            <option value="MYT">مايوت</option>
+                            <option value="MEX">المكسيك</option>
+                            <option value="FM">مايكرونيزيا</option>
+                            <option value="FSM">ولايات ميكرونيسيا المتحدة</option>
+                            <option value="MDA">مولدوفا</option>
+                            <option value="MCO">موناكو</option>
+                            <option value="MNG">منغوليا</option>
+                            <option value="ME">الجبل الأسود</option>
+                            <option value="MSR">مونتسرات</option>
+                            <option value="MAR">المغرب</option>
+                            <option value="MOZ">موزمبيق</option>
+                            <option value="MMR">ميانمار</option>
+                            <option value="NAM">ناميبيا</option>
+                            <option value="NRU">ناورو</option>
+                            <option value="NPL">نيبال</option>
+                            <option value="NLD">هولندا</option>
+                            <option value="ANT">الأنتيل الهولندية</option>
+                            <option value="NCL">كاليدونيا الجديدة</option>
+                            <option value="NZL">نيوزيلندا</option>
+                            <option value="NIC">نيكاراغوا</option>
+                            <option value="NER">النيجر</option>
+                            <option value="NGA">نيجريا</option>
+                            <option value="NIU">نييوي</option>
+                            <option value="NFK">جزيرة نورفولك</option>
+                            <option value="PRK">كوريا الشمالية</option>
+                            <option value="MNP">جزر ماريانا الشمالية</option>
+                            <option value="NOR">النرويج</option>
+                            <option value="OMN">عمان</option>
+                            <option value="PAK">باكستان</option>
+                            <option value="PLW">بالاو</option>
+                            <option value="PSE">فلسطين</option>
+                            <option value="PAN">بناما</option>
+                            <option value="PNG">بابوا غينيا الجديدة</option>
+                            <option value="PRY">بارجواي</option>
+                            <option value="PER">بيرو</option>
+                            <option value="PHL">الفلبين</option>
+                            <option value="PCN">بيتكيرن</option>
+                            <option value="POL">بولندا</option>
+                            <option value="PRT">البرتغال</option>
+                            <option value="PRI">بورتوريكو</option>
+                            <option value="QAT">قطر</option>
+                            <option value="REU">ريونيون</option>
+                            <option value="ROM">رومانيا</option>
+                            <option value="RUS">روسيا</option>
+                            <option value="RWA">رواندا</option>
+                            <option value="BL">سان بارتيلمي</option>
+                            <option value="SHN">سانت هيلينا</option>
+                            <option value="KNA">سانت كيتس ونيفيس</option>
+                            <option value="LCA">سانت لوسيا</option>
+                            <option value="MF">ساينت مارتن فرنسي</option>
+                            <option value="SPM">سان بيار وميكلون</option>
+                            <option value="VCT">سانت فنسينت والجرينادينز</option>
+                            <option value="WSM">ساموا</option>
+                            <option value="SMR">سان مارينو</option>
+                            <option value="STP">ساو تومي وبرينسيبي</option>
+                            <option value="SAU">المملكة العربية السعودية</option>
+                            <option value="SEN">السنغال</option>
+                            <option value="SYC">سيشيل</option>
+                            <option value="SLE">سيراليون</option>
+                            <option value="SGP">سنغافورة</option>
+                            <option value="SX">ساينت مارتن هولندي</option>
+                            <option value="SVK">سلوفاكيا</option>
+                            <option value="SVN">سلوفينيا</option>
+                            <option value="SLB">جزر سليمان</option>
+                            <option value="SOM">الصومال</option>
+                            <option value="ZAF">جنوب إفريقيا</option>
+                            <option value="SGS">جورجيا الجنوبية وجزر ساندويتش الجنوبية</option>
+                            <option value="KOR">كوريا الجنوبية</option>
+                            <option value="SSD">جنوب السودان</option>
+                            <option value="ESP">إسبانيا</option>
+                            <option value="LKA">سريلنكا</option>
+                            <option value="SDN">السودان</option>
+                            <option value="SUR">سورينام</option>
+                            <option value="SJM">سفالبارد وجان مايان</option>
+                            <option value="SWZ">سوازيلندا</option>
+                            <option value="SWE">السويد</option>
+                            <option value="CHE">سويسرا</option>
+                            <option value="SYR">سوريا</option>
+                            <option value="TWN">تايوان</option>
+                            <option value="TJK">طاجيكستان</option>
+                            <option value="TZA">تنزانيا</option>
+                            <option value="THA">تايلاند</option>
+                            <option value="TGO">توغو</option>
+                            <option value="TKL">توكلو</option>
+                            <option value="TON">تونجا</option>
+                            <option value="TTO">ترينيداد وتوباغو</option>
+                            <option value="TUN">تونس</option>
+                            <option value="TUR">تركيا</option>
+                            <option value="TKM">تركمستان</option>
+                            <option value="TCA">جزر تركس وكايكوس</option>
+                            <option value="TUV">توفالو</option>
+                            <option value="UGA">أوغندا</option>
+                            <option value="UKR">أوكرانيا</option>
+                            <option value="ARE">الإمارات العربية المتحدة</option>
+                            <option value="GBR">إنجلترا</option>
+                            <option value="USA">الولايات المتحدة</option>
+                            <option value="UMI">الولايات المتحدة البعيدة الجزر الصغيرة</option>
+                            <option value="URY">أوروغواي</option>
+                            <option value="UZB">أوزباكستان</option>
+                            <option value="VUT">فانواتو</option>
+                            <option value="VEN">فنزويلا</option>
+                            <option value="VNM">الفيتنام</option>
+                            <option value="VGB">الجزر العذراء البريطانية</option>
+                            <option value="VIR">الجزر العذراء الأمريكية</option>
+                            <option value="WLF">والس وفوتونا</option>
+                            <option value="ESH">الصحراء الغربية</option>
+                            <option value="YEM">اليمن</option>
+                            <option value="YUG">يوغوسلافيا</option>
+                            <option value="ZMB">زامبيا</option>
+                            <option value="ZWE">زمبابوي</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4">
+                          <select id="search_group_id" data-placement="top" title="tr.Mobility Group" name="search_group_id">
+                            <option value="" selected="selected">tr.Select Mobility Group</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-4">
+                          <input type="text" placeholder="نص البحث" id="text_search" />
+                        </div>
+                        <div class="col-md-2 float">
+                          <button class="btn btn-primary" type="button" id="search_button">بحث</button>
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button
+                            class="btn btn-danger"
+                            type="button"
+                            id="reset_button"
+                            onclick="
+                              document.getElementById('search_country_id').value = '';
+                              document.getElementById('search_group_id').value = '';
+                              document.getElementById('text_search').value = '';
+                            "
+                          >
+                            إعادة تعيين
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <div class="card-body">
+                      <div id="international_mobility_table_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="dataTables_length" id="international_mobility_table_length">
+                          <label
+                            >عرض
+                            <select name="international_mobility_table_length" aria-controls="international_mobility_table" class="">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                            </select>
+                            عنصر</label
+                          >
+                        </div>
+                        <div id="international_mobility_table_filter" class="dataTables_filter" style="display: none">
+                          <label>بحث : <input type="search" class="" placeholder="" aria-controls="international_mobility_table" /></label>
+                        </div>
+                        <div class="dataTables_scroll">
+                          <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                            <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1113.61px; padding-left: 0px">
+                              <table class="display dataTable no-footer" style="width: 1113.61px; margin-left: 0px" role="grid">
+                                <thead>
+                                  <tr role="row">
+                                    <th
+                                      class="sorting_asc"
+                                      tabindex="0"
+                                      aria-controls="international_mobility_table"
+                                      rowspan="1"
+                                      colspan="1"
+                                      style="width: 67.7031px"
+                                      aria-sort="ascending"
+                                      aria-label="#: activate to sort column descending"
+                                    >
+                                      #
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="international_mobility_table" rowspan="1" colspan="1" style="width: 139.5px" aria-label="الإسم: activate to sort column ascending">
+                                      الإسم
+                                    </th>
+                                    <th
+                                      class="sorting"
+                                      tabindex="0"
+                                      aria-controls="international_mobility_table"
+                                      rowspan="1"
+                                      colspan="1"
+                                      style="width: 313.781px"
+                                      aria-label="tr.Mobility Group: activate to sort column ascending"
+                                    >
+                                      tr.Mobility Group
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="international_mobility_table" rowspan="1" colspan="1" style="width: 176.391px" aria-label="البلد: activate to sort column ascending">
+                                      البلد
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="international_mobility_table" rowspan="1" colspan="1" style="width: 150.469px" aria-label="الحالة: activate to sort column ascending">
+                                      الحالة
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="international_mobility_table" rowspan="1" colspan="1" style="width: 49.7656px" aria-label=": activate to sort column ascending"></th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                            <table id="international_mobility_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="international_mobility_table_info">
+                              <thead>
+                                <tr role="row" style="height: 0px">
+                                  <th
+                                    class="sorting_asc"
+                                    aria-controls="international_mobility_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 67.7031px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-sort="ascending"
+                                    aria-label="#: activate to sort column descending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">#</div>
+                                  </th>
+                                  <th
+                                    class="sorting"
+                                    aria-controls="international_mobility_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 139.5px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="الإسم: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">الإسم</div>
+                                  </th>
+                                  <th
+                                    class="sorting"
+                                    aria-controls="international_mobility_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 313.781px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="tr.Mobility Group: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">tr.Mobility Group</div>
+                                  </th>
+                                  <th
+                                    class="sorting"
+                                    aria-controls="international_mobility_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 176.391px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="البلد: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">البلد</div>
+                                  </th>
+                                  <th
+                                    class="sorting"
+                                    aria-controls="international_mobility_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 150.469px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="الحالة: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">الحالة</div>
+                                  </th>
+                                  <th
+                                    class="sorting"
+                                    aria-controls="international_mobility_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 49.7656px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label=": activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr class="odd">
+                                  <td valign="top" colspan="6" class="dataTables_empty">لا يوجد بيان مطابق</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="dataTables_info" id="international_mobility_table_info" role="status" aria-live="polite">لا يوجد بيانات</div>
+                        <div class="dataTables_paginate paging_simple_numbers" id="international_mobility_table_paginate">
+                          <a class="paginate_button previous disabled" aria-controls="international_mobility_table" data-dt-idx="0" tabindex="0" id="international_mobility_table_previous">السابق</a><span></span
+                          ><a class="paginate_button next disabled" aria-controls="international_mobility_table" data-dt-idx="1" tabindex="0" id="international_mobility_table_next">التالي</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        حقوق النشر,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="وحدة نظم المعلومات">وحدة نظم المعلومات</a>, <a href="https://eng.asu.edu.eg/" title="كلية الهندسة">كلية الهندسة</a>,
+        <a href="https://www.asu.edu.eg/ar" title="جامعة عين شمس">جامعة عين شمس</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

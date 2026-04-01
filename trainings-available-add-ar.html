@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="كلية الهندسة" />
+    <meta name="author" content="مركز نظم المعلومات" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>نظم المعلومات الطلابية, كلية الهندسة - Submit Training Request</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard-ar.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard-ar.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="trainings-available-ar.html">Students Trainings</a></li>
+                <li class="breadcrumb-item active">&nbsp;&nbsp;Submit Training Request</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="trainings-available-add.html">
+                    <div style="color: white" class="icon secondary">English</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications-ar.html" class="notification-header btn btn-primary float-right" title="التنبيهات">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806-ar.html" class="btn btn-primary float-right" title="ناقش المشرف الأكاديمي">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile-ar.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>صفحة شخصية</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications-ar.html" class="btn btn-primary">التنبيهات</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">تسجيل الخروج</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">خالد المرسى رفعت السعداوى</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard-ar.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">اللوحة الرئيسية</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help-ar.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">تعليمات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-file-text"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Submit Training Request</h5>
+                    <h6 class="sub-heading">Request Training</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="main-content">
+            <div class="alert alert-success" role="alert">
+              <i class="icon-info-large"></i>
+              <strong> إذا لم تكن جهة التدريب موجودة في القائمة ، يرجى الاتصال بالمرشد الأكاديمي لتسجيل جهة التدريب </strong>
+            </div>
+            <div></div>
+
+            <div>
+              <input type="hidden" />
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="card">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                      <div class="card-header" role="tab">
+                        <p>Training Information</p>
+                      </div>
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label>فصل <span class="required_field">*</span></label>
+                          <select name="term_id" id="term_id" class="form-control" required="">
+                            <option value="">Select the term</option>
+                            <option value="187">Spring 2026</option>
+                            <option value="176">Fall 2025</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label>Organization <span class="required_field">*</span></label>
+                          <select id="organization_id" title="Organization" name="organization_id" tabindex="-1" class="selectized" style="display: none">
+                            <option value="" selected="selected"></option>
+                          </select>
+                          <div class="selectize-control single">
+                            <div class="selectize-input items not-full has-options">
+                              <input type="select-one" autocomplete="off" tabindex="" id="organization_id-selectized" placeholder="Select Organization" style="width: 117.453px" />
+                            </div>
+                            <div class="selectize-dropdown single" style="display: none; width: 1113.61px; top: 36px; left: 0px"><div class="selectize-dropdown-content"></div></div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label>Title <span class="required_field">*</span></label>
+                          <input name="title" value="" placeholder="The title of the training" type="text" class="form-control" required="" maxlength="256" />
+                        </div>
+
+                        <div class="form-group">
+                          <label>التفاصيل <span class="required_field">*</span></label>
+                          <textarea name="description" placeholder="The description of the training" id="" class="form-control" cols="10" rows="10" required=""></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="form-row">
+                            <div class="col-lg-12">
+                              <label>Number of weeks <span class="required_field">*</span></label>
+                              <input type="number" placeholder="Number of weeks" name="num_of_weeks" class="form-control" required="" value="" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="form-row">
+                            <div class="col-lg-6">
+                              <label>تاريخ البدء <span class="required_field">*</span></label>
+                              <input type="date" name="start_date" class="form-control" required="" value="" min="2026-01-29" />
+                            </div>
+                            <div class="col-lg-6">
+                              <label>End Date <span class="required_field">*</span></label>
+                              <input type="date" name="end_date" class="form-control" required="" value="" min="2026-01-29" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label>CV <span class="required_field">*</span></label>
+                          <input required="" type="file" name="cv" class="form-control" onchange="validateFileName(this)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-md" onclick="window.location.href = 'trainings-available-ar.html'">Save</button>
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        حقوق النشر,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="وحدة نظم المعلومات">وحدة نظم المعلومات</a>, <a href="https://eng.asu.edu.eg/" title="كلية الهندسة">كلية الهندسة</a>,
+        <a href="https://www.asu.edu.eg/ar" title="جامعة عين شمس">جامعة عين شمس</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const submitButton = document.querySelector('button[type="submit"]');
+        const isArabic = document.documentElement.lang === 'ar';
+
+        // Sample organizations data
+        const organizations = [
+          { value: '1', text: 'Microsoft Egypt' },
+          { value: '2', text: 'Google Cairo' },
+          { value: '3', text: 'Amazon Web Services' },
+          { value: '4', text: 'IBM Egypt' },
+          { value: '5', text: 'Valeo Egypt' },
+          { value: '6', text: 'Siemens Egypt' },
+          { value: '7', text: 'Orange Egypt' },
+          { value: '8', text: 'Vodafone Egypt' },
+          { value: '9', text: 'Etisalat Egypt' },
+          { value: '10', text: 'Schneider Electric' },
+        ];
+
+        // Find the form group containing the organization select
+        const formGroup = document.querySelector('.selectize-control').parentElement;
+
+        // Replace the entire selectize structure with a simple select
+        formGroup.innerHTML = `
+      <label>Organization <span class="required_field">*</span></label>
+      <select id="organization_id" name="organization_id" class="form-control" required style="width: 100%;">
+        <option value="">${isArabic ? 'اختر جهة التدريب' : 'Select Organization'}</option>
+        ${organizations.map((org) => `<option value="${org.value}">${org.text}</option>`).join('')}
+      </select>
+    `;
+
+        // Handle form submission
+        submitButton.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Show success message
+          swal(
+            {
+              title: isArabic ? 'نجاح!' : 'Success!',
+              text: isArabic ? 'تم إرسال طلب التدريب بنجاح' : 'Training request submitted successfully',
+              type: 'success',
+              confirmButtonText: 'OK',
+            },
+            function () {
+              // Redirect to trainings page
+              window.location.href = isArabic ? 'trainings-available-ar.html' : 'trainings-available.html';
+            },
+          );
+        });
+      });
+
+      // File name validation function
+      function validateFileName(input) {
+        // Optional: You can keep this or remove it if not needed
+      }
+    </script>
+  </body>
+</html>

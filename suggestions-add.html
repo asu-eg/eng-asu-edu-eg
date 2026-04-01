@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Add Request</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="suggestions.html">Suggestions and Complaints</a></li>
+                <li class="breadcrumb-item active">Add Request</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="suggestions-add-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-chat2"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Add Request</h5>
+                    <h6 class="sub-heading"></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="main-content">
+            <div>
+              <input type="hidden" />
+              <div class="row gutters">
+                <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                  <div class="card">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                      <div class="card-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link" id="suggetions-tab" data-toggle="tab" href="" role="tab" aria-controls="suggetions" aria-selected="true" aria-expanded="false">Suggetions</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link active" id="complains-tab" data-toggle="tab" href="" role="tab" aria-controls="complains" aria-selected="false" aria-expanded="true">Complains</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                          <input type="hidden" name="type" id="type" value="complains" />
+
+                          <div class="tab-pane fade" id="suggetions" role="tabpanel" aria-labelledby="suggetions-tab" aria-expanded="false"></div>
+                          <div class="tab-pane fade active show" id="complains" role="tabpanel" aria-labelledby="complains-tab" aria-expanded="true">
+                            <div class="form-group">
+                              <label>Discussion Type <required style="color: red">*</required></label>
+                              <select id="ticket_type_id" class="form-control" name="ticket_type_id" required="">
+                                <option value="" selected="selected">Select Request Type</option>
+                                <option value="12">Technical Supprt and IT for Students</option>
+                                <option value="19000">Others</option>
+                                <option value="19001">Accessibilty Services</option>
+                                <option value="19002">Administrative Process (Students Affairs - Interdiscplinary)</option>
+                              </select>
+                            </div>
+
+                            <div id="categories_div" class="form-group">
+                              <label>Category</label>
+                              <select name="category_id" id="category_id" class="form-control">
+                                <option value="">Select Category</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label>Description <required style="color: red">*</required></label>
+                          <textarea required="" name="description" id="description" class="form-control" placeholder="Description" cols="30" rows="5" title="Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <input type="file" class="filestyle" name="attachments[]" data-icon="true" multiple="" onchange="validateFileName(this)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row gutters">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary btn-md" onclick="window.location.href = 'suggestions.html'"><span class="icon-edit"></span> Submit</button>
+                </div>
+              </div>
+
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        Copyright,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+        <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get all tab links
+        const suggestionsTab = document.getElementById('suggetions-tab');
+        const complainsTab = document.getElementById('complains-tab');
+
+        // Get all tab panes
+        const suggestionsPane = document.getElementById('suggetions');
+        const complainsPane = document.getElementById('complains');
+
+        // Get the hidden type input
+        const typeInput = document.getElementById('type');
+
+        // Function to switch tabs
+        function switchTab(activeTab, activePane, inactiveTab, inactivePane, typeValue) {
+          // Update tab links
+          activeTab.classList.add('active');
+          inactiveTab.classList.remove('active');
+
+          // Update aria attributes for tabs
+          activeTab.setAttribute('aria-selected', 'true');
+          activeTab.setAttribute('aria-expanded', 'true');
+          inactiveTab.setAttribute('aria-selected', 'false');
+          inactiveTab.setAttribute('aria-expanded', 'false');
+
+          // Update tab panes
+          activePane.classList.add('active', 'show');
+          inactivePane.classList.remove('active', 'show');
+
+          // Update aria attributes for panes
+          activePane.setAttribute('aria-expanded', 'true');
+          inactivePane.setAttribute('aria-expanded', 'false');
+
+          // Update hidden type input
+          typeInput.value = typeValue;
+        }
+
+        // Add click event listeners
+        suggestionsTab.addEventListener('click', function (e) {
+          e.preventDefault();
+          switchTab(suggestionsTab, suggestionsPane, complainsTab, complainsPane, 'suggestions');
+        });
+
+        complainsTab.addEventListener('click', function (e) {
+          e.preventDefault();
+          switchTab(complainsTab, complainsPane, suggestionsTab, suggestionsPane, 'complains');
+        });
+      });
+    </script>
+  </body>
+</html>

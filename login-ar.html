@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Login</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <style>
+      .g-recaptcha {
+        position: relative;
+        min-height: 78px;
+      }
+
+      .captcha-overlay {
+        position: absolute;
+        background: #f9f9f9;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0s;
+        pointer-events: none;
+      }
+
+      .captcha-overlay.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="login-screen row align-items-center">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <form id="signin_form" method="post" aria-label="Login">
+            <div class="login-container">
+              <div class="row no-gutters">
+                <!-- Login Box -->
+                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                  <div class="login-box">
+                    <!-- Logo -->
+                    <a href="https://eng.asu.edu.eg/" class="login-logo">
+                      <img src="./files/pages/login/asueng-b.png" alt="ASU Engineering Logo" />
+                    </a>
+
+                    <!-- Title -->
+                    <h5 style="text-align: center">Faculty Information System (FIS)</h5>
+                    <p style="text-align: center">
+                      <strong>(FIS) system is for Undergraduate, Postgraduate Students, Alumni and Guests only.</strong>
+                    </p>
+
+                    <!-- Email Input -->
+                    <div class="input-group">
+                      <span class="input-group-addon btn-lg">
+                        <i class="icon-account_circle"></i>
+                      </span>
+                      <input placeholder="Email" id="email" type="email" class="form-control" name="email" required autofocus />
+                    </div>
+                    <br />
+
+                    <!-- Password Input -->
+                    <div class="input-group">
+                      <span class="input-group-addon btn-lg">
+                        <i class="icon-verified_user"></i>
+                      </span>
+                      <input placeholder="Password" id="password" type="password" class="form-control" name="password" required />
+                    </div>
+                    <br />
+
+                    <!-- reCAPTCHA -->
+                    <div class="g-recaptcha" id="recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-size="normal"></div>
+
+                    <!-- Error Message Container -->
+                    <p class="msg-error"></p>
+
+                    <!-- Seperator for UI -->
+                    <div id="ajax_form_progress_bar"></div>
+                    <br />
+
+                    <!-- Submit Button -->
+                    <div class="actions clearfix">
+                      <button type="submit" class="btn btn-primary">Login <i class="ti ti-angle-double-right"></i></button>
+                    </div>
+
+                    <div class="or"></div>
+
+                    <!-- Help Link -->
+                    <div class="mt-4">
+                      <a href="https://eng.asu.edu.eg/request_Login" class="additional-link"> Can Not Sign In? <span>Press Here</span> </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slider Section -->
+                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12">
+                  <div class="login-slider" style="background-image: url('./files/pages/login/login-slider.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer fixed-btm">
+      Copyright,
+      <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+      <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+    </footer>
+
+    <!-- Login Script -->
+    <script src="config/js/login.js"></script>
+  </body>
+</html>

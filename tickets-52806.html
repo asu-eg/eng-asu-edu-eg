@@ -1,0 +1,1850 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Academic Discussion with Advisor</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+
+      /* User image sizing */
+      .ticket_avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1270.0">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html">
+                    <i class="icon-home6"></i>
+                  </a>
+                </li>
+                <li class="breadcrumb-item"><a href="suggestions.html">Suggestions and Complaints</a>&nbsp;</li>
+                <li class="breadcrumb-item active">Academic Discussion with Advi...</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="tickets-52806-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-chat2"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Academic Discussion with Advisor</h5>
+                    <h6 class="sub-heading"></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="main-content">
+            <div class="card">
+              <div class="card-body">
+                <form>
+                  <input type="hidden" />
+                  <div class="form-group">
+                    <textarea id="comment" name="comment" required="" class="form-control" style="height: auto" rows="3" placeholder="Write your comment..." spellcheck="false"></textarea>
+                  </div>
+                  <div class="row gutters">
+                    <div class="col-3">
+                      <input type="file" class="filestyle" name="attachments[]" data-icon="true" multiple="" onchange="validateFileName(this)" />
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <button id="send_comment" class="btn btn-primary float-right">Send</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">Request Discussion</div>
+                  <div class="card-body">
+                    <div class="media overflow-scroll">
+                      <div class="media-body" id="comments">
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">4 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Dear Dr. Mahmoud,<br />
+                              Hope my email finds you well.<br />
+                              Kindly be informed that I applied to register the following courses for the semester Fall 25:<br />
+                              1. PHM111- Mathematics 1 G3/S6<br />
+                              2.PHM122- Electricity and Magnetism G3/S6<br />
+                              3.PHM131- Statics G3/S6<br />
+                              4.ECE121- Communication systems Engineering fundamentals&nbsp;<br />
+                              5.MDP111- Engineering drawing G6/S11<br />
+                              6.ASUx47- Professional Ethics&nbsp;<br />
+                              7.ASUx41- Report writing and Communication skills<br />
+                              Waiting for you acceptance and confirmation<br />
+                              Best regards,<br />
+                              KHALED ELMORSSY REFAAT ELSAADAWY<br />
+                              2401479<br />
+                              Level 1
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">4 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              تذكير: هام جدا<br />
+                              لقد قمت بالتحويل لكريديت و ذلك يتضح من المقررات الذي تحاول تسجيلها. المسئول عن اجراء الموافقة علي التسجيل لابد أن يكون مرشد تابع لكريديت<br />
+                              عليك اللحاق بمواعيد التسجيل و الإضافة و الحذف حتي تتمكن من الانتظام سريعا في المحاضرات و الفصول الدراسية<br />
+                              يمكنك طرح هذه المشكلة فورا لدي مسئولي الكريديت حتي يحاولوا حلها و تعيين مرشد جديد لك تابع لكريديت
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">4 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              لقد ذكرت أنك قمت بالتحويل لكريديت و ذلك يتضح من كود المقرر الذي تحاول تسجيله. رجاء لا تقم بتسجيل أي مقرر حاليا حتي يتم تحويلك الي مرشد أخر تابع لكريديت . يمكنك طرح هذه المشكلة فورا لدي
+                              مسئولي الكريديت حتي يحاولوا حلها و تعيين مرشد جديد لك
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">4 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">أنتظر سوف يتم تعيين مرشد جديد لك مع كريديت سيجيب علي كل استفسارتك بخصوص كريديت</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">4 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">عشان كنت عايز اعرف الجدول لاني مش عارف الاقيه على ال sis</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">4 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              سلام عليكم<br />
+                              انا حولت كريديت لكن بحاول ايحث عن قروب الفيس الي اتكلم عليه دكتور عمرو عثمان الخاص بيهم ملقتش و سالت عليه محدش عارف فا الاقيه فين
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">7 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              الموضوع ده محتاج الاستفسار من مسئولي الكريديت انفسهم - و هم متواجدين بمبني الكريديت - لمعرفة قواعد القبول لهذه الحالة (غالبا لم يحدث مثل ذلك من قبل) . عموما أنصحك بشدة أن تستقر علي موقف محدد
+                              من استكمال الدراسة بعين شمس أو التحويل منها نهائيا
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">7 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              مساء الخير <br />
+                              كنت بس عايز اسالك سؤال مهم بالنسبة لي و هو لو انا دلوقتي كنت داخل عين شمس بالتنسيق عادي جدا و سحبت الملف و حولت سنة لجامعة خاصة هندسة او تخصص تاني مش فارقة هل اقدر ارجع لعين شمس تاني كريديت
+                              في الحالة دي ؟ و لا once ان الملف اتسحب و قدمت في جامعة خاصة زي must مثلا على كلية تانية غير هندسة مقدرش ارجع لعين شمس تاني ؟
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">8 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">تقدر تحول وتبدأ من الاول بدون انذارات و لا توجد شروط اضاقية</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">8 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              سلام عليكم يا دكتور<br />
+                              حضرتك دلوقتي لو حبيت احول لنظام كريديت اقدر احول و انا عندي انذارات ؟ و هل لو حولت بترفع الانذارات ؟ و هل للتحويل اي شروط اضافية ؟
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">9 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">yes, from 10 to 12</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">9 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">حضرتك موجود بكرا ان شاء الله ؟</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">9 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">Ok</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">9 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">خلاص تمام باذن الله اجيلك يوم الثلاثاء القادم</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">9 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">للطلبة بمعدل تراكمي اقل من 2 يكون الحذف للمواد بطلب ورقي من خلال مقابلة المرشد بمكتب الارشاد. سأكون متواجد الثلاثاء و الاربعاء من 10 الي 12 بمكتب الارشاد</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">9 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">I want to withdraw 1- Drawing 2- projection 3-production 4-introduction to sustainable development goals</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">بعد أنتهاء اجازة العيد بأسبوع أو أسبوعين</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">متى يتم فتح فترة الويذ درو الترم دا ؟</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">عند الحصول علي الانذار الرابع يفصل الطالب من الكلية</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              تمام<br />
+                              و بيتم تحويل الدراسة من نظامها العادي لكريديت لما تحصل على ٤ انذارات مضبوط ؟
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              عداد الانذارات بيتصفر (يعني كسر الانذارات مهما كان عددها) في اي ترم بشرط تسجيل علي الافل 12 ساعة مع تحقيق معدل اجمالي اكبر من 2 أي بمعني الشرطين معا (ولا يشترط النجاح في عدد ساعات معينة
+                              للمفررات التي تم تسجيلها). اذا كان احد الشرطين ليس متحققا يحصل الطالب علي انذار جديد
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              فهمت حضرتك بس كان عندي سوال تاني و هو الترم الي اجيب فيه معدل اعلي من ٢ بس مسجل فيه عدد ساعات اقل من ١٣ الي هو الحد الدني للانذار بيصفر عداد الانذارات برضو في الحالة دي و لا لا ؟يعني لو مسجل
+                              مثلا في ترم ٧ ساعات بس جبت معدل اعلي من ٢ هل عداد الانذارات بيتصفر ؟ ولا لازم يكون مسجل الحد الادني من عدد الساعات ؟
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              أولا من الضروري أن أنصحك بشدة بضرورة أجتياز البيزك ماث لان مقررات كثيرة جدا تعتمد عليها و عدم اجتيازها تقريبا يفقد الطالب فرص تسجيل هذه المقررات و تصبح اختيارات التسجيل محددوة مما يتسبب في
+                              انذار تلو الاخر<br />
+                              ثانيا رسوم اعادة المواد عدة مرات تتحدد بالساعة لكل مقرر و بالنسبة للمقررات الصفرية فلابد من سؤال المسئول المالي بشئون الطلبة لمعرفة كيفية حساب مصاريف اعادتها حيث انه لا علاقة للمرشدين
+                              الاكاديميين بالامور المالية
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">لما اعمل ويذ درو للمرة التانية لمادة بصفر ساعة زي البيزك ماث بتكون اعادتها للساعة الواحدة بكام ؟ و لا بتكون من غير فلوس ؟</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">لأ</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">10 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              هو ممكن اقدم عذر عن الترم الاول دلوقتي ؟ يعني مثلا انا كنت عامل ويذ درو لكل مواد الترم الاول فا عايز اقدم اعتذار عن الترم بعذر طبي عشان يبقا و لا كأني عملتها ويذ درو عشان لو شلت مادة اقدر
+                              اخدها ببلاش بس<br />
+                              هل ممكن ؟
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">جاي لحضرتك بكرا باذن البه ما بين ١٠ و ١٢ زي ما حضرتك قلت</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">لابد من الحضور للتسجيل و عندها نحدد السكشن</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">لسه في سكاشن لمواد الكيميستري و البروداكشن مفتوحة ؟</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">مواعيد التواجد الخاصة بي لمقابلة الطالب بمكتب الارشاد يومي الثلاثاء و الخميس من 10:00 حتي 12:00 صباحا</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              ملحقتش حضرتك النهارده <br />
+                              اجي عشان تسجيل المواد امتا تاني ؟
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">حضرتك لسه موجود ؟</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: rtl">
+                              يبدأ التسجيل غدا الثلاثاء 4 فبراير حتي الخمبس 6 فبراير يرجي (لجميع الطلاب) مراجعة التعليمات الاتية كاملة بعناية شديدة: <br />
+                              أولا: الطلبة ذات معدل تراكمى أقل من 2 – سيكون التسجيل لهم ورقيا أثناء حضورهم لمقابلة المرشد ويتم ذلك خلال ساعات الإرشاد الأكاديمى بالفترة المذكورة مع ضرورة إمضاء الطالب على إقرار بالإنذارات
+                              الأكاديمية التى حصل عليها.<br />
+                              ثانبا: للطلبة الذين لديهم معدل تراكمي أكبر من أو بساوي 2 يمكنهم اختيار المواد الكنرونيا من الموقع حيث يجب اختيار كل المواد المطلوب تسجيلها في نفس السكشن والا لن يتم اعتماد التسجيل بواسطة
+                              المرشد. ويمكن التجاوز في هذا الشرط في حالة تسجيل مواد من مستويات مختلفة او مواد مفتوحة في غير فصلها الدراسي ثم يقوم الطالب بالضغط على ديسكس الموجودة يمين أعلى الصفحة وإرسال الرسالة التالية
+                              إلي المرشد الأكاديمي يطلب فيه اعتماد التسجيل ولن يتم قبول التسجيل قي حالة عدم إرسال الرسالة للمرشد الأكاديمي<br />
+                              <br />
+                              Dear Advisor: Please approve my Spring 2025 courses registration<br />
+                              <br />
+                              ثالثا: حالة الطالب الذى عليه مصروفات دراسية متأخرة : يقوم المرشد بالتسجيل للطالب الذى عليه مصروفات دراسية) بشرط أن تكون أقل من 10000 جنيه وإنذارات عددها يكون أقل من 5 إنذارات) وأيضا يكون
+                              بطلب ورقي خلال مقابلة المرشد بشرط أن تكون المديونية لفصل دراسى واحد فقط.<br />
+                              رابعا: الطالب الذى يسجل مواد أو يقوم بعمل آد ودروب دون إرسال رسالة التسجيل للمرشد على ديسكس – فهذا لا يعتبر تسجيل ولا يتم عمل أبروف له حيث انه لا يمكن الموافقة على التسجيل أو الأد والدروب
+                              دون إرسال رسالة على ديسكس – وإن لم يرسل الطالب وانتهت الفترة المحددة فيتم إلغاء طلب التسجيل المقدم من الطالب.<br />
+                              أخيرا: مواعيد التواجد الخاصة بي لمقابلة الطالب بمكتب الارشاد يومي الثلاثاء و الخميس من 10:00 حتي 12:00 صباحا و يرجي التواصل عبر ديسكس فقط
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">11 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">later today</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              As soon as the registration dates are announced and the submission of paper requests for course registration opens, send me your availability immediately so I can register the courses I need
+                              and complete the required credit hours. This semester is a bit critical for me due to the circumstances of the first semester<br />
+                              Thanks
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              How many warnings lead to dismissal from the faculty? <br />
+                              * 4 consecutive warnings.<br />
+                              <br />
+                              How many warnings result in the study becoming paid? <br />
+                              ** It does not depend on the number of warnings, it depends on the number of times you register for any course (the first two opportunities are free, but the following opportunities will be
+                              paid, also improving a successful course will be paid even if it is the second time of that course.<br />
+                              <br />
+                              How can I remove academic warnings, and is it easy to do so?<br />
+                              *** If you achieve a cumulative GPA greater than or equal to 2 and credit hours greater than or equal 12 in any semester, the warning counter will be restarted again from zero.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              How many warnings lead to dismissal from the faculty? How many warnings result in the study becoming paid? How can I remove academic warnings, and is it easy to do so?<br />
+                              <br />
+                              Please explain this fully according to the 2023 regulations.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Academic advisors will be available as soon as the results and schedules are announced, as registration is linked to that, and then I will send my availability dates at that time.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">Please tell me your office hours at the advising office so that I can come and submit the paper application when registration opens.</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">You must submit a paper request since your GPA is smaller than 2</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">12 months ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Hello,<br />
+                              <br />
+                              I inquired about how to lift the academic warning I received and the withdrawal status of my courses from last semester. I was told to visit Dr. Walid Zein, who would explain something about
+                              enrollment suspension with a valid excuse, and hopefully, it will be accepted. I plan to visit him to ask about it.<br />
+                              <br />
+                              I have a specific question: Dr. Walid Zein mentioned that students who received academic warnings in the first semester due to a GPA lower than 2.0 cannot register for courses online for the
+                              second semester. Instead, they must submit a paper request to their academic advisor at the advising office, who will then forward it to Dr. Walid Zein for approval.<br />
+                              <br />
+                              Does this also apply to my case, considering that I withdrew from all my courses and received an academic warning?<br />
+                              Will I also be unable to register online and have to submit a paper request instead?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              This is not an academic warning. It is simply a warning about being banned from taking the final exam. Now you have withdrawn from the course. <br />
+                              An academic warning is a warning from the faculty about your overall GPA status or insufficient credit hours registered.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              The warning in this message doesn’t mean academic warning right ?<br />
+                              I will receive only one ?
+                            </p>
+                            <div class="comments-footer clearfix">
+                              <span> <i class="icon-file-empty"></i> <a target="_blank" href="https://eng.asu.edu.eg/archive/download/2282317">IMG_7155.png</a> </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">yes, but you will receive academic warning</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Now I withdraw all courses I registered <br />
+                              I am free this semester?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Your withdraw request is approved.</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Your request is on hold? Please reply?</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              You are free to do as you wish. My role is limited to advice and course withdrawals only at the moment. If you wish to withdraw courses, send me a clear message as follows:<br />
+                              "I want to withdraw the courses (1- ..... , 2- ..... , 3- ..... , 4- ..... , 5- ..... , 6- ..... , 7- ..... )"
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              I plan to submit the same excuse again to withdraw from the semester and have it not counted, but this time with more supporting documents. If it gets accepted, what’s the difference if it
+                              was previously rejected? If it’s eventually accepted, does that mean I won’t receive any warnings?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              No, since your excuse was rejected, you will receive an academic warning for less than 12 credit hours even if your deferment request is accepted (because your excuse was previously
+                              denied).<br />
+                              <br />
+                              Again:<br />
+                              If you still insist on withdrawing the courses, please send it to me in a message on this discussion to confirm your decision that:<br />
+                              "I want to withdraw the courses (1- ..... , 2- ..... , 3- ..... , 4- ..... , 5- ..... , 6- ..... , 7- ..... )"
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              If I withdraw from the courses and the withdrawal is accepted, then later I submit a request to defer the semester, and it gets approved, the withdrawal won’t count in my academic record in
+                              college, right?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              But you will receive an academic warning. If you still insist on withdrawing the courses, please send it to me in a message on this discussion to confirm your decision that:<br />
+                              "I want to withdraw the courses (1- ..... , 2- ..... , 3- ..... , 4- ..... , 5- ..... , 6- ..... , 7- ..... )"
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Withdraw</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">I think incomplete means that you must review the Student Affairs to complete some documents</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Does this mean that the request for semester apologize has been submitted and is still under review ?</p>
+                            <div class="comments-footer clearfix">
+                              <span> <i class="icon-file-empty"></i> <a target="_blank" href="https://eng.asu.edu.eg/archive/download/2250109">IMG_6818.jpeg</a> </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              If you withdraw from a course, you will lose one of your free chances, but you still keep your actual grade A, B, C... etc. and in the next second trial after the withdrawal you can achieve
+                              a high grade in your course without any grade deduction effect. You only lose one free chance with no effect on your course result (not considered as failed).<br />
+                              <br />
+                              Academic warning is for credit hours that are less than 12 credit hours (not 18 hours). 18 hours is the maximum number of hours allowed for a maximum of seven courses for any student. The
+                              maximum number of warnings is one per semester and may be for a GPA of less than 2 or enrollment in fewer than 12 hours. If both occur, only one academic warning will be given (no more than
+                              one warning per semester).<br />
+                              <br />
+                              You cannot withdraw from all courses except basic mathematics. If you register for any course (even if it is zero credit hours), your registration will be considered for the semester, and
+                              you will receive an academic warning.<br />
+                              I think you can apologize for the entire semester and submit your excuse details on the system. Your excuse will be reviewed by the Student Affairs Committee. Especially, the medical excuses
+                              have priority for acceptance according to medical documents.<br />
+                              <br />
+                              If you submit an official excuse for this semester and it is accepted, this means that there will be no warnings. After the Student Affairs Committee accepts it, this will be considered as
+                              starting of your studies from the second semester.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              And if I submit a formal apology for this semester, that means there will be no warnings or any penalties, correct?<br />
+                              <br />
+                              Would this also be considered as starting my studies from the second semester?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              To clarify everything and ensure the main question is clear:<br />
+                              <br />
+                              I was planning to withdraw from all the courses I’m currently enrolled in, except for Basic Math, which has zero credit hours. This decision is due to personal family circumstances I’ve been
+                              going through.<br />
+                              <br />
+                              In this case, how many warnings will be counted against me?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              And if I achieve a GPA of 2 this semester, will that remove one of the warnings?<br />
+                              <br />
+                              Additionally, if I withdraw from all the credit-hour courses and only keep Basic Math, what would the outcome be? Will the GPA of 2 decrease, or will it remain the same?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Regarding the first point:<br />
+                              <br />
+                              How can I determine the number of warnings I currently have? This semester, I’m enrolled in less than 18 credit hours, and I was informed that enrolling in fewer than 18 hours will result in
+                              a warning.<br />
+                              <br />
+                              I also plan to withdraw from courses that will bring my enrollment below 12 credit hours. Does this mean I will have two warnings, or will the second warning simply be an extension of the
+                              first? Could you clarify this point, please?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Regarding the second point, Engineer:<br />
+                              Does this mean that the withdrawal process is exactly equivalent to failing a course in terms of the chances available to retake it later?<br />
+                              <br />
+                              For example, each course allows two free attempts. Therefore, if I withdraw from a course, I still have one more free attempt to take it. If I fail it after that, I’ll need to pay for
+                              another attempt. On the other hand, for someone who doesn’t withdraw but fails the course on their first attempt, they still have their second free attempt available.<br />
+                              <br />
+                              In short, the withdrawal process is essentially treated as if I had taken the course but didn’t receive a grade. Is my understanding correct?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Hello,<br />
+                              There are no restrictions on withdrawal, the number of courses, or the timing of withdrawal, but the following points must be clearly observed and taken into consideration:<br />
+                              1- If the number of hours after withdrawal is less than 12 hours, the student will receive an automatic academic warning from the system.<br />
+                              2- The student in the course from which he withdrew will lose one of his two chances to obtain a valuable free course.<br />
+                              3- The student will not be able to register for a course based on the course from which he withdrew.<br />
+                              <br />
+                              Best regards
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Hello,<br />
+                              It has been officially announced on the website that the withdrawal period will open on November 30th, God willing.<br />
+                              <br />
+                              My question is:<br />
+                              Does the policy specify a certain number of withdrawals that a student is allowed to make, either per semester or throughout their entire time at the faculty?<br />
+                              Or is the withdrawal option open without restrictions on the number or timing?<br />
+                              <br />
+                              Apologies for any inconvenience caused.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Thank you very much for your attention to my issue and your helpful advice</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              The withdrawal process is valid for any student on any course. <br />
+                              My advice is to minimize the courses that you plan to remove. <br />
+                              Try to be serious about studying some of these courses, and maybe you can achieve an acceptable level in them.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Could you kindly confirm for me whether I will indeed be able to withdraw from the courses I mentioned earlier? This information is crucial for me, as it will determine how I structure my
+                              study schedule and attendance plans for the remainder of the term.<br />
+                              <br />
+                              Knowing this will allow me to focus my midterm preparations on the courses I am certain I will remain enrolled in. As for the courses I plan to withdraw from, I would then only attend the
+                              midterms for formality’s sake.<br />
+                              <br />
+                              Thank you for your assistance.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Dear Khaled<br />
+                              <br />
+                              Dropping of courses is not officially available now. The only solution is the withdrawal process. These will preserve your chance of achieving maximum grades on the course (if you complete
+                              the course and get a grade F, your GPA will be affected strongly).&nbsp;<br />
+                              The withdrawal process will open after the midterm exams. At this date, you can send me the required withdrawal request for courses.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Dear Engineer Ahmed,<br />
+                              <br />
+                              I hope this message finds you well.<br />
+                              <br />
+                              Due to certain circumstances I have faced from the time of course registration until now, I have been unable to perform well in the courses I registered for, and this has impacted my ability
+                              to secure good grades.<br />
+                              <br />
+                              I am kindly requesting that you assist me with a drop for the following courses: Production, Drawing, and Projection, provided that dropping these courses is allowed for students who
+                              registered late, as in my case.<br />
+                              <br />
+                              If dropping is not an option, I would appreciate it if you could help me with a withdrawal for these courses instead. God willing, I plan to register for these courses again next term, along
+                              with other subjects that will become available to me after successfully passing Basic Math.<br />
+                              <br />
+                              I am fully aware that this decision may lead to an academic warning due to not meeting the required credit hours for this term. However, I am determined to achieve a strong GPA this term and
+                              in the next to lift this warning from my record.<br />
+                              <br />
+                              In summary, my primary request is for a drop for the courses I mentioned above: Production, Drawing, and Projection. If a drop is not feasible, then please proceed with a withdrawal.<br />
+                              <br />
+                              If there are any other suggestions or guidance you could offer, I would be deeply grateful. I am in need of all the advice I can get from esteemed professionals like yourself.<br />
+                              <br />
+                              Thank you very much for your time and consideration.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Registration is done</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">I do not know</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Does this mean there is no hope that new sections will be opened ?</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Congratulations<br />
+                              Sorry Chemistry is FULL (closed)
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              I am pleased to inform you that I have successfully passed my English exam<br />
+                              I am now eager to register for the Chemistry course this term , I believe that I will be able to put forth a significant effort in this subject, unlike my previous experience in the
+                              production course.<br />
+                              Could you please assist me with the registration process? I appreciate your guidance and support in this matter.
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">yes</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Could the English test result be delayed for some people, since some have already received their scores ?</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">I think it may open for the successful students of English. It depends on the capacity of sections. Let us wait</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Is there any chance that if I pass English, I can register for Chemistry or that you can help me register for it by contacting Dr. Walid Zain, or will it remain full forever?
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Not possible to add another fourth ASU</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              1. According to your Math result, you can not add Math1, Statics, Electricity, Vibration "you have not a permeation for these courses, if you add, the faculty will remove"<br />
+                              while English stop Chemistry and production in addition of previous courses.<br />
+                              2. You have only 3 elective courses. I add "History of Civilizations" before it become closed (approximately all ASU are closed)<br />
+                              3. if you pass English, you can add chemistry (But it is FULL) and Production (Valid if you want after announcing the result)
+                            </p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">KHALED ELMORSSY REFAAT ELSADAAWY</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">
+                              Dear Engineer Ahmed,<br />
+                              <br />
+                              I hope you’re doing well. I have a couple of inquiries regarding the courses. Currently, I have access to a section called “Course Selector,” where I can choose about two courses.<br />
+                              <br />
+                              I have two questions about this:<br />
+                              <br />
+                              1. Is it possible for me to register for any course that has “Add” written next to it? Because I know that to register for some of these courses, like Math 1, Electricity, Statics, and
+                              Vibrations, I first need to pass a prerequisite course in Basic Math. However, all the courses have “Add” next to them except for two courses, which require passing Math 1 first before I can
+                              register for them.<br />
+                              2. Can I register for four elective courses in the same semester, and will their grades and marks be counted normally? I have information that under the new regulation, in the first year, I
+                              can only register for three elective courses, and if I register for more than that, their grades won’t be counted—only their credit hours will. Is this true?<br />
+                              <br />
+                              I was planning to register for two courses: Production and Chemistry. However, if I’m allowed to register for more than two elective courses and their grades will be counted as usual, I
+                              would then register for Chemistry and another elective instead of Production because I haven’t had the chance to cover the entire Production curriculum this semester, and there are quizzes
+                              and so on, which would make it difficult.<br />
+                              <br />
+                              Sorry for any inconvenience caused.
+                            </p>
+                            <div class="comments-footer clearfix">
+                              <span> <i class="icon-file-empty"></i> <a target="_blank" href="https://eng.asu.edu.eg/archive/download/2194083">IMG_5831.png</a> </span>
+                              <span> <i class="icon-file-empty"></i> <a target="_blank" href="https://eng.asu.edu.eg/archive/download/2194084">IMG_5832.png</a> </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="media mt-3">
+                          <div class="mr-3">
+                            <span class="media-object">
+                              <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <h5 class="mt-0 media-heading">
+                              <span style="color: #4266b2">Ahmed Ezzat A. Abdel Ghany</span>
+                              <span class="date" style="border: none; padding: 0px">1 year ago</span>
+                            </h5>
+                            <p style="direction: ltr">Registration is done</p>
+                            <div class="comments-footer clearfix"></div>
+                          </div>
+                        </div>
+                        <div style="display: none">
+                          <div class="media mt-3" id="comment_template">
+                            <div class="mr-3">
+                              <span class="media-object">
+                                <img class="ticket_avatar" alt="48x48" src="./files/shared/user.png" />
+                              </span>
+                            </div>
+                            <div class="media-body">
+                              <h5 class="mt-0 media-heading">
+                                <span class="user_name"></span>
+                                <span class="date created_from" style="border: none; padding: 0px"></span>
+                              </h5>
+                              <p class="comment"></p>
+                              <div class="comments-footer clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div style="display: none">
+                          <span id="comment_file_template"> <i class="icon-file-empty"></i> <a></a> </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Footer === -->
+    <footer class="main-footer fixed-btm">
+      Copyright,
+      <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+      <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+    </footer>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

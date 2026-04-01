@@ -1,0 +1,259 @@
+.friday {
+  background-color: lightgray;
+}
+
+.period_order {
+  width: 30%;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.proctoring-charged {
+  background: blue;
+  color: white;
+}
+
+.proctoring-exempt {
+  background: lightgray;
+  color: white;
+}
+
+.preference-none {
+  background: gray;
+  color: white;
+}
+
+.preference-submitted {
+  background: green;
+  color: white;
+}
+
+li.active_title a {
+  color: red !important;
+  font-weight: bolder !important;
+}
+
+span.required_field {
+  color: red;
+  font-weight: bold;
+}
+
+img.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 100px 20px 20px 20px;
+}
+
+cli {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#sample-grid {
+  width: 1000px;
+  height: 400px;
+  outline: none;
+}
+
+.span-success {
+  color: green !important;
+  font-weight: bolder;
+}
+
+.span-error {
+  color: red !important;
+  font-weight: bolder;
+}
+
+.badge-main {
+  background: silver;
+  color: black;
+}
+
+.badge-backup {
+  background: gray;
+  color: white;
+}
+
+.badge-chief {
+  display: inline-block;
+  border: 1px dotted #28a745;
+  color: #28a745;
+  font-weight: bold;
+  padding: 0px 15px 0px 15px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.badge-vice-chief {
+  display: inline-block;
+  border: 1px dotted #28b18d;
+  color: #28b18d;
+  font-weight: bold;
+  padding: 0px 15px 0px 15px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.badge-proctor {
+  display: inline-block;
+  border: 1px dotted #4266b2;
+  color: #4266b2;
+  font-weight: bold;
+  padding: 0px 15px 0px 15px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.badge-chief-solid {
+  display: inline-block;
+  border: 1px dotted #28a745;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.badge-vice-chief-solid {
+  display: inline-block;
+  border: 1px dotted #28b18d;
+  background-color: #28b18d;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.badge-proctor-solid {
+  display: inline-block;
+  border: 1px dotted #4266b2;
+  background-color: #4266b2;
+  color: white;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.badge-certificate-status-new {
+  background-color: #d2ddf3;
+  color: black;
+}
+
+.badge-certificate-status-need-update {
+  background-color: #d49814;
+  color: white;
+}
+
+.badge-certificate-status-rejected {
+  background-color: #da3333;
+  color: white;
+}
+
+.badge-certificate-status-updated {
+  background-color: #01709c;
+  color: white;
+}
+
+.badge-certificate-status-prepared {
+  background-color: #4266b2;
+  color: white;
+}
+
+.badge-certificate-status-reviewed {
+  background-color: #65ab53;
+  color: white;
+}
+
+.badge-certificate-status-approved {
+  background-color: #1e8831;
+  color: white;
+}
+
+.badge-certificate-status-ready {
+  background-color: green;
+  color: white;
+}
+
+.badge-certificate-status-error {
+  background-color: black;
+  color: red;
+  font-weight: bold;
+}
+
+.text-separator {
+  color: red;
+}
+
+.badge-course {
+  font-size: 80%;
+  color: darkblue;
+}
+
+#counts,
+#selected-data,
+#save-data {
+  width: 700px;
+  background-color: #f3f3f3;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.has-birth-date {
+  background-color: #96e2fe;
+}
+
+.badge-general-accepted {
+  padding: 0.4em 1em 0.4em 1em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  background-color: #1e8831;
+  color: white;
+  border: 1px solid #1e8831;
+}
+
+.badge-general-incomplete {
+  padding: 0.4em 1em 0.4em 1em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  background-color: #d2ddf3;
+  color: white;
+  border: 1px solid #d2ddf3;
+}
+
+.badge-general-new {
+  padding: 0.4em 1em 0.4em 1em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  background-color: #4266b2;
+  color: white;
+  border: 1px solid #4266b2;
+}
+
+.badge-general-rejected {
+  padding: 0.4em 1em 0.4em 1em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  background-color: #da3333;
+  color: white;
+  border: 1px solid #da3333;
+}

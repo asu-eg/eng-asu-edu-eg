@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Archive</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="archive.html">My Archive</a></li>
+                <li class="breadcrumb-item active">Previous Exams</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="archive-exams-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <!-- BEGIN .main-heading -->
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-folder"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Previous Exams</h5>
+                    <h6 class="sub-heading"></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="main-content">
+            <div class="row gutters">
+              <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="card-body pb-0">
+                    <form action="https://eng.asu.edu.eg/dashboard/my_archive/previous_exams" method="post" id="filter_form">
+                      <input type="hidden" name="_token" value="A697cJOrgMSmpxvvDqCv2Y5QHVIHPQIr8X0c7FLb" />
+
+                      <div class="row filter-box">
+                        <div class="form-group col-md-2">
+                          <select class="form-control" id="search_term_id" title="Term" name="search_term_id">
+                            <option value="" selected="selected">Select Term</option>
+                            <option value="187">Spring 2026</option>
+                            <option value="176">Fall 2025</option>
+                            <option value="182">Transfer 2025</option>
+                            <option value="185">Admission 2025</option>
+                            <option value="184">November 2025</option>
+                            <option value="178">Summer 2025</option>
+                            <option value="171">Spring 2025</option>
+                            <option value="181">USA University of Pennsylvania Spring 2025</option>
+                            <option value="186">Romania University of Galati Spring 2025</option>
+                            <option value="161">Fall 2024</option>
+                            <option value="179">Italy Mediterranea University Fall 2024</option>
+                            <option value="180">USA University of Pennsylvania Fall 2024</option>
+                            <option value="167">November 2024</option>
+                            <option value="168">Admission 2024</option>
+                            <option value="169">Transfer 2024</option>
+                            <option value="162">Summer 2024</option>
+                            <option value="170">USA University of Pennsylvania Summer 2024</option>
+                            <option value="177">Italy Mediterranea University Spring 2024</option>
+                            <option value="156">Spring 2024</option>
+                            <option value="164">USA University of Pennsylvania Spring 2024</option>
+                            <option value="151">Fall 2023</option>
+                            <option value="160">Italy Mediterranea University Fall 2023</option>
+                            <option value="163">USA University of Pennsylvania Fall 2023</option>
+                            <option value="155">Transfer 2023</option>
+                            <option value="153">Admission 2023</option>
+                            <option value="154">November 2023</option>
+                            <option value="152">Summer 2023</option>
+                            <option value="175">Italy Mediterranea University Spring 2023</option>
+                            <option value="150">Spring 2023</option>
+                            <option value="166">USA University of Pennsylvania Spring 2023</option>
+                            <option value="143">Fall 2022</option>
+                            <option value="159">Italy Mediterranea University Fall 2022</option>
+                            <option value="165">USA University of Pennsylvania Fall 2022</option>
+                            <option value="147">November 2022</option>
+                            <option value="148">Admission 2022</option>
+                            <option value="149">Transfer 2022</option>
+                            <option value="145">Summer 2022</option>
+                            <option value="142">Spring 2022</option>
+                            <option value="158">Italy Mediterranea University Spring 2022</option>
+                            <option value="137">Fall 2021</option>
+                            <option value="157">Italy Mediterranea University Fall 2021</option>
+                            <option value="139">November 2021</option>
+                            <option value="141">Admission 2021</option>
+                            <option value="140">Transfer 2021</option>
+                            <option value="138">Summer 2021</option>
+                            <option value="136">Spring 2021</option>
+                            <option value="132">Fall 2020</option>
+                            <option value="134">November 2020</option>
+                            <option value="135">Transferred 2020</option>
+                            <option value="174">Italy Mediterranea University Fall 2020</option>
+                            <option value="133">Admission 2020</option>
+                            <option value="131">Summer 2020</option>
+                            <option value="173">Italy Mediterranea University Spring 2020</option>
+                            <option value="129">Spring 2020</option>
+                            <option value="128">November 2019</option>
+                            <option value="125">Fall 2019</option>
+                            <option value="172">Italy Mediterranea University Fall 2019</option>
+                            <option value="127">Admission 2019</option>
+                            <option value="121">Summer 2019</option>
+                            <option value="126">Transferred 2019</option>
+                            <option value="120">Spring 2019</option>
+                            <option value="71">November 2018</option>
+                            <option value="72">Fall 2018</option>
+                            <option value="123">Admission 2018</option>
+                            <option value="110">Summer 2018</option>
+                            <option value="98">Transferred 2018</option>
+                            <option value="69">Spring 2018</option>
+                            <option value="119">Germany Clausthal University of Technology - 2018</option>
+                            <option value="67">November 2017</option>
+                            <option value="68">Fall 2017</option>
+                            <option value="109">Summer 2017</option>
+                            <option value="97">Transferred 2017</option>
+                            <option value="65">Spring 2017</option>
+                            <option value="118">Germany Clausthal University of Technology - 2017</option>
+                            <option value="63">November 2016</option>
+                            <option value="64">Fall 2016</option>
+                            <option value="108">Summer 2016</option>
+                            <option value="96">Transferred 2016</option>
+                            <option value="61">Spring 2016</option>
+                            <option value="117">Germany Clausthal University of Technology - 2016</option>
+                            <option value="59">November 2015</option>
+                            <option value="60">Fall 2015</option>
+                            <option value="107">Summer 2015</option>
+                            <option value="95">Transferred 2015</option>
+                            <option value="57">Spring 2015</option>
+                            <option value="116">Germany Clausthal University of Technology - 2015</option>
+                            <option value="55">November 2014</option>
+                            <option value="56">Fall 2014</option>
+                            <option value="106">Summer 2014</option>
+                            <option value="94">Transferred 2014</option>
+                            <option value="54">Spring 2014</option>
+                            <option value="115">Germany Clausthal University of Technology - 2014</option>
+                            <option value="51">November 2013</option>
+                            <option value="53">Fall 2013</option>
+                            <option value="105">Summer 2013</option>
+                            <option value="93">Transferred 2013</option>
+                            <option value="50">Spring 2013</option>
+                            <option value="114">Germany Clausthal University of Technology - 2013</option>
+                            <option value="48">November 2012</option>
+                            <option value="49">Fall 2012</option>
+                            <option value="104">Summer 2012</option>
+                            <option value="92">Transferred 2012</option>
+                            <option value="47">Spring 2012</option>
+                            <option value="113">Germany Clausthal University of Technology - 2012</option>
+                            <option value="45">November 2011</option>
+                            <option value="46">Fall 2011</option>
+                            <option value="103">Summer 2011</option>
+                            <option value="91">Transferred 2011</option>
+                            <option value="44">Spring 2011</option>
+                            <option value="112">Germany Clausthal University of Technology - 2011</option>
+                            <option value="42">November 2010</option>
+                            <option value="43">Fall 2010</option>
+                            <option value="102">Summer 2010</option>
+                            <option value="90">Transferred 2010</option>
+                            <option value="41">Spring 2010</option>
+                            <option value="111">Germany Clausthal University of Technology - 2010</option>
+                            <option value="39">November 2009</option>
+                            <option value="40">Fall 2009</option>
+                            <option value="101">Summer 2009</option>
+                            <option value="89">Transferred 2009</option>
+                            <option value="38">Spring 2009</option>
+                            <option value="36">November 2008</option>
+                            <option value="37">Fall 2008</option>
+                            <option value="100">Summer 2008</option>
+                            <option value="88">Transferred 2008</option>
+                            <option value="35">Spring 2008</option>
+                            <option value="33">November 2007</option>
+                            <option value="34">Fall 2007</option>
+                            <option value="99">Summer 2007</option>
+                            <option value="87">Transferred 2007</option>
+                            <option value="32">Spring 2007</option>
+                            <option value="30">November 2006</option>
+                            <option value="31">Fall 2006</option>
+                            <option value="29">Spring 2006</option>
+                            <option value="27">November 2005</option>
+                            <option value="28">Fall 2005</option>
+                            <option value="26">Spring 2005</option>
+                            <option value="24">November 2004</option>
+                            <option value="25">Fall 2004</option>
+                            <option value="23">Spring 2004</option>
+                            <option value="21">November 2003</option>
+                            <option value="22">Fall 2003</option>
+                            <option value="20">Spring 2003</option>
+                            <option value="18">November 2002</option>
+                            <option value="19">Fall 2002</option>
+                            <option value="17">Spring 2002</option>
+                            <option value="15">November 2001</option>
+                            <option value="16">Fall 2001</option>
+                            <option value="14">Spring 2001</option>
+                            <option value="12">November 2000</option>
+                            <option value="13">Fall 2000</option>
+                            <option value="11">Spring 2000</option>
+                            <option value="9">November 1999</option>
+                            <option value="10">Fall 1999</option>
+                            <option value="8">Spring 1999</option>
+                            <option value="6">November 1998</option>
+                            <option value="7">Fall 1998</option>
+                            <option value="5">Spring 1998</option>
+                            <option value="3">November 1997</option>
+                            <option value="4">Fall 1997</option>
+                            <option value="2">Spring 1997</option>
+                            <option value="1">Fall 1996</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-2">
+                          <select id="search_bylaw" name="search_bylaw" class="form-control">
+                            <option value="">Select Bylaw</option>
+                            <option value="UG2023">UG2023</option>
+                            <option value="UG2018">UG2018</option>
+                            <option value="UG2013">UG2013</option>
+                            <option value="UG2007">UG2007</option>
+                            <option value="UG2003">UG2003</option>
+                            <option value="PG2024">PG2024</option>
+                            <option value="PG2015">PG2015</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4">
+                          <select id="search_plan_id" name="search_plan_id" class="form-control">
+                            <option value="">Select Study Plan</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                          <select class="form-control" id="search_exam_type" name="search_exam_type">
+                            <option value="">Select Exam Type</option>
+                            <option value="1">Midterm</option>
+                            <option value="2">Final</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                          <input class="form-control typeahead" type="text" data-placement="top" name="text_search" id="text_search" autocomplete="off" placeholder="Text Search" />
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button class="btn btn-primary" type="button" id="search_button">Search</button>
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button
+                            class="btn btn-danger"
+                            type="button"
+                            id="reset_button"
+                            onclick="
+                              document.getElementById('text_search').value = '';
+                              document.getElementById('search_term_id').value = '';
+                              document.getElementById('search_bylaw').value = '';
+                              document.getElementById('search_plan_id').value = '';
+                              document.getElementById('search_exam_type').value = '';
+                            "
+                          >
+                            Reset
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row gutters">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="card-header">
+                    Previous Exams <button class="btn btn-sm btn-success float-right download" href="javascript:void(0)" disabled="">Download <span class="badge badge-pill badge-danger" id="num_files">0</span></button>
+                  </div>
+
+                  <div class="card-body">
+                    <div id="data_table_wrapper" class="dataTables_wrapper no-footer">
+                      <div class="dataTables_length" id="data_table_length">
+                        <label
+                          >Show
+                          <select name="data_table_length" aria-controls="data_table" class="">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                          </select>
+                          entries</label
+                        >
+                      </div>
+                      <div id="data_table_filter" class="dataTables_filter" style="display: none">
+                        <label>Search : <input type="search" class="" placeholder="" aria-controls="data_table" /></label>
+                      </div>
+                      <div class="dataTables_scroll">
+                        <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                          <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1143.61px; padding-right: 0px">
+                            <table class="display dataTable no-footer" style="width: 1143.61px; margin-left: 0px" role="grid">
+                              <thead>
+                                <tr role="row">
+                                  <th
+                                    width="5%"
+                                    class="sorting_asc"
+                                    tabindex="0"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 21.9609px"
+                                    aria-sort="ascending"
+                                    aria-label="#: activate to sort column descending"
+                                  >
+                                    #
+                                  </th>
+                                  <th class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" style="width: 991.695px" aria-label="Name: activate to sort column ascending">Name</th>
+                                  <th width="5%" class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" style="width: 21.9531px" aria-label=": activate to sort column ascending"></th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                          <table id="data_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="data_table_info">
+                            <thead>
+                              <tr role="row" style="height: 0px">
+                                <th
+                                  width="5%"
+                                  class="sorting_asc"
+                                  aria-controls="data_table"
+                                  rowspan="1"
+                                  colspan="1"
+                                  style="width: 21.9609px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                  aria-sort="ascending"
+                                  aria-label="#: activate to sort column descending"
+                                >
+                                  <div class="dataTables_sizing" style="height: 0; overflow: hidden">#</div>
+                                </th>
+                                <th
+                                  class="sorting"
+                                  aria-controls="data_table"
+                                  rowspan="1"
+                                  colspan="1"
+                                  style="width: 991.695px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                  aria-label="Name: activate to sort column ascending"
+                                >
+                                  <div class="dataTables_sizing" style="height: 0; overflow: hidden">Name</div>
+                                </th>
+                                <th
+                                  width="5%"
+                                  class="sorting"
+                                  aria-controls="data_table"
+                                  rowspan="1"
+                                  colspan="1"
+                                  style="width: 21.9531px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                  aria-label=": activate to sort column ascending"
+                                >
+                                  <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                                </th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr class="odd">
+                                <td valign="top" colspan="3" class="dataTables_empty">No matching records found</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="dataTables_info" id="data_table_info" role="status" aria-live="polite">No records available</div>
+                      <div class="dataTables_paginate paging_simple_numbers" id="data_table_paginate">
+                        <a class="paginate_button previous disabled" aria-controls="data_table" data-dt-idx="0" tabindex="0" id="data_table_previous">Previous</a><span></span
+                        ><a class="paginate_button next disabled" aria-controls="data_table" data-dt-idx="1" tabindex="0" id="data_table_next">Next</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form method="POST" action="https://eng.asu.edu.eg/dashboard/my_archive/previous_exams/download" id="download_form" style="display: none">
+              <input type="hidden" name="_token" value="A697cJOrgMSmpxvvDqCv2Y5QHVIHPQIr8X0c7FLb" />
+              <input type="hidden" id="form_files" name="form_files" />
+              <input type="hidden" id="form_max_download" name="form_max_download" value="10" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        Copyright,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+        <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

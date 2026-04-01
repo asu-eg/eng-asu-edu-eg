@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "cumulativeGPA": {
+      "current": 3.03,
+      "required": 2,
+      "color": "yellow"
+    },
+    "trainingWeeks": {
+      "current": 0,
+      "required": 8,
+      "color": "red"
+    },
+    "creditHours": {
+      "current": 13,
+      "required": 144,
+      "color": "green"
+    }
+  }
+}

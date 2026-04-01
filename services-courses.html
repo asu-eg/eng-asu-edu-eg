@@ -1,0 +1,1978 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Student Courses</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="" class="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Student Courses</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="services-courses-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-people"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Student Courses</h5>
+                    <h6 class="sub-heading"></h6>
+                  </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mt-2">
+                  <a href="" class="btn btn-primary float-right" title="Print Registration Report">
+                    <i class="icon-print"></i>
+                  </a>
+                  <a style="margin: 0px 5px 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor"> <i class="icon-chat"></i> Discuss </a>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="modal fade" id="sections_modal" tabindex="-1" role="dialog" aria-labelledby="sections_modal_label" aria-hidden="true" style="display: none">
+            <form action="https://eng.asu.edu.eg/study/studies/student_courses" method="post">
+              <input type="hidden" name="_token" value="6SaQryvoNBJs4EOMUwtnpJUuMJM5RcsENRxDj6bV" />
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="sections_modal_label">tr.Select Section</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <select name="section_id" id="section_id" class="form-control">
+                        <option value="">tr.Select Section</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" id="ok" class="btn btn-primary">Ok</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="main-content">
+            <div class="row gutters">
+              <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                <div class="row gutters">
+                  <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8">
+                    <div class="card">
+                      <div class="card-body"><strong>2401479</strong>: <a target="_blank" href="https://eng.asu.edu.eg/students/1002039">KHALED ELMORSSY REFAAT ELSADAAWY</a></div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+                    <div class="card">
+                      <div class="card-body">Hours &nbsp; <span class="badge badge-primary" id="total_credit_hours">17 / 18</span></div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+                    <div class="card">
+                      <div class="card-body">Courses &nbsp; <span class="badge badge-primary" id="courses_count">7 / 7</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert alert-warning">
+                  <i class="icon-info2"></i><strong>Not Registered</strong>: UG2023, Credit Hours, Inter-Disciplinary Programs, Electrical Engineering, Communication Systems Engineering <strong>, Level</strong>: Freshmen
+                  , <strong>Term</strong>: Fall 2025
+                </div>
+
+                <div class="alert alert-success">
+                  <i class="icon-user-tie"></i><strong>Advisor</strong>: <u>Mahmoud Ibrahim Zaki Ossaimee</u>, m_ossaimee@eng.asu.edu.eg, Engineering Physics and Mathematics.&nbsp;&nbsp;<b
+                    >You should contact your advisor to complete course registartion and get the signed approval form.</b
+                  >
+                </div>
+
+                <div class="card">
+                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <div class="card-header">Selected Courses</div>
+                    <div class="card-body">
+                      <div id="selected_courses_wrapper" class="dataTables_wrapper no-footer">
+                        <div id="selected_courses_processing" class="dataTables_processing" style="display: none">Processing...</div>
+                        <div class="dataTables_scroll">
+                          <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                            <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1113.61px; padding-right: 0px">
+                              <table class="hover dataTable no-footer" style="width: 1113.61px; margin-left: 0px" role="grid">
+                                <thead>
+                                  <tr role="row">
+                                    <th
+                                      width="5%"
+                                      class="sorting_asc"
+                                      tabindex="0"
+                                      aria-controls="selected_courses"
+                                      rowspan="1"
+                                      colspan="1"
+                                      style="width: 38.4688px"
+                                      aria-sort="ascending"
+                                      aria-label="Code: activate to sort column descending"
+                                    >
+                                      Code
+                                    </th>
+                                    <th width="45%" class="sorting" tabindex="0" aria-controls="selected_courses" rowspan="1" colspan="1" style="width: 453.75px" aria-label="Course: activate to sort column ascending">
+                                      Course
+                                    </th>
+                                    <th width="25%" class="sorting" tabindex="0" aria-controls="selected_courses" rowspan="1" colspan="1" style="width: 237.469px" aria-label="Status: activate to sort column ascending">
+                                      Status
+                                    </th>
+                                    <th width="15%" class="sorting" tabindex="0" aria-controls="selected_courses" rowspan="1" colspan="1" style="width: 129.312px" aria-label="Section: activate to sort column ascending">
+                                      Section
+                                    </th>
+                                    <th width="10%" class="sorting" tabindex="0" aria-controls="selected_courses" rowspan="1" colspan="1" style="width: 74.6094px" aria-label=": activate to sort column ascending"></th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                            <table id="selected_courses" class="hover dataTable no-footer" style="width: 100%" role="grid">
+                              <thead>
+                                <tr role="row" style="height: 0px">
+                                  <th
+                                    width="5%"
+                                    class="sorting_asc"
+                                    aria-controls="selected_courses"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 38.4688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-sort="ascending"
+                                    aria-label="Code: activate to sort column descending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Code</div>
+                                  </th>
+                                  <th
+                                    width="45%"
+                                    class="sorting"
+                                    aria-controls="selected_courses"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 453.75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="Course: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Course</div>
+                                  </th>
+                                  <th
+                                    width="25%"
+                                    class="sorting"
+                                    aria-controls="selected_courses"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 237.469px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="Status: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Status</div>
+                                  </th>
+                                  <th
+                                    width="15%"
+                                    class="sorting"
+                                    aria-controls="selected_courses"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 129.312px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="Section: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Section</div>
+                                  </th>
+                                  <th
+                                    width="10%"
+                                    class="sorting"
+                                    aria-controls="selected_courses"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 74.6094px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label=": activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr id="13155" role="row" class="odd">
+                                  <td class="sorting_1">PHM111</td>
+                                  <td>
+                                    <a href="courses-phm111.html">Mathematics (1)</a><br /><small>CH(3), Min(null), Max(100)</small><br /><small
+                                      >Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small
+                                    >
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td>
+                                    <!-- <span class="action-column float-right"><a href="javascript:void(0)" id="edit_section" class="edit_section badge badge-primary">Edit</a>&nbsp;</span> -->
+                                  </td>
+                                </tr>
+                                <tr id="13162" role="row" class="even">
+                                  <td class="sorting_1">PHM122</td>
+                                  <td>
+                                    <a href="courses-phm122.html">Electricity and Magnetism</a><br /><small>CH(3), Min(null), Max(100)</small><br /><small
+                                      >Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small
+                                    >
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td>
+                                    <!-- <span class="action-column float-right"><a href="javascript:void(0)" id="edit_section" class="edit_section badge badge-primary">Edit</a>&nbsp;</span> -->
+                                  </td>
+                                </tr>
+                                <tr id="13161" role="row" class="odd">
+                                  <td class="sorting_1">PHM131</td>
+                                  <td>
+                                    <a href="courses-phm131.html">Statics</a><br /><small>CH(3), Min(null), Max(100)</small><br /><small
+                                      >Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small
+                                    >
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td>
+                                    <!-- <span class="action-column float-right"><a href="javascript:void(0)" id="edit_section" class="edit_section badge badge-primary">Edit</a>&nbsp;</span> -->
+                                  </td>
+                                </tr>
+                                <tr id="13144" role="row" class="even">
+                                  <td class="sorting_1">ECE121</td>
+                                  <td>
+                                    <a href="courses-ece121.html">Communication Systems Engineering Fundamentals</a><br /><small>CH(2), Min(null), Max(100)</small><br />
+                                    <small> Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small>
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="13149" role="row" class="odd">
+                                  <td class="sorting_1">MDP111</td>
+                                  <td>
+                                    <a href="">Engineering Drawing</a><br /><small>CH(2), Min(null), Max(100)</small><br /><small>
+                                      Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small
+                                    >
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td>
+                                    <!-- <span class="action-column float-right"><a href="javascript:void(0)" id="edit_section" class="edit_section badge badge-primary">Edit</a>&nbsp;</span> -->
+                                  </td>
+                                </tr>
+                                <tr id="13130" role="row" class="even">
+                                  <td class="sorting_1">ASUx47</td>
+                                  <td>
+                                    <a href="">Professional Ethics</a><br /><small>CH(2), Min(null), Max(100)</small><br /><small
+                                      >Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small
+                                    >
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="13145" role="row" class="odd">
+                                  <td class="sorting_1">EPM111</td>
+                                  <td>
+                                    <a href="courses-epm111.html">Engineering Economy and Investments</a><br /><small>CH(2), Min(null), Max(100)</small><br /><small
+                                      >Status: ( <span style="color: rgb(0, 153, 0)">registered</span> mandatory credit fresh )</small
+                                    >
+                                  </td>
+                                  <td><span class="badge badge-pill" style="background-color: rgb(0, 153, 0); color: white">registered</span></td>
+                                  <td></td>
+                                  <td>
+                                    <!-- <span class="action-column float-right"><a href="javascript:void(0)" id="edit_section" class="edit_section badge badge-primary">Edit</a>&nbsp;</span> -->
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert alert-primary">
+                  <i class="icon-chat"></i><strong>Hint!</strong>: Dear student, to Add / Drop / Widthdraw / Report Apsensce and more you can discuss directltly with your academic advisor.
+                  <a target="_blank" href="tickets-52806.html"><span style="margin: 2px" class="badge badge-primary float-right">Discuss with your advisor</span></a>
+                </div>
+
+                <div class="card">
+                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <div class="card-header">Course Selector</div>
+                    <div class="card-body">
+                      <div id="courses_table_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="dataTables_length" id="courses_table_length">
+                          <label
+                            >Show
+                            <select name="courses_table_length" aria-controls="courses_table" class="">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                            </select>
+                            entries</label
+                          >
+                        </div>
+                        <div id="courses_table_filter" class="dataTables_filter">
+                          <label>Search : <input type="search" class="" placeholder="" aria-controls="courses_table" /></label>
+                        </div>
+                        <div id="courses_table_processing" class="dataTables_processing" style="display: none">Processing...</div>
+                        <div class="dataTables_scroll">
+                          <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                            <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1113.61px; padding-right: 15px">
+                              <table class="display dataTable no-footer" style="width: 1113.61px; margin-left: 0px" role="grid">
+                                <thead>
+                                  <tr role="row">
+                                    <th
+                                      width="5%"
+                                      class="sorting_asc"
+                                      tabindex="0"
+                                      aria-controls="courses_table"
+                                      rowspan="1"
+                                      colspan="1"
+                                      style="width: 38.4688px"
+                                      aria-sort="ascending"
+                                      aria-label="Code: activate to sort column descending"
+                                    >
+                                      Code
+                                    </th>
+                                    <th width="45%" class="sorting" tabindex="0" aria-controls="courses_table" rowspan="1" colspan="1" style="width: 456.008px" aria-label="Course: activate to sort column ascending">
+                                      Course
+                                    </th>
+                                    <th width="45%" class="sorting" tabindex="0" aria-controls="courses_table" rowspan="1" colspan="1" style="width: 455.234px" aria-label="Details: activate to sort column ascending">
+                                      Details
+                                    </th>
+                                    <th width="10%" class="sorting" tabindex="0" aria-controls="courses_table" rowspan="1" colspan="1" style="width: 19.8984px" aria-label=": activate to sort column ascending"></th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                            <table id="courses_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="courses_table_info">
+                              <thead>
+                                <tr role="row" style="height: 0px">
+                                  <th
+                                    width="5%"
+                                    class="sorting_asc"
+                                    aria-controls="courses_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 38.4688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-sort="ascending"
+                                    aria-label="Code: activate to sort column descending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Code</div>
+                                  </th>
+                                  <th
+                                    width="45%"
+                                    class="sorting"
+                                    aria-controls="courses_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 456.008px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="Course: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Course</div>
+                                  </th>
+                                  <th
+                                    width="45%"
+                                    class="sorting"
+                                    aria-controls="courses_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 455.234px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="Details: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Details</div>
+                                  </th>
+                                  <th
+                                    width="10%"
+                                    class="sorting"
+                                    aria-controls="courses_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 19.8984px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label=": activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr id="13114" role="row" class="odd">
+                                  <td class="sorting_1">ARC131</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13114">History of Arts and Architecture</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13116" role="row" class="even">
+                                  <td class="sorting_1">ARC141</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13116">Architectural Representation</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13117" role="row" class="odd">
+                                  <td class="sorting_1">ARC142</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13117">Fundamentals of Computer Graphics</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13123" role="row" class="even">
+                                  <td class="sorting_1">ASUx12</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13123">Selected Topics in Contemporary Issues</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13121" role="row" class="odd">
+                                  <td class="sorting_1">ASUx41</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13121">Report Writing and Communication Skills</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13126" role="row" class="even">
+                                  <td class="sorting_1">ASUx42</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13126">Innovation and Entrepreneurship</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13122" role="row" class="odd">
+                                  <td class="sorting_1">ASUx48</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13122">Scientific Research</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13134" role="row" class="even">
+                                  <td class="sorting_1">CES111</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13134">Fundamentals of Structural Mechanics (1)</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13139" role="row" class="odd">
+                                  <td class="sorting_1">CSE121</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13139">Introduction to Logic Design</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13140" role="row" class="even">
+                                  <td class="sorting_1">CSE141</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13140">Introduction to Computer Programming</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13142" role="row" class="odd">
+                                  <td class="sorting_1">CSE222</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13142">Digital Logic Design</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="10257" role="row" class="even">
+                                  <td class="sorting_1">CSE321</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10257">Computer Organization and Architecture</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">CSE141 AND CSE222 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10301" role="row" class="odd">
+                                  <td class="sorting_1">CSE481</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10301">Control Systems</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE261 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10332" role="row" class="even">
+                                  <td class="sorting_1">ECE221</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10332">Electronic Materials</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM122 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10333" role="row" class="odd">
+                                  <td class="sorting_1">ECE222</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10333">Solid State Electronic Devices</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE221</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10360" role="row" class="even">
+                                  <td class="sorting_1">ECE241</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10360">Electrostatics and Magnetostatics</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM122</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="11226" role="row" class="odd">
+                                  <td class="sorting_1">ECE261</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/11226">Signals and Systems</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM113 AND PHM213</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10334" role="row" class="even">
+                                  <td class="sorting_1">ECE321</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10334">Electronic Circuits (1)</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE222 AND EPM217 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="11212" role="row" class="odd">
+                                  <td class="sorting_1">ECE323</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/11212">Electronic Circuits (2)</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE321 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10363" role="row" class="even">
+                                  <td class="sorting_1">ECE341</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10363">Microwave Engineering</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE242 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10394" role="row" class="odd">
+                                  <td class="sorting_1">ECE361</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10394">Analog Communications</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE261 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10395" role="row" class="even">
+                                  <td class="sorting_1">ECE362</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10395">Digital Signal Processing</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">ECE261 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="13146" role="row" class="odd">
+                                  <td class="sorting_1">EPM112</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13146">Renewable Energy Resources</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13148" role="row" class="even">
+                                  <td class="sorting_1">EPM217</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13148">Fundamentals of Electrical Circuits</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM122 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="10462" role="row" class="odd">
+                                  <td class="sorting_1">EPM314</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/10462">Project Management for Electrical Engineering</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13109" role="row" class="even">
+                                  <td class="sorting_1">MDP333</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13109">Industrial Project Management</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13156" role="row" class="odd">
+                                  <td class="sorting_1">PHM112</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13156">Mathematics (2)</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM111</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="13157" role="row" class="even">
+                                  <td class="sorting_1">PHM113</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13157">Probability and Statistics</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM111</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="11005" role="row" class="odd">
+                                  <td class="sorting_1">PHM114</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/11005">Introduction to Discrete Mathematics</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13159" role="row" class="even">
+                                  <td class="sorting_1">PHM121</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13159">Vibration and Waves</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="11028" role="row" class="odd">
+                                  <td class="sorting_1">PHM132</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/11028">Dynamics</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM131 OR CES111</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="13163" role="row" class="even">
+                                  <td class="sorting_1">PHM141</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13163">Engineering Chemistry</a></td>
+                                  <td><b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)</td>
+                                  <td>
+                                    <span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>
+                                  </td>
+                                </tr>
+                                <tr id="13165" role="row" class="odd">
+                                  <td class="sorting_1">PHM211</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/13165">Differential and Partial Differential Equations</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM112</span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="11009" role="row" class="even">
+                                  <td class="sorting_1">PHM214</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/11009">Complex Variables, Special Functions and Numerical Analysis</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM112 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                                <tr id="11022" role="row" class="odd">
+                                  <td class="sorting_1">PHM222</td>
+                                  <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/11022">Modern Physics and Quantum Mechanics</a></td>
+                                  <td>Not allowed. Prerequisites: <span class="badge badge-danger">PHM122 </span></td>
+                                  <td><span class="action-column float-right"></span></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="dataTables_info" id="courses_table_info" role="status" aria-live="polite">Showing 1 to 35 of 35</div>
+                        <div class="dataTables_paginate paging_simple_numbers" id="courses_table_paginate">
+                          <a class="paginate_button previous disabled" aria-controls="courses_table" data-dt-idx="0" tabindex="0" id="courses_table_previous">Previous</a
+                          ><span><a class="paginate_button current" aria-controls="courses_table" data-dt-idx="1" tabindex="0">1</a></span
+                          ><a class="paginate_button next disabled" aria-controls="courses_table" data-dt-idx="2" tabindex="0" id="courses_table_next">Next</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row gutters ComBody">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                      <div class="card-header" role="tab" id="cardheadingCourses">
+                        <a href="javascript:void(0)" id="toggleCoursesBtn" aria-expanded="true" aria-controls="collapseCardCourses" class="collapse-toggle" style="cursor: pointer">
+                          <span class="icon-media-play"></span> Taken Courses
+                        </a>
+                      </div>
+
+                      <div id="collapseCardCourses" class="collapse show" role="tabpanel" aria-labelledby="cardheadingCourses">
+                        <div class="card-body">
+                          <table class="table m-0" style="width: 100%; border-collapse: collapse">
+                            <thead class="thead-default">
+                              <tr>
+                                <th>Code</th>
+                                <th>Bylaw</th>
+                                <th>Name</th>
+                                <th>Min Degree</th>
+                                <th>Max Degree</th>
+                                <th>Hours</th>
+                                <th>Last Grade</th>
+                                <th>Last Term</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASU001s" id="ASU001s"></a>ASU001s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/12332">English Placement Test</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>0</td>
+                                <td>Succeeded</td>
+                                <td>Admission 2024</td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASU001s</td>
+                                        <td>English Placement Test</td>
+                                        <td>Admission 2024</td>
+                                        <td>P</td>
+                                        <td>-</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx11s" id="ASUx11s"></a>ASUx11s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/11255">Societal Issues</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx11s</td>
+                                        <td>Societal Issues</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx14s" id="ASUx14s"></a>ASUx14s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/13171">Introduction to Sustainable Development Goals</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>3</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx14s</td>
+                                        <td>Introduction to Sustainable Development Goals</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>3 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx21s" id="ASUx21s"></a>ASUx21s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/11259">History of Civilizations</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx21s</td>
+                                        <td>History of Civilizations</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx32s" id="ASUx32s"></a>ASUx32s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/11267">Critical Thinking</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>Succeeded</td>
+                                <td>Spring 2025</td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx32s</td>
+                                        <td>Critical Thinking</td>
+                                        <td>Spring 2025</td>
+                                        <td>B</td>
+                                        <td>3</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx41s" id="ASUx41s"></a>ASUx41s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/11269">Report Writing and Communication Skills</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>3</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx41s</td>
+                                        <td>Report Writing and Communication Skills</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>3 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx44s" id="ASUx44s"></a>ASUx44s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/11275">Introduction to Accounting</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>Succeeded</td>
+                                <td>Spring 2025</td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx44s</td>
+                                        <td>Introduction to Accounting</td>
+                                        <td>Spring 2025</td>
+                                        <td>B+</td>
+                                        <td>3.3</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="ASUx45s" id="ASUx45s"></a>ASUx45s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/11277">Business Administration</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx45s</td>
+                                        <td>Business Administration</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="CEP111s" id="CEP111s"></a>CEP111s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/12256">Projection and Engineering Graphics</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>CEP111s</td>
+                                        <td>Projection and Engineering Graphics</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>CEP111s</td>
+                                        <td>Projection and Engineering Graphics</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="MDP111s" id="MDP111s"></a>MDP111s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/12279">Engineering Drawing</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>MDP111s</td>
+                                        <td>Engineering Drawing</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>MDP111s</td>
+                                        <td>Engineering Drawing</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="MDP181s" id="MDP181s"></a>MDP181s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/10844">Production Engineering</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>MDP181s</td>
+                                        <td>Production Engineering</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>MDP181s</td>
+                                        <td>Production Engineering</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="PHM001s" id="PHM001s"></a>PHM001s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/12333">Mathematics Placement Test</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>0</td>
+                                <td>Failed</td>
+                                <td>Admission 2024</td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr class="hide">
+                                        <td>PHM001s</td>
+                                        <td>Mathematics Placement Test</td>
+                                        <td>Admission 2024</td>
+                                        <td>F</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><a class="hidden_anchor" name="PHM011s" id="PHM011s"></a>PHM011s</td>
+                                <td>UG2023</td>
+                                <td>
+                                  <a href="https://eng.asu.edu.eg/dashboard/courses/show/10997">Basic Mathematics</a>
+                                </td>
+                                <td></td>
+                                <td>100</td>
+                                <td>0</td>
+                                <td>Failed</td>
+                                <td>Spring 2025</td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr class="hide">
+                                        <td>PHM011s</td>
+                                        <td>Basic Mathematics</td>
+                                        <td>Spring 2025</td>
+                                        <td>F</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>PHM011s</td>
+                                        <td>Basic Mathematics</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row gutters ComBody">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                      <div class="card-header" role="tab" id="cardheadingTerms">
+                        <a href="javascript:void(0)" id="toggleTermsBtn" aria-expanded="true" aria-controls="collapseCardTerms" class="collapse-toggle" style="cursor: pointer">
+                          <span class="icon-media-play"></span>
+                          Study Grades
+                        </a>
+
+                        <label class="float-right">
+                          <input type="checkbox" class="success-year" />
+                          <i class="icon icon-bookmarks2"></i> Success Courses
+                        </label>
+                      </div>
+
+                      <div id="collapseCardTerms" class="collapse show" role="tabpanel" aria-labelledby="cardheadingTerms">
+                        <div class="card-body">
+                          <table class="table m-0" style="width: 100%; border-collapse: collapse">
+                            <thead class="thead-default">
+                              <tr>
+                                <th width="15%">Study Plan</th>
+                                <th width="10%">Term</th>
+                                <th width="10%">Study Year</th>
+                                <th width="10%">Level</th>
+                                <th width="18%">Term GPA / Hours</th>
+                                <th width="22%">Cumulative GPA / Hours</th>
+                                <th width="15%">Passed Hours</th>
+                                <th width="5%"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Freshmen Level</td>
+                                <td>Summer 2025</td>
+                                <td>2024/2025</td>
+                                <td>Freshmen</td>
+                                <td>0 / Hours</td>
+                                <td>3.15 / 4 Hours</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                  </table>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>Freshmen Level</td>
+                                <td>Spring 2025</td>
+                                <td>2024/2025</td>
+                                <td>Freshmen</td>
+                                <td>3.15 / 4 Hours</td>
+                                <td>3.15 / 4 Hours</td>
+                                <td>4 Passed Hours</td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx11s</td>
+                                        <td>Societal Issues</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>ASUx14s</td>
+                                        <td>Introduction to Sustainable Development Goals</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>3 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>ASUx32s</td>
+                                        <td>Critical Thinking</td>
+                                        <td>Spring 2025</td>
+                                        <td>B</td>
+                                        <td>3</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>ASUx44s</td>
+                                        <td>Introduction to Accounting</td>
+                                        <td>Spring 2025</td>
+                                        <td>B+</td>
+                                        <td>3.3</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>CEP111s</td>
+                                        <td>Projection and Engineering Graphics</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>MDP111s</td>
+                                        <td>Engineering Drawing</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>MDP181s</td>
+                                        <td>Production Engineering</td>
+                                        <td>Spring 2025</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr class="hide">
+                                        <td>PHM011s</td>
+                                        <td>Basic Mathematics</td>
+                                        <td>Spring 2025</td>
+                                        <td>F</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>Freshmen Level</td>
+                                <td>Fall 2024</td>
+                                <td>2024/2025</td>
+                                <td>Freshmen</td>
+                                <td>0 / 0 Hours</td>
+                                <td>0 / 0 Hours</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASUx21s</td>
+                                        <td>History of Civilizations</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>ASUx41s</td>
+                                        <td>Report Writing and Communication Skills</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>3 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>ASUx45s</td>
+                                        <td>Business Administration</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>CEP111s</td>
+                                        <td>Projection and Engineering Graphics</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>MDP111s</td>
+                                        <td>Engineering Drawing</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>MDP181s</td>
+                                        <td>Production Engineering</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>2 Hours</td>
+                                      </tr>
+                                      <tr>
+                                        <td>PHM011s</td>
+                                        <td>Basic Mathematics</td>
+                                        <td>Fall 2024</td>
+                                        <td>W</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>Freshmen Level</td>
+                                <td>Admission 2024</td>
+                                <td>2024/2025</td>
+                                <td>Freshmen</td>
+                                <td>0 / 0 Hours</td>
+                                <td>0 / 0 Hours</td>
+                                <td></td>
+                                <td class="show" style="cursor: pointer"><i class="icon-eye"></i></td>
+                              </tr>
+                              <tr style="display: none">
+                                <td colspan="8" style="padding: 0px">
+                                  <table class="table table-sm m-0">
+                                    <thead class="thead-default">
+                                      <tr>
+                                        <th width="10%">Course Code</th>
+                                        <th width="35%">Course Name</th>
+                                        <th width="15%">Term</th>
+                                        <th width="5%">Grade</th>
+                                        <th width="5%">GPA</th>
+                                        <th width="15%">Credit Hours</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>ASU001s</td>
+                                        <td>English Placement Test</td>
+                                        <td>Admission 2024</td>
+                                        <td>P</td>
+                                        <td>-</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                      <tr class="hide">
+                                        <td>PHM001s</td>
+                                        <td>Mathematics Placement Test</td>
+                                        <td>Admission 2024</td>
+                                        <td>F</td>
+                                        <td>0</td>
+                                        <td>0 Hours</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        Copyright,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+        <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+
+    <!-- === Collapse Toggles Script === -->
+    <!-- === Interactive Functionality Script === -->
+    <script>
+      (function () {
+        // Toggle Taken Courses section
+        document.getElementById('toggleCoursesBtn').addEventListener('click', function (e) {
+          e.preventDefault();
+          var collapseDiv = document.getElementById('collapseCardCourses');
+          var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            collapseDiv.classList.remove('show');
+            this.setAttribute('aria-expanded', 'false');
+          } else {
+            collapseDiv.classList.add('show');
+            this.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Toggle Study Grades section
+        document.getElementById('toggleTermsBtn').addEventListener('click', function (e) {
+          e.preventDefault();
+          var collapseDiv = document.getElementById('collapseCardTerms');
+          var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            collapseDiv.classList.remove('show');
+            this.setAttribute('aria-expanded', 'false');
+          } else {
+            collapseDiv.classList.add('show');
+            this.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Toggle course details rows (Eye icon functionality)
+        document.querySelectorAll('.show').forEach(function (element) {
+          element.addEventListener('click', function () {
+            var nextRow = this.parentElement.nextElementSibling;
+            if (nextRow && nextRow.tagName === 'TR') {
+              if (nextRow.style.display === 'none' || nextRow.style.display === '') {
+                nextRow.style.display = 'table-row';
+                var icon = this.querySelector('i');
+                if (icon) {
+                  icon.classList.remove('icon-eye');
+                  icon.classList.add('icon-eye-blocked');
+                }
+              } else {
+                nextRow.style.display = 'none';
+                var icon = this.querySelector('i');
+                if (icon) {
+                  icon.classList.remove('icon-eye-blocked');
+                  icon.classList.add('icon-eye');
+                }
+              }
+            }
+          });
+        });
+
+        // Success year filter
+        document.querySelector('.success-year').addEventListener('change', function () {
+          var hideElements = document.querySelectorAll('.hide');
+          if (this.checked) {
+            hideElements.forEach(function (el) {
+              el.style.display = 'none';
+            });
+          } else {
+            hideElements.forEach(function (el) {
+              el.style.display = '';
+            });
+          }
+        });
+      })();
+    </script>
+
+    <!-- === Course Selector Table Functionality === -->
+    <script>
+      (function () {
+        // ===== COURSE DATA (all 35 courses) =====
+        const coursesData = [
+          { id: '13114', code: 'ARC131', name: 'History of Arts and Architecture', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13116', code: 'ARC141', name: 'Architectural Representation', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13117', code: 'ARC142', name: 'Fundamentals of Computer Graphics', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13123', code: 'ASUx12', name: 'Selected Topics in Contemporary Issues', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13121', code: 'ASUx41', name: 'Report Writing and Communication Skills', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)', allowed: true },
+          { id: '13126', code: 'ASUx42', name: 'Innovation and Entrepreneurship', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13122', code: 'ASUx48', name: 'Scientific Research', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13134', code: 'CES111', name: 'Fundamentals of Structural Mechanics (1)', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)', allowed: true },
+          { id: '13139', code: 'CSE121', name: 'Introduction to Logic Design', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13140', code: 'CSE141', name: 'Introduction to Computer Programming', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)', allowed: true },
+          { id: '13142', code: 'CSE222', name: 'Digital Logic Design', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)', allowed: true },
+          { id: '10257', code: 'CSE321', name: 'Computer Organization and Architecture', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">CSE141 AND CSE222 </span>', allowed: false },
+          { id: '10301', code: 'CSE481', name: 'Control Systems', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE261 </span>', allowed: false },
+          { id: '10332', code: 'ECE221', name: 'Electronic Materials', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM122 </span>', allowed: false },
+          { id: '10333', code: 'ECE222', name: 'Solid State Electronic Devices', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE221</span>', allowed: false },
+          { id: '10360', code: 'ECE241', name: 'Electrostatics and Magnetostatics', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM122</span>', allowed: false },
+          { id: '11226', code: 'ECE261', name: 'Signals and Systems', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM113 AND PHM213</span>', allowed: false },
+          { id: '10334', code: 'ECE321', name: 'Electronic Circuits (1)', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE222 AND EPM217 </span>', allowed: false },
+          { id: '11212', code: 'ECE323', name: 'Electronic Circuits (2)', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE321 </span>', allowed: false },
+          { id: '10363', code: 'ECE341', name: 'Microwave Engineering', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE242 </span>', allowed: false },
+          { id: '10394', code: 'ECE361', name: 'Analog Communications', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE261 </span>', allowed: false },
+          { id: '10395', code: 'ECE362', name: 'Digital Signal Processing', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">ECE261 </span>', allowed: false },
+          { id: '13146', code: 'EPM112', name: 'Renewable Energy Resources', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13148', code: 'EPM217', name: 'Fundamentals of Electrical Circuits', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM122 </span>', allowed: false },
+          { id: '10462', code: 'EPM314', name: 'Project Management for Electrical Engineering', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13109', code: 'MDP333', name: 'Industrial Project Management', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13156', code: 'PHM112', name: 'Mathematics (2)', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM111</span>', allowed: false },
+          { id: '13157', code: 'PHM113', name: 'Probability and Statistics', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM111</span>', allowed: false },
+          { id: '11005', code: 'PHM114', name: 'Introduction to Discrete Mathematics', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(2)', allowed: true },
+          { id: '13159', code: 'PHM121', name: 'Vibration and Waves', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)', allowed: true },
+          { id: '11028', code: 'PHM132', name: 'Dynamics', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM131 OR CES111</span>', allowed: false },
+          { id: '13163', code: 'PHM141', name: 'Engineering Chemistry', details: '<b>Min</b>(null), <b>Max</b>(100), <b>Credit Hours</b>(3)', allowed: true },
+          { id: '13165', code: 'PHM211', name: 'Differential and Partial Differential Equations', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM112</span>', allowed: false },
+          { id: '11009', code: 'PHM214', name: 'Complex Variables, Special Functions and Numerical Analysis', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM112 </span>', allowed: false },
+          { id: '11022', code: 'PHM222', name: 'Modern Physics and Quantum Mechanics', details: 'Not allowed. Prerequisites: <span class="badge badge-danger">PHM122 </span>', allowed: false },
+        ];
+
+        // ===== STATE =====
+        let currentPage = 1;
+        let entriesPerPage = 10;
+        let searchTerm = '';
+
+        // ===== DOM ELEMENTS =====
+        const tableBody = document.querySelector('#courses_table tbody');
+        const searchInput = document.querySelector('#courses_table_filter input');
+        const entriesSelect = document.querySelector('#courses_table_length select');
+        const tableInfo = document.getElementById('courses_table_info');
+        const paginateContainer = document.getElementById('courses_table_paginate');
+
+        // ===== HELPER FUNCTIONS =====
+        function filterCourses(courses, term) {
+          if (!term) return courses;
+          const lowerTerm = term.toLowerCase();
+          return courses.filter((course) => {
+            return course.code.toLowerCase().includes(lowerTerm) || course.name.toLowerCase().includes(lowerTerm) || course.details.toLowerCase().includes(lowerTerm);
+          });
+        }
+
+        function paginateCourses(courses, page, perPage) {
+          const start = (page - 1) * perPage;
+          const end = start + perPage;
+          return courses.slice(start, end);
+        }
+
+        // ===== RENDER FUNCTIONS =====
+        function renderTable() {
+          let courses = filterCourses(coursesData, searchTerm);
+          const totalCourses = courses.length;
+          const totalPages = Math.ceil(totalCourses / entriesPerPage);
+
+          // Adjust current page if needed
+          if (currentPage > totalPages) currentPage = totalPages || 1;
+
+          const paginatedCourses = paginateCourses(courses, currentPage, entriesPerPage);
+
+          tableBody.innerHTML = '';
+
+          if (paginatedCourses.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="4" class="dataTables_empty">No matching records found</td>';
+            tableBody.appendChild(row);
+          } else {
+            paginatedCourses.forEach((course, index) => {
+              const row = document.createElement('tr');
+              row.id = course.id;
+              row.className = index % 2 === 0 ? 'odd' : 'even';
+              row.setAttribute('role', 'row');
+
+              row.innerHTML = `
+                <td class="sorting_1">${course.code}</td>
+                <td><a target="_blank" href="https://eng.asu.edu.eg/dashboard/courses/show/${course.id}">${course.name}</a></td>
+                <td>${course.details}</td>
+                <td>
+                  ${course.allowed ? '<span class="action-column float-right"><a href="javascript:void(0)" id="add_course" class="add_course badge badge-primary"></a></span>' : '<span class="action-column float-right"></span>'}
+                </td>
+              `;
+
+              tableBody.appendChild(row);
+            });
+          }
+
+          // Update info and pagination
+          renderTableInfo(totalCourses, paginatedCourses.length);
+          renderPagination(totalPages);
+        }
+
+        function renderTableInfo(totalCourses, displayedCourses) {
+          if (totalCourses === 0) {
+            tableInfo.textContent = 'Showing 0 to 0 of 0';
+          } else {
+            const start = (currentPage - 1) * entriesPerPage + 1;
+            const end = start + displayedCourses - 1;
+            tableInfo.textContent = `Showing ${start} to ${end} of ${totalCourses}`;
+          }
+        }
+
+        function renderPagination(totalPages) {
+          paginateContainer.innerHTML = '';
+
+          // Previous button
+          const prevBtn = document.createElement('a');
+          prevBtn.className = `paginate_button previous ${currentPage === 1 ? 'disabled' : ''}`;
+          prevBtn.textContent = 'Previous';
+          prevBtn.href = 'javascript:void(0)';
+          if (currentPage > 1) {
+            prevBtn.addEventListener('click', () => {
+              currentPage--;
+              renderTable();
+            });
+          }
+          paginateContainer.appendChild(prevBtn);
+
+          // Page numbers
+          const pageSpan = document.createElement('span');
+          for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('a');
+            pageBtn.className = `paginate_button ${i === currentPage ? 'current' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.href = 'javascript:void(0)';
+            if (i !== currentPage) {
+              pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderTable();
+              });
+            }
+            pageSpan.appendChild(pageBtn);
+          }
+          paginateContainer.appendChild(pageSpan);
+
+          // Next button
+          const nextBtn = document.createElement('a');
+          nextBtn.className = `paginate_button next ${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}`;
+          nextBtn.textContent = 'Next';
+          nextBtn.href = 'javascript:void(0)';
+          if (currentPage < totalPages) {
+            nextBtn.addEventListener('click', () => {
+              currentPage++;
+              renderTable();
+            });
+          }
+          paginateContainer.appendChild(nextBtn);
+        }
+
+        // ===== EVENT LISTENERS =====
+        // Real-time search
+        searchInput.addEventListener('input', (e) => {
+          searchTerm = e.target.value;
+          currentPage = 1;
+          renderTable();
+        });
+
+        // Entries per page change
+        entriesSelect.addEventListener('change', (e) => {
+          entriesPerPage = parseInt(e.target.value);
+          currentPage = 1;
+          renderTable();
+        });
+
+        // ===== INITIAL RENDER =====
+        renderTable();
+      })();
+    </script>
+  </body>
+</html>

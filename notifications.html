@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Notifications</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a>&nbsp;</li>
+                <li class="breadcrumb-item active">Notifications</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="notifications-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <!-- header section -->
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-chat"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Notifications</h5>
+                    <h6 class="sub-heading">Notifications Management</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- table section -->
+          <div class="main-content">
+            <div class="row gutters">
+              <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                <!-- search Card -->
+                <div class="card">
+                  <div class="card-body pb-0">
+                    <div class="filter-box">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <input type="text" placeholder="Text Search" id="text_search" name="text_search" />
+                        </div>
+
+                        <div class="col-md-2">
+                          <button class="btn btn-primary" type="button" id="search_button">Search</button>
+                        </div>
+
+                        <div class="col-md-2">
+                          <button class="btn btn-danger" type="button" id="reset_button" onclick="document.getElementById('text_search').value = ''">Reset</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <!-- table header -->
+                  <div class="card-header">
+                    <span id="transactions">Notifications</span>
+                    <button id="clear_all_notifications" type="seen_all" class="btn btn-sm btn-secondary float-right">Clear all notifications</button>
+                  </div>
+
+                  <!-- table data -->
+                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <div class="card-body">
+                      <div id="notifications_table_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="dataTables_length" id="notifications_table_length">
+                          <label
+                            >Show
+                            <select name="notifications_table_length" aria-controls="notifications_table" class="">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                            </select>
+                            entries</label
+                          >
+                        </div>
+                        <div id="notifications_table_filter" class="dataTables_filter" style="display: none">
+                          <label>Search : <input type="search" class="" placeholder="" aria-controls="notifications_table" /></label>
+                        </div>
+                        <div id="notifications_table_processing" class="dataTables_processing" style="display: none">Processing...</div>
+                        <div class="dataTables_scroll">
+                          <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                            <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1113.61px; padding-right: 0px">
+                              <table class="display dataTable no-footer" style="width: 1113.61px; margin-left: 0px" role="grid">
+                                <thead>
+                                  <tr role="row">
+                                    <th
+                                      width="15%"
+                                      class="sorting_desc"
+                                      tabindex="0"
+                                      aria-controls="notifications_table"
+                                      rowspan="1"
+                                      colspan="1"
+                                      style="width: 131.883px"
+                                      aria-sort="descending"
+                                      aria-label="Date: activate to sort column ascending"
+                                    >
+                                      Date
+                                    </th>
+                                    <th
+                                      width="85%"
+                                      class="sorting"
+                                      tabindex="0"
+                                      aria-controls="notifications_table"
+                                      rowspan="1"
+                                      colspan="1"
+                                      style="width: 909.727px"
+                                      aria-label="Message: activate to sort column ascending"
+                                    >
+                                      Message
+                                    </th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                            <table id="notifications_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="notifications_table_info">
+                              <thead>
+                                <tr role="row" style="height: 0px">
+                                  <th
+                                    width="15%"
+                                    class="sorting_desc"
+                                    aria-controls="notifications_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 131.883px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-sort="descending"
+                                    aria-label="Date: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Date</div>
+                                  </th>
+                                  <th
+                                    width="85%"
+                                    class="sorting"
+                                    aria-controls="notifications_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    style="width: 909.727px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    aria-label="Message: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Message</div>
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <!-- Replaced the original table body with empty one -->
+                              <tr class="odd">
+                                <td valign="top" colspan="7" class="dataTables_empty">No matching records found</td>
+                              </tr>
+
+                              <!-- <tbody>
+                                <tr id="838478" role="row" class="odd">
+                                  <td class="sorting_1">9/22/2025, 11:25:04 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >تذكير: هام جدا لقد قمت بالتحويل لكريديت و ذلك يتضح من المقررات الذي تحاول تسجيلها. المسئول عن اجراء الموافقة علي التسجيل لابد أن يكون مرشد تابع لكريديت عليك اللحاق بمواعيد التسجيل و
+                                      الإضافة و الحذف حتي تتمكن من الانتظام سريعا في المحاضرات و الفصول الدراسية يمكنك طرح هذه المشكلة فورا لدي مسئولي الكريديت حتي يحاولوا حلها و تعيين مرشد جديد لك تابع لكريديت</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="823157" role="row" class="even">
+                                  <td class="sorting_1">9/20/2025, 4:12:45 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/payments/student_fees">tr.New fees are added to your account</a></td>
+                                </tr>
+                                <tr id="823158" role="row" class="odd">
+                                  <td class="sorting_1">9/20/2025, 4:12:45 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/payments/student_fees">tr.New fees are added to your account</a></td>
+                                </tr>
+                                <tr id="804046" role="row" class="even">
+                                  <td class="sorting_1">9/18/2025, 9:56:19 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >لقد ذكرت أنك قمت بالتحويل لكريديت و ذلك يتضح من كود المقرر الذي تحاول تسجيله. رجاء لا تقم بتسجيل أي مقرر حاليا حتي يتم تحويلك الي مرشد أخر تابع لكريديت . يمكنك طرح هذه المشكلة فورا
+                                      لدي مسئولي الكريديت حتي يحاولوا حلها و تعيين مرشد جديد لك</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="783142" role="row" class="odd">
+                                  <td class="sorting_1">9/16/2025, 11:57:33 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">أنتظر سوف يتم تعيين مرشد جديد لك مع كريديت سيجيب علي كل استفسارتك بخصوص كريديت</a></td>
+                                </tr>
+                                <tr id="671302" role="row" class="even">
+                                  <td class="sorting_1">6/8/2025, 11:06:30 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >الموضوع ده محتاج الاستفسار من مسئولي الكريديت انفسهم - و هم متواجدين بمبني الكريديت - لمعرفة قواعد القبول لهذه الحالة (غالبا لم يحدث مثل ذلك من قبل) . عموما أنصحك بشدة أن تستقر علي
+                                      موقف محدد من استكمال الدراسة بعين شمس أو التحويل منها نهائيا</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="662346" role="row" class="odd">
+                                  <td class="sorting_1">5/18/2025, 7:38:38 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">تقدر تحول وتبدأ من الاول بدون انذارات و لا توجد شروط اضاقية</a></td>
+                                </tr>
+                                <tr id="655950" role="row" class="even">
+                                  <td class="sorting_1">4/29/2025, 8:38:31 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">yes, from 10 to 12</a></td>
+                                </tr>
+                                <tr id="652382" role="row" class="odd">
+                                  <td class="sorting_1">4/24/2025, 3:31:31 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Ok</a></td>
+                                </tr>
+                                <tr id="651956" role="row" class="even">
+                                  <td class="sorting_1">4/22/2025, 9:55:44 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >للطلبة بمعدل تراكمي اقل من 2 يكون الحذف للمواد بطلب ورقي من خلال مقابلة المرشد بمكتب الارشاد. سأكون متواجد الثلاثاء و الاربعاء من 10 الي 12 بمكتب الارشاد</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="640616" role="row" class="odd">
+                                  <td class="sorting_1">3/29/2025, 11:03:44 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">بعد أنتهاء اجازة العيد بأسبوع أو أسبوعين</a></td>
+                                </tr>
+                                <tr id="639131" role="row" class="even">
+                                  <td class="sorting_1">3/24/2025, 10:29:43 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">عند الحصول علي الانذار الرابع يفصل الطالب من الكلية</a></td>
+                                </tr>
+                                <tr id="638305" role="row" class="odd">
+                                  <td class="sorting_1">3/23/2025, 10:31:42 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >عداد الانذارات بيتصفر (يعني كسر الانذارات مهما كان عددها) في اي ترم بشرط تسجيل علي الافل 12 ساعة مع تحقيق معدل اجمالي اكبر من 2 أي بمعني الشرطين معا (ولا يشترط النجاح في عدد ساعات
+                                      معينة للمفررات التي تم تسجيلها). اذا كان احد الشرطين ليس متحققا يحصل الطالب علي انذار جديد</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="638195" role="row" class="even">
+                                  <td class="sorting_1">3/22/2025, 10:40:28 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >أولا من الضروري أن أنصحك بشدة بضرورة أجتياز البيزك ماث لان مقررات كثيرة جدا تعتمد عليها و عدم اجتيازها تقريبا يفقد الطالب فرص تسجيل هذه المقررات و تصبح اختيارات التسجيل محددوة مما
+                                      يتسبب في انذار تلو الاخر ثانيا رسوم اعادة المواد عدة مرات تتحدد بالساعة لكل مقرر و بالنسبة للمقررات الصفرية فلابد من سؤال المسئول المالي بشئون الطلبة لمعرفة كيفية حساب مصاريف اعادتها
+                                      حيث انه لا علاقة للمرشدين الاكاديميين بالامور المالية</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="637679" role="row" class="odd">
+                                  <td class="sorting_1">3/20/2025, 9:36:01 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">لأ</a></td>
+                                </tr>
+                                <tr id="583174" role="row" class="even">
+                                  <td class="sorting_1">2/11/2025, 7:43:11 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">لابد من الحضور للتسجيل و عندها نحدد السكشن</a></td>
+                                </tr>
+                                <tr id="545499" role="row" class="odd">
+                                  <td class="sorting_1">2/6/2025, 9:43:26 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">مواعيد التواجد الخاصة بي لمقابلة الطالب بمكتب الارشاد يومي الثلاثاء و الخميس من 10:00 حتي 12:00 صباحا</a>
+                                  </td>
+                                </tr>
+                                <tr id="520152" role="row" class="even">
+                                  <td class="sorting_1">2/3/2025, 7:59:49 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >يبدأ التسجيل غدا الثلاثاء 4 فبراير حتي الخمبس 6 فبراير يرجي (لجميع الطلاب) مراجعة التعليمات الاتية كاملة بعناية شديدة: أولا: الطلبة ذات معدل تراكمى أقل من 2 – سيكون التسجيل لهم
+                                      ورقيا أثناء حضورهم لمقابلة المرشد ويتم ذلك خلال ساعات الإرشاد الأكاديمى بالفترة المذكورة مع ضرورة إمضاء الطالب على إقرار بالإنذارات الأكاديمية التى حصل عليها. ثانبا: للطلبة الذين
+                                      لديهم معدل تراكمي أكبر من أو بساوي 2 يمكنهم اختيار المواد الكنرونيا من الموقع حيث يجب اختيار كل المواد المطلوب تسجيلها في نفس السكشن والا لن يتم اعتماد التسجيل بواسطة المرشد. ويمكن
+                                      التجاوز في هذا الشرط في حالة تسجيل مواد من مستويات مختلفة او مواد مفتوحة في غير فصلها الدراسي ثم يقوم الطالب بالضغط على ديسكس الموجودة يمين أعلى الصفحة وإرسال الرسالة التالية إلي
+                                      المرشد الأكاديمي يطلب فيه اعتماد التسجيل ولن يتم قبول التسجيل قي حالة عدم إرسال الرسالة للمرشد الأكاديمي Dear Advisor: Please approve my Spring 2025 courses registration ثالثا: حالة
+                                      الطالب الذى عليه مصروفات دراسية متأخرة : يقوم المرشد بالتسجيل للطالب الذى عليه مصروفات دراسية) بشرط أن تكون أقل من 10000 جنيه وإنذارات عددها يكون أقل من 5 إنذارات) وأيضا يكون بطلب
+                                      ورقي خلال مقابلة المرشد بشرط أن تكون المديونية لفصل دراسى واحد فقط. رابعا: الطالب الذى يسجل مواد أو يقوم بعمل آد ودروب دون إرسال رسالة التسجيل للمرشد على ديسكس – فهذا لا يعتبر تسجيل
+                                      ولا يتم عمل أبروف له حيث انه لا يمكن الموافقة على التسجيل أو الأد والدروب دون إرسال رسالة على ديسكس – وإن لم يرسل الطالب وانتهت الفترة المحددة فيتم إلغاء طلب التسجيل المقدم من
+                                      الطالب. أخيرا: مواعيد التواجد الخاصة بي لمقابلة الطالب بمكتب الارشاد يومي الثلاثاء و الخميس من 10:00 حتي 12:00 صباحا و يرجي التواصل عبر ديسكس فقط</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="519648" role="row" class="odd">
+                                  <td class="sorting_1">2/2/2025, 7:27:55 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">later today</a></td>
+                                </tr>
+                                <tr id="519267" role="row" class="even">
+                                  <td class="sorting_1">2/2/2025, 11:50:22 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >How many warnings lead to dismissal from the faculty? * 4 consecutive warnings. How many warnings result in the study becoming paid? ** It does not depend on the number of warnings,
+                                      it depends on the number of times you register for any course (the first two opportunities are free, but the following opportunities will be paid, also improving a successful course
+                                      will be paid even if it is the second time of that course. How can I remove academic warnings, and is it easy to do so? *** If you achieve a cumulative GPA greater than or equal to 2
+                                      and credit hours greater than or equal 12 in any semester, the warning counter will be restarted again from zero.</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="517294" role="row" class="odd">
+                                  <td class="sorting_1">2/1/2025, 7:32:10 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >Academic advisors will be available as soon as the results and schedules are announced, as registration is linked to that, and then I will send my availability dates at that
+                                      time.</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="516938" role="row" class="even">
+                                  <td class="sorting_1">1/31/2025, 11:17:39 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">You must submit a paper request since your GPA is smaller than 2</a></td>
+                                </tr>
+                                <tr id="492112" role="row" class="odd">
+                                  <td class="sorting_1">12/11/2024, 11:10:51 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >This is not an academic warning. It is simply a warning about being banned from taking the final exam. Now you have withdrawn from the course. An academic warning is a warning from
+                                      the faculty about your overall GPA status or insufficient credit hours registered.</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="491312" role="row" class="even">
+                                  <td class="sorting_1">12/10/2024, 10:07:08 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">yes, but you will receive academic warning</a></td>
+                                </tr>
+                                <tr id="490996" role="row" class="odd">
+                                  <td class="sorting_1">12/9/2024, 7:01:34 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Your withdraw request is approved.</a></td>
+                                </tr>
+                                <tr id="490429" role="row" class="even">
+                                  <td class="sorting_1">12/8/2024, 10:37:51 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Your request is on hold? Please reply?</a></td>
+                                </tr>
+                                <tr id="488310" role="row" class="odd">
+                                  <td class="sorting_1">12/5/2024, 7:52:32 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >You are free to do as you wish. My role is limited to advice and course withdrawals only at the moment. If you wish to withdraw courses, send me a clear message as follows: "I want
+                                      to withdraw the courses (1- ..... , 2- ..... , 3- ..... , 4- ..... , 5- ..... , 6- ..... , 7- ..... )"</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="487500" role="row" class="even">
+                                  <td class="sorting_1">12/4/2024, 7:16:23 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >No, since your excuse was rejected, you will receive an academic warning for less than 12 credit hours even if your deferment request is accepted (because your excuse was previously
+                                      denied). Again: If you still insist on withdrawing the courses, please send it to me in a message on this discussion to confirm your decision that: "I want to withdraw the courses
+                                      (1- ..... , 2- ..... , 3- ..... , 4- ..... , 5- ..... , 6- ..... , 7- ..... )"</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="487346" role="row" class="odd">
+                                  <td class="sorting_1">12/4/2024, 8:38:00 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >But you will receive an academic warning. If you still insist on withdrawing the courses, please send it to me in a message on this discussion to confirm your decision that: "I want
+                                      to withdraw the courses (1- ..... , 2- ..... , 3- ..... , 4- ..... , 5- ..... , 6- ..... , 7- ..... )"</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="481198" role="row" class="even">
+                                  <td class="sorting_1">11/21/2024, 12:38:05 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">I think incomplete means that you must review the Student Affairs to complete some documents</a></td>
+                                </tr>
+                                <tr id="481101" role="row" class="odd">
+                                  <td class="sorting_1">11/20/2024, 7:04:41 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >If you withdraw from a course, you will lose one of your free chances, but you still keep your actual grade A, B, C... etc. and in the next second trial after the withdrawal you can
+                                      achieve a high grade in your course without any grade deduction effect. You only lose one free chance with no effect on your course result (not considered as failed). Academic
+                                      warning is for credit hours that are less than 12 credit hours (not 18 hours). 18 hours is the maximum number of hours allowed for a maximum of seven courses for any student. The
+                                      maximum number of warnings is one per semester and may be for a GPA of less than 2 or enrollment in fewer than 12 hours. If both occur, only one academic warning will be given (no
+                                      more than one warning per semester). You cannot withdraw from all courses except basic mathematics. If you register for any course (even if it is zero credit hours), your
+                                      registration will be considered for the semester, and you will receive an academic warning. I think you can apologize for the entire semester and submit your excuse details on the
+                                      system. Your excuse will be reviewed by the Student Affairs Committee. Especially, the medical excuses have priority for acceptance according to medical documents. If you submit an
+                                      official excuse for this semester and it is accepted, this means that there will be no warnings. After the Student Affairs Committee accepts it, this will be considered as starting
+                                      of your studies from the second semester.</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="479343" role="row" class="even">
+                                  <td class="sorting_1">11/17/2024, 10:24:36 PM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >Hello, There are no restrictions on withdrawal, the number of courses, or the timing of withdrawal, but the following points must be clearly observed and taken into consideration:
+                                      1- If the number of hours after withdrawal is less than 12 hours, the student will receive an automatic academic warning from the system. 2- The student in the course from which he
+                                      withdrew will lose one of his two chances to obtain a valuable free course. 3- The student will not be able to register for a course based on the course from which he withdrew. Best
+                                      regards</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="476873" role="row" class="odd">
+                                  <td class="sorting_1">11/5/2024, 9:18:35 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >The withdrawal process is valid for any student on any course. My advice is to minimize the courses that you plan to remove. Try to be serious about studying some of these courses,
+                                      and maybe you can achieve an acceptable level in them.</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="476691" role="row" class="even">
+                                  <td class="sorting_1">11/4/2024, 9:05:42 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >Dear Khaled Dropping of courses is not officially available now. The only solution is the withdrawal process. These will preserve your chance of achieving maximum grades on the
+                                      course (if you complete the course and get a grade F, your GPA will be affected strongly).&nbsp; The withdrawal process will open after the midterm exams. At this date, you can send
+                                      me the required withdrawal request for courses.</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="461260" role="row" class="odd">
+                                  <td class="sorting_1">10/22/2024, 6:07:14 PM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Registration is done</a></td>
+                                </tr>
+                                <tr id="460733" role="row" class="even">
+                                  <td class="sorting_1">10/22/2024, 12:11:05 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">I do not know</a></td>
+                                </tr>
+                                <tr id="460411" role="row" class="odd">
+                                  <td class="sorting_1">10/21/2024, 10:54:41 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Congratulations Sorry Chemistry is FULL (closed)</a></td>
+                                </tr>
+                                <tr id="460137" role="row" class="even">
+                                  <td class="sorting_1">10/21/2024, 5:41:29 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">yes</a></td>
+                                </tr>
+                                <tr id="459354" role="row" class="odd">
+                                  <td class="sorting_1">10/20/2024, 10:33:51 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >I think it may open for the successful students of English. It depends on the capacity of sections. Let us wait</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="459082" role="row" class="even">
+                                  <td class="sorting_1">10/20/2024, 4:24:07 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Not possible to add another fourth ASU</a></td>
+                                </tr>
+                                <tr id="459078" role="row" class="odd">
+                                  <td class="sorting_1">10/20/2024, 4:23:19 AM</td>
+                                  <td>
+                                    <a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806"
+                                      >1. According to your Math result, you can not add Math1, Statics, Electricity, Vibration "you have not a permeation for these courses, if you add, the faculty will remove" while
+                                      English stop Chemistry and production in addition of previous courses. 2. You have only 3 elective courses. I add "History of Civilizations" before it become closed (approximately
+                                      all ASU are closed) 3. if you pass English, you can add chemistry (But it is FULL) and Production (Valid if you want after announcing the result)</a
+                                    >
+                                  </td>
+                                </tr>
+                                <tr id="457056" role="row" class="even">
+                                  <td class="sorting_1">10/20/2024, 12:31:01 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/payments/student_fees">tr.New fees are added to your account</a></td>
+                                </tr>
+                                <tr id="449688" role="row" class="odd">
+                                  <td class="sorting_1">10/19/2024, 2:13:05 AM</td>
+                                  <td><a target="_blank" title="Message" href="https://eng.asu.edu.eg/tickets/52806">Registration is done</a></td>
+                                </tr>
+                              </tbody> -->
+                            </table>
+                          </div>
+                        </div>
+                        <div class="dataTables_info" id="notifications_table_info" role="status" aria-live="polite">No records available</div>
+                        <div class="dataTables_paginate paging_simple_numbers" id="notifications_table_paginate">
+                          <a class="paginate_button previous disabled" aria-controls="notifications_table" data-dt-idx="0" tabindex="0" id="notifications_table_previous">Previous</a
+                          ><a class="paginate_button next disabled" aria-controls="notifications_table" data-dt-idx="2" tabindex="0" id="notifications_table_next">Next</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Footer === -->
+    <footer class="main-footer fixed-btm">
+      Copyright,
+      <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+      <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+    </footer>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

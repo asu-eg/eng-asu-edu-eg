@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Excuses</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item active">Excuses</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="excuses-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-files-empty"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Excuses</h5>
+                    <h6 class="sub-heading">Show user Excuses</h6>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 ddd">
+                  <div class="right-actions">
+                    <a href="excuses-add.html" class="btn btn-primary float-right" data-target="" data-toggle=""> <i class="icon-plus"></i> Submit Excuse </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="main-content">
+            <div class="row gutters">
+              <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="card-body pb-0">
+                    <div class="filter-box">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <select id="excuse_types_id" data-placement="top" title="Type" name="excuse_type_id">
+                            <option value="" selected="selected">Type</option>
+                            <option value="1">Study Period</option>
+                            <option value="2">Mid Term Exam</option>
+                            <option value="3">Lab Exam</option>
+                            <option value="4">Final Exam</option>
+                            <option value="5">One Semester</option>
+                            <option value="7">Course(s)</option>
+                            <option value="8">Corona Case in Final Exam</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-2">
+                          <select id="excuse_status" data-placement="top" title="Status" name="excuse_status">
+                            <option value="" selected="selected">Select Status</option>
+                            <option value="-1">Incomplete</option>
+                            <option value="0">Paper Authenticated</option>
+                            <option value="1">Waiting for the program director</option>
+                            <option value="2">Waiting for the student affairs committee</option>
+                            <option value="3">Waiting for the council of the faculty</option>
+                            <option value="4">Accepted</option>
+                            <option value="5">Rejected</option>
+                            <option value="6">Canceled</option>
+                            <option value="7">No Response</option>
+                            <option value="8">Needs More Documents</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            id="search_button"
+                          >
+                            Search
+                          </button>
+                        </div>
+
+                        <div class="col-md-2 float">
+                          <button
+                            class="btn btn-danger"
+                            type="button"
+                            id="reset_button"
+                            onclick="
+                              document.getElementById('excuse_types_id').value = '';
+                              document.getElementById('excuse_status').value = '';
+                            "
+                          >
+                            Reset
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <div class="card-body">
+                      <div id="data_table_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="dataTables_length" id="data_table_length">
+                          <label
+                            >Show
+                            <select name="data_table_length" aria-controls="data_table" class="">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                            </select>
+                            entries</label
+                          >
+                        </div>
+                        <div id="data_table_filter" class="dataTables_filter" style="display: none">
+                          <label>Search : <input type="search" class="" placeholder="" aria-controls="data_table" /></label>
+                        </div>
+                        <div id="data_table_processing" class="dataTables_processing" style="display: none">Processing...</div>
+                        <div class="dataTables_scroll">
+                          <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                            <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1113.61px; padding-right: 0px">
+                              <table class="display dataTable no-footer" style="width: 1113.61px; margin-left: 0px" role="grid">
+                                <thead>
+                                  <tr role="row">
+                                    <th
+                                      style="width: 75.8438px"
+                                      class="sorting_desc"
+                                      tabindex="0"
+                                      aria-controls="data_table"
+                                      rowspan="1"
+                                      colspan="1"
+                                      aria-sort="descending"
+                                      aria-label="Date: activate to sort column ascending"
+                                    >
+                                      Date
+                                    </th>
+                                    <th style="width: 75.9062px" class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-label="Excuse Type: activate to sort column ascending">
+                                      Excuse Type
+                                    </th>
+                                    <th style="width: 408.883px" class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-label="Excuse Reason: activate to sort column ascending">
+                                      Excuse Reason
+                                    </th>
+                                    <th style="width: 353.008px" class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>
+                                    <th style="width: 19.9688px" class="sorting" tabindex="0" aria-controls="data_table" rowspan="1" colspan="1" aria-label=": activate to sort column ascending"></th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                            <table id="data_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="data_table_info">
+                              <thead>
+                                <tr role="row" style="height: 0px">
+                                  <th
+                                    style="width: 75.8438px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    class="sorting_desc"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    aria-sort="descending"
+                                    aria-label="Date: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Date</div>
+                                  </th>
+                                  <th
+                                    style="width: 75.9062px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    class="sorting"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    aria-label="Excuse Type: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Excuse Type</div>
+                                  </th>
+                                  <th
+                                    style="width: 408.883px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    class="sorting"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    aria-label="Excuse Reason: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Excuse Reason</div>
+                                  </th>
+                                  <th
+                                    style="width: 353.008px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    class="sorting"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    aria-label="Status: activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden">Status</div>
+                                  </th>
+                                  <th
+                                    style="width: 19.9688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                                    class="sorting"
+                                    aria-controls="data_table"
+                                    rowspan="1"
+                                    colspan="1"
+                                    aria-label=": activate to sort column ascending"
+                                  >
+                                    <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                                  </th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr id="5043" role="row" class="odd">
+                                  <td class="sorting_1">2024-12-02</td>
+                                  <td>One Semester</td>
+                                  <td>
+                                    I hope this message finds you well. I would like to formally submit my request to defer the current academic semester due to several challenges I have encountered. Firstly, I received
+                                    the access code late on October 13th, which led to delays in my course registration. I had to wait for the results of my placement tests, and as a result, I was only able to finalize
+                                    my course registration between October 20th and 23rd. Furthermore, I have faced some psychological and health-related difficulties that have prevented me from attending some midterm
+                                    exams for the courses I am currently enrolled in. After carefully assessing my situation, I believe that deferring this semester is the most suitable course of action for me. This
+                                    decision will allow me to focus on improving my mental and physical health and to better prepare myself for the challenges of the upcoming semester. It is my sincere hope to overcome
+                                    the circumstances that affected me this semester, so I can perform to the best of my ability and contribute positively to this esteemed university, of which I am proud to be a member.
+                                    Thank you in advance for your understanding and support. I am confident that your priority is the well-being and success of all students in this great institution.
+                                  </td>
+                                  <td><span class="badge badge-danger">Rejected</span></td>
+                                  <td>
+                                    <span class="action-column"
+                                      ><a title="View" href="excuses-show.html"><i class="icon-eye"></i></a>&nbsp;</span
+                                    >
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="dataTables_info" id="data_table_info" role="status" aria-live="polite">Showing 1 to 1 of 1</div>
+                        <div class="dataTables_paginate paging_simple_numbers" id="data_table_paginate">
+                          <a class="paginate_button previous disabled" aria-controls="data_table" data-dt-idx="0" tabindex="0" id="data_table_previous">Previous</a
+                          ><span><a class="paginate_button current" aria-controls="data_table" data-dt-idx="1" tabindex="0">1</a></span
+                          ><a class="paginate_button next disabled" aria-controls="data_table" data-dt-idx="2" tabindex="0" id="data_table_next">Next</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        Copyright,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+        <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+  </body>
+</html>

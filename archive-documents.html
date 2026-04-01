@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Faculty of Engineering" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Archive</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="archive.html">My Archive</a></li>
+                <li class="breadcrumb-item active">Archive</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="archive-documents-ar.html">
+                    <div style="color: white" class="icon secondary">عربي</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications.html" class="notification-header btn btn-primary float-right" title="Notifications">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806.html" class="btn btn-primary float-right" title="Discuss with your advisor">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>Profile</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications.html" class="btn btn-primary">Notifications</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">Logout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">KHALED ELMORSSY REFAAT ELSADAAWY</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-tabs-outline"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Archive</h5>
+                    <h6 class="sub-heading">Show archive contents</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="main-content">
+            <div class="card" id="archive1_div">
+              <div class="card-header" role="tab">
+                <span id="parents_ids"><a title="Student Documents">Student Documents</a></span>
+              </div>
+              <div>
+                <div id="upload_files_progress_bar" style="background-color: green; width: 0%; height: 2px"></div>
+              </div>
+              <div class="card-body">
+                <div id="archive_table_wrapper" class="dataTables_wrapper no-footer">
+                  <div class="dataTables_length" id="archive_table_length">
+                    <label
+                      >Show
+                      <select name="archive_table_length" aria-controls="archive_table" class="">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select>
+                      entries</label
+                    >
+                  </div>
+                  <div id="archive_table_filter" class="dataTables_filter">
+                    <label>Search:<input type="search" class="" placeholder="" aria-controls="archive_table" /></label>
+                  </div>
+                  <div id="archive_table_processing" class="dataTables_processing" style="display: none">Processing...</div>
+                  <div class="dataTables_scroll">
+                    <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%">
+                      <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1143.61px; padding-right: 0px">
+                        <table class="display dataTable no-footer" style="width: 1143.61px; margin-left: 0px" role="grid">
+                          <thead>
+                            <tr role="row">
+                              <th
+                                width="50%"
+                                class="sorting_asc"
+                                tabindex="0"
+                                aria-controls="archive_table"
+                                rowspan="1"
+                                colspan="1"
+                                style="width: 565.641px"
+                                aria-sort="ascending"
+                                aria-label="Name: activate to sort column descending"
+                              >
+                                Name
+                              </th>
+                              <th width="20%" class="sorting" tabindex="0" aria-controls="archive_table" rowspan="1" colspan="1" style="width: 204.469px" aria-label="Size: activate to sort column ascending">Size</th>
+                              <th width="20%" class="sorting" tabindex="0" aria-controls="archive_table" rowspan="1" colspan="1" style="width: 204.562px" aria-label="Date: activate to sort column ascending">Date</th>
+                              <th width="5%" class="sorting" tabindex="0" aria-controls="archive_table" rowspan="1" colspan="1" style="width: 24.9375px" aria-label=": activate to sort column ascending"></th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%">
+                      <table id="archive_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="archive_table_info">
+                        <thead>
+                          <tr role="row" style="height: 0px">
+                            <th
+                              width="50%"
+                              class="sorting_asc"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 565.641px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-sort="ascending"
+                              aria-label="Name: activate to sort column descending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden">Name</div>
+                            </th>
+                            <th
+                              width="20%"
+                              class="sorting"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 204.469px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-label="Size: activate to sort column ascending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden">Size</div>
+                            </th>
+                            <th
+                              width="20%"
+                              class="sorting"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 204.562px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-label="Date: activate to sort column ascending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden">Date</div>
+                            </th>
+                            <th
+                              width="5%"
+                              class="sorting"
+                              aria-controls="archive_table"
+                              rowspan="1"
+                              colspan="1"
+                              style="width: 24.9375px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px"
+                              aria-label=": activate to sort column ascending"
+                            >
+                              <div class="dataTables_sizing" style="height: 0; overflow: hidden"></div>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <!-- Content will be dynamically generated by JavaScript -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="dataTables_info" id="archive_table_info" role="status" aria-live="polite">Showing 1 to 5 of 5 entries</div>
+                  <div class="dataTables_paginate paging_simple_numbers" id="archive_table_paginate">
+                    <a class="paginate_button previous disabled" aria-controls="archive_table" data-dt-idx="0" tabindex="0" id="archive_table_previous">Previous</a
+                    ><span><a class="paginate_button current" aria-controls="archive_table" data-dt-idx="1" tabindex="0">1</a></span
+                    ><a class="paginate_button next disabled" aria-controls="archive_table" data-dt-idx="2" tabindex="0" id="archive_table_next">Next</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END: .main-content -->
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        Copyright,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="Information Systems Unit">Information Systems Unit</a>,
+        <a href="https://eng.asu.edu.eg/" title="Faculty of Engineering">Faculty of Engineering</a>, <a href="https://www.asu.edu.eg/ar" title="Ain Shams University">Ain Shams University</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+
+    <script>
+      (function () {
+        // ===== ARCHIVE DATA STRUCTURE =====
+        const archiveData = {
+          root: {
+            id: 'root',
+            title: 'Student Documents',
+            parentId: null,
+            items: [
+              { id: '1820410', type: 'folder', title: 'Accessibility', size: '-', date: '1/6/2024, 10:22:24 PM' },
+              { id: '2381089', type: 'folder', title: 'Incomplete Exams Schedule', size: '-', date: '2/7/2025, 1:27:47 PM' },
+              { id: '2789961', type: 'folder', title: 'Research Documents', size: '-', date: '11/9/2025, 11:33:21 AM' },
+              {
+                id: '2451023',
+                type: 'file',
+                title: 'اعلان هام لجميع الطلبة المتقدمة بعذر عن الإمتحان النهائى Incomplete',
+                size: '242 KB',
+                date: '12/10/2025, 10:45:42 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=9923fHYoeg42nTL2QLyoS6C8gehR1HXxeJWWZXyPBQM%3D',
+              },
+              {
+                id: '2831043',
+                type: 'file',
+                title: 'اعلان هام لجميع الطلبة المتقدمة بعذر عن الإمتحان النهائى Incomplete.2831043',
+                size: '242 KB',
+                date: '12/10/2025, 10:47:25 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=zppeMTBCxkG%2BZ5kn%2Fsp9C4b8kr1xS%2FEyWaHffgg36rc%3D',
+              },
+            ],
+          },
+          1820410: {
+            id: '1820410',
+            title: 'Accessibility',
+            parentId: 'root',
+            items: [
+              {
+                id: '1820412',
+                type: 'file',
+                title: 'Accessibility Guidelines.1820412',
+                size: '550 KB',
+                date: '1/6/2024, 10:23:49 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=4vR90cPNZZsbxc01T1AgQgNjkTINnBY78infQ3kKnpQ%3D',
+              },
+              {
+                id: '1802949',
+                type: 'file',
+                title: 'Accessibility Request Form',
+                size: '518 KB',
+                date: '1/6/2024, 10:22:49 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=S4nNpgPqtJVIQcoE4WkB6OfjssjAhK1Mrf22ADTDskI%3D',
+              },
+            ],
+          },
+          2381089: {
+            id: '2381089',
+            title: 'Incomplete Exams Schedule',
+            parentId: 'root',
+            items: [
+              {
+                id: '2381093',
+                type: 'file',
+                title: 'International Programs Final Re-Exam Timetables (Bylaws 2018, 2023)',
+                size: '85 KB',
+                date: '2/7/2025, 1:28:23 PM',
+                url: 'https://eng.asu.edu.eg/download?sid=KDNnd5AaD%2BrWBOZ%2FLg18w9EyjOPAjnEG%2Bf%2BkKULYlAg%3D',
+              },
+              {
+                id: '2381094',
+                type: 'file',
+                title: 'SP Programs Final Re-Exam Timetables (Bylaws 2018, 2023)',
+                size: '154 KB',
+                date: '2/8/2025, 12:12:44 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=ByA0uPSvYh9vu1zF7Me6PCc1RXCfmZhLWXGeN7P5p7Q%3D',
+              },
+            ],
+          },
+          2789961: {
+            id: '2789961',
+            title: 'Research Documents',
+            parentId: 'root',
+            items: [
+              {
+                id: '2789963',
+                type: 'file',
+                title: 'research_timeline_template',
+                size: '23 KB',
+                date: '11/9/2025, 11:36:00 AM',
+                url: 'https://eng.asu.edu.eg/download?sid=4fnV7vboPGnzgtcelVR0Z0G4xukj7qqsPcYALK6Wcw8%3D',
+              },
+            ],
+          },
+        };
+
+        // ===== STATE =====
+        let currentFolderId = 'root';
+        let currentPage = 1;
+        let entriesPerPage = 10;
+        let searchTerm = '';
+
+        // ===== DOM ELEMENTS =====
+        const tableBody = document.querySelector('#archive_table tbody');
+        const searchInput = document.querySelector('#archive_table_filter input');
+        const entriesSelect = document.querySelector('#archive_table_length select');
+        const parentsSpan = document.getElementById('parents_ids');
+        const tableInfo = document.getElementById('archive_table_info');
+        const paginateContainer = document.getElementById('archive_table_paginate');
+
+        // ===== HELPER FUNCTIONS =====
+        function getBreadcrumbPath(folderId) {
+          const path = [];
+          let currentId = folderId;
+
+          while (currentId) {
+            const folder = archiveData[currentId];
+            if (folder) {
+              path.unshift({ id: currentId, title: folder.title });
+              currentId = folder.parentId;
+            } else {
+              break;
+            }
+          }
+          return path;
+        }
+
+        function filterItems(items, term) {
+          if (!term) return items;
+          const lowerTerm = term.toLowerCase();
+          return items.filter((item) => item.title.toLowerCase().includes(lowerTerm));
+        }
+
+        function paginateItems(items, page, perPage) {
+          const start = (page - 1) * perPage;
+          const end = start + perPage;
+          return items.slice(start, end);
+        }
+
+        // ===== RENDER FUNCTIONS =====
+        function renderBreadcrumb() {
+          const path = getBreadcrumbPath(currentFolderId);
+          parentsSpan.innerHTML = '';
+
+          path.forEach((item, index) => {
+            if (index < path.length - 1) {
+              const link = document.createElement('a');
+              link.href = 'javascript:void(0)';
+              link.title = item.title;
+              link.textContent = item.title;
+              link.className = 'breadcrumb-link';
+              link.dataset.folderId = item.id;
+              link.addEventListener('click', () => navigateToFolder(item.id));
+              parentsSpan.appendChild(link);
+              parentsSpan.appendChild(document.createTextNode(' / '));
+            } else {
+              const span = document.createElement('a');
+              span.title = item.title;
+              span.textContent = item.title;
+              parentsSpan.appendChild(span);
+            }
+          });
+        }
+
+        function renderTableRows() {
+          const folder = archiveData[currentFolderId];
+          if (!folder) return;
+
+          let items = filterItems(folder.items, searchTerm);
+          const totalItems = items.length;
+          const totalPages = Math.ceil(totalItems / entriesPerPage);
+
+          // Adjust current page if needed
+          if (currentPage > totalPages) currentPage = totalPages || 1;
+
+          const paginatedItems = paginateItems(items, currentPage, entriesPerPage);
+
+          tableBody.innerHTML = '';
+
+          if (paginatedItems.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="4" class="dataTables_empty">No matching records found</td>';
+            tableBody.appendChild(row);
+          } else {
+            paginatedItems.forEach((item, index) => {
+              const row = document.createElement('tr');
+              row.id = item.id;
+              row.className = index % 2 === 0 ? 'odd' : 'even';
+              row.setAttribute('role', 'row');
+
+              const iconClass = item.type === 'folder' ? 'icon-folder' : 'icon-file-empty';
+
+              let nameCell;
+              if (item.type === 'folder') {
+                nameCell = `
+            <td class="sorting_1">
+              <div style="display: inline-block"><i class="${iconClass} archive-icon"></i></div>
+              <div style="display: inline-block">
+                <a title="${item.title}" class="archive_link folder-link" href="javascript:void(0)" data-folder-id="${item.id}">${item.title}</a>
+              </div>
+            </td>`;
+              } else {
+                nameCell = `
+            <td class="sorting_1">
+              <div style="display: inline-block"><i class="${iconClass} archive-icon"></i></div>
+              <div style="display: inline-block">
+                <a title="${item.title}" href="${item.url}">${item.title}</a>
+              </div>
+            </td>`;
+              }
+
+              row.innerHTML = `
+          ${nameCell}
+          <td>${item.size}</td>
+          <td><span>${item.date}</span></td>
+          <td><span class="action-column"></span></td>
+        `;
+
+              tableBody.appendChild(row);
+            });
+          }
+
+          // Attach folder click handlers
+          document.querySelectorAll('.folder-link').forEach((link) => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              navigateToFolder(link.dataset.folderId);
+            });
+          });
+
+          // Update info and pagination
+          renderTableInfo(totalItems, paginatedItems.length);
+          renderPagination(totalPages);
+        }
+
+        function renderTableInfo(totalItems, displayedItems) {
+          if (totalItems === 0) {
+            tableInfo.textContent = 'Showing 0 to 0 of 0 entries';
+          } else {
+            const start = (currentPage - 1) * entriesPerPage + 1;
+            const end = start + displayedItems - 1;
+            tableInfo.textContent = `Showing ${start} to ${end} of ${totalItems} entries`;
+          }
+        }
+
+        function renderPagination(totalPages) {
+          paginateContainer.innerHTML = '';
+
+          // Previous button
+          const prevBtn = document.createElement('a');
+          prevBtn.className = `paginate_button previous ${currentPage === 1 ? 'disabled' : ''}`;
+          prevBtn.textContent = 'Previous';
+          prevBtn.href = 'javascript:void(0)';
+          if (currentPage > 1) {
+            prevBtn.addEventListener('click', () => {
+              currentPage--;
+              renderTableRows();
+            });
+          }
+          paginateContainer.appendChild(prevBtn);
+
+          // Page numbers
+          const pageSpan = document.createElement('span');
+          for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('a');
+            pageBtn.className = `paginate_button ${i === currentPage ? 'current' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.href = 'javascript:void(0)';
+            if (i !== currentPage) {
+              pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderTableRows();
+              });
+            }
+            pageSpan.appendChild(pageBtn);
+          }
+          paginateContainer.appendChild(pageSpan);
+
+          // Next button
+          const nextBtn = document.createElement('a');
+          nextBtn.className = `paginate_button next ${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}`;
+          nextBtn.textContent = 'Next';
+          nextBtn.href = 'javascript:void(0)';
+          if (currentPage < totalPages) {
+            nextBtn.addEventListener('click', () => {
+              currentPage++;
+              renderTableRows();
+            });
+          }
+          paginateContainer.appendChild(nextBtn);
+        }
+
+        // ===== NAVIGATION =====
+        function navigateToFolder(folderId) {
+          if (archiveData[folderId]) {
+            currentFolderId = folderId;
+            currentPage = 1;
+            searchTerm = '';
+            searchInput.value = '';
+            renderBreadcrumb();
+            renderTableRows();
+          }
+        }
+
+        // ===== EVENT LISTENERS =====
+        // Real-time search
+        searchInput.addEventListener('input', (e) => {
+          searchTerm = e.target.value;
+          currentPage = 1;
+          renderTableRows();
+        });
+
+        // Entries per page change
+        entriesSelect.addEventListener('change', (e) => {
+          entriesPerPage = parseInt(e.target.value);
+          currentPage = 1;
+          renderTableRows();
+        });
+
+        // ===== INITIAL RENDER =====
+        renderBreadcrumb();
+        renderTableRows();
+      })();
+    </script>
+  </body>
+</html>

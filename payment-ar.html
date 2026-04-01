@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="كلية الهندسة" />
+    <meta name="author" content="ISC - Information Systems Center" />
+
+    <link rel="shortcut icon" href="https://eng.asu.edu.eg/public/int/images/logo.png" />
+    <title>SIS, Faculty of Engineering - Payment</title>
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/icomoon.css" />
+    <link rel="stylesheet" href="./files/shared/main-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/faculty.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/factory.css" />
+
+    <link rel="stylesheet" type="text/css" href="./files/shared/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/responsive.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./files/shared/rowReorder.dataTables.min.css" />
+
+    <style>
+      /* Page loading overlay */
+      .page-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .page-loading-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Page content - initially hidden */
+      .app-wrap {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .app-wrap.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body style="overflow-x: hidden" cz-shortcut-listen="true" data-new-gr-c-s-check-loaded="14.1270.0" data-gr-ext-installed="">
+    <!-- === Overlay === -->
+    <div class="page-loading-overlay" id="pageLoadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <div class="app-wrap">
+      <!-- === Header === -->
+      <header class="app-header">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- navigation -->
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+              <a href="dashboard-ar.html" class="logo">
+                <img src="./files/shared/asueng.png" alt="ASUENG Dashboard" />
+              </a>
+              <a class="mini-nav-btn" href="" id="app-side-mini-toggler">
+                <i class="icon-sort"></i>
+              </a>
+              <a href="" class="onoffcanvas-toggler" id="sidebar-toggler">
+                <i class="icon-chevron-thin-left"></i>
+              </a>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="dashboard-ar.html"><i class="icon-home6"></i></a>
+                </li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="dashboard-ar.html">اللوحة الرئيسية</a></li>
+                <li class="breadcrumb-item">&nbsp;&nbsp;<a href="services-ar.html">خدماتي</a></li>
+                <li class="breadcrumb-item active">&nbsp;&nbsp;Payment</li>
+              </ol>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+              <ul class="header-actions">
+                <!-- language -->
+                <li class="imp-notify">
+                  <a id="language-url" href="payment.html">
+                    <div style="color: white" class="icon secondary">English</div>
+                  </a>
+                </li>
+                <!-- notification -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="notifications-ar.html" class="notification-header btn btn-primary float-right" title="التنبيهات">
+                    <i class="icon-notifications_none"></i>
+                  </a>
+                </li>
+                <!-- discussion -->
+                <li class="imp-notify">
+                  <a style="margin: 0px 5px" href="tickets-52806-ar.html" class="btn btn-primary float-right" title="ناقش المشرف الأكاديمي">
+                    <i class="icon-chat"></i>
+                    <span class="badge badge-pill badge-warning" style="color: white">0</span>
+                  </a>
+                </li>
+                <!-- dropdown -->
+                <li class="dropdown">
+                  <a href="" id="userSettings" class="user-settings" aria-haspopup="true" aria-expanded="false">
+                    <img class="avatar" src="./files/shared/user.png" alt="User" />
+                    <i class="icon-chevron-small-down"></i>
+                  </a>
+                  <div class="dropdown-menu lg dropdown-menu-right" id="userDropdown">
+                    <ul class="user-settings-list">
+                      <li>
+                        <a href="profile-ar.html">
+                          <div class="icon"><i class="icon-account_circle"></i></div>
+                          <p>صفحة شخصية</p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="logout-btn">
+                      <a href="notifications-ar.html" class="btn btn-primary">التنبيهات</a>
+                    </div>
+                    <div class="logout-btn">
+                      <a href="" id="logoutBtn" class="btn btn-primary">تسجيل الخروج</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="app-container">
+        <!-- === Sidebar === -->
+        <aside class="app-side" id="app-side">
+          <div class="side-content" style="height: 900px; background-color: #2b394c">
+            <div class="user-profile">
+              <img src="./files/shared/user.png" class="profile-thumb" alt="User" />
+              <h6 class="profile-name" id="userName">خالد المرسى رفعت السعداوى</h6>
+            </div>
+            <nav class="side-nav">
+              <ul class="unifyMenu" id="unifyMenu">
+                <li class="active">
+                  <a href="dashboard-ar.html">
+                    <span class="has-icon"><i class="icon-laptop_windows"></i></span>
+                    <span class="nav-title">اللوحة الرئيسية</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="help-ar.html">
+                    <span class="has-icon"><i class="icon-help"></i></span>
+                    <span class="nav-title">تعليمات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- === Page Content === -->
+        <div class="app-main">
+          <header class="main-heading">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div class="page-icon">
+                    <i class="icon-cog3"></i>
+                  </div>
+                  <div class="page-title">
+                    <h5>Payment</h5>
+                    <h6 class="sub-heading"></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="main-content">
+            <div class="modal fade" id="currency_preference_modal" tabindex="-1" role="dialog" aria-labelledby="currency_preference_modal" aria-hidden="true">
+              <form action="https://eng.asu.edu.eg/ar/payments/student_fees" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="A697cJOrgMSmpxvvDqCv2Y5QHVIHPQIr8X0c7FLb" />
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <div class="col-11 p-0">
+                        <h5 class="modal-title" id="currency_preference_modal">العملة المفضلة</h5>
+                      </div>
+                      <div class="col-1 p-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" class="form-control" value="0" name="id" id="id" />
+
+                      <div class="row">
+                        <div class="form-group col-12">
+                          <select name="currency" id="currency" class="form-control">
+                            <option value="">اختر العملة المفضلة</option>
+                            <option value="GBP" id="gbp_option">GBP</option>
+                            <option value="USD" id="usd_option">USD</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div id="progress_bar" style="background-color: green; width: 0%; height: 2px"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" id="action">تسجيل <span id="progress_text"></span></button>
+                      <button type="button" class="btn btn-light" id="close" data-dismiss="modal">إلغاء</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="stats-widget">
+                        <div class="stats-widget-header">
+                          <i class="icon-coin-pound"></i>
+                        </div>
+                        <div class="stats-widget-body">
+                          <ul class="row no-gutters">
+                            <li class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col">
+                              <h6 class="blog-title">رصيدي</h6>
+                            </li>
+                            <li class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col">
+                              <h4 class="total">250 EGP</h4>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <div id="data_table_wrapper" class="dataTables_wrapper no-footer">
+                    <div class="dataTables_length" id="data_table_length">
+                      <label
+                        >عرض
+                        <select name="data_table_length" aria-controls="data_table" class="">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>
+                        عنصر</label
+                      >
+                    </div>
+                    <div id="data_table_filter" class="dataTables_filter">
+                      <label>بحث : <input type="search" class="" placeholder="" aria-controls="data_table" /></label>
+                    </div>
+                    <table id="data_table" class="display dataTable no-footer" style="width: 100%" role="grid" aria-describedby="data_table_info">
+                      <thead>
+                        <tr role="row">
+                          <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 30.7188px">#</th>
+                          <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 37.4375px">Term</th>
+                          <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 149.281px">نوع</th>
+                          <th width="50%" class="sorting_disabled" rowspan="1" colspan="1" style="width: 520.805px">Payment</th>
+                          <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 84.0078px">الحالة</th>
+                          <th width="10%" class="sorting_disabled" rowspan="1" colspan="1" style="width: 75.3594px"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          id="293657"
+                          student_id="1002039"
+                          user_name="KHALED ELMORSSY REFAAT ELSADAAWY"
+                          service_id="17"
+                          method="0"
+                          amount="580.01"
+                          due_date="2025-10-31"
+                          term_id="176"
+                          notes="
+ + 580.01 أجمالى المبلغ المستحق عن غرامة تأخير دفع مصاريف البرامج رسوم الساعات و مبلغها 58001.4 EGP  و تفصيلها كالاتي : 
+ &gt; 580.01  (1%  من 58001.4) غرامة شهر أكتوبر
+ = 580.01 (EGP) "
+                          role="row"
+                          class="odd"
+                        >
+                          <td>293657</td>
+                          <td>الخريف 2025</td>
+                          <td>CHEP Administration Fees</td>
+                          <td>
+                            <b>القيمة</b>: 580.01 of 580.01 EGP
+                            <br />
+                            <b>الطريقة</b>: One Time<br />
+                            <b>تاريخ الاستحقاق</b>: 2025-10-31<br />
+                          </td>
+                          <td>
+                            <span class="badge badge-success" style="width: 100px">Paid</span>
+                          </td>
+                          <td></td>
+                        </tr>
+                        <tr
+                          id="305199"
+                          student_id="1002039"
+                          user_name="KHALED ELMORSSY REFAAT ELSADAAWY"
+                          service_id="34"
+                          method="0"
+                          amount="2768"
+                          due_date="2025-12-01"
+                          term_id="176"
+                          notes="
+ + 2768 المصاريف الأساسية للسنة الأولي
+ = 2768 (EGP) "
+                          role="row"
+                          class="even"
+                        >
+                          <td>305199</td>
+                          <td>الخريف 2025</td>
+                          <td>CHEP Tuition Fees for Freshmen</td>
+                          <td>
+                            <b>القيمة</b>: 2768 of 2768 EGP
+                            <br />
+                            <b>الطريقة</b>: One Time<br />
+                            <b>تاريخ الاستحقاق</b>: 2025-12-01<br />
+                          </td>
+                          <td>
+                            <span class="badge badge-success" style="width: 100px">Paid</span>
+                          </td>
+                          <td></td>
+                        </tr>
+                        <tr
+                          id="291562"
+                          student_id="1002039"
+                          user_name="KHALED ELMORSSY REFAAT ELSADAAWY"
+                          service_id="18"
+                          method="0"
+                          amount="775"
+                          due_date="2025-12-01"
+                          term_id="176"
+                          notes="
+ + 725 مصاريف جامعة إيست لندن للطلبة المستجدين
+ + 50 الطالب محول من منستريم
+ = 775 (GBP) "
+                          role="row"
+                          class="odd"
+                        >
+                          <td>291562</td>
+                          <td>الخريف 2025</td>
+                          <td>CHEP Dual Degree Requirements Fee</td>
+                          <td>
+                            <b>القيمة</b>: 775 of 775 GBP
+                            <br />
+                            <b>الطريقة</b>: One Time<br />
+                            <b>تاريخ الاستحقاق</b>: 2025-12-01<br />
+                          </td>
+                          <td>
+                            <span class="badge badge-success" style="width: 100px">Paid</span>
+                          </td>
+                          <td></td>
+                        </tr>
+                        <tr
+                          id="291563"
+                          student_id="1002039"
+                          user_name="KHALED ELMORSSY REFAAT ELSADAAWY"
+                          service_id="10"
+                          method="0"
+                          amount="58001.4"
+                          due_date="2025-12-01"
+                          term_id="176"
+                          notes="
+ + 52785 مصاريف الساعات الدراسية للمصريين (سعر الساعة  3105)
+17 ساعة معتمدة مسجلة موزعة علي 7 مواد كالاتي:
+   &gt; 9,315.00 PHM111 (3105 x 3)
+   &gt; 9,315.00 PHM122 (3105 x 3)
+   &gt; 9,315.00 PHM131 (3105 x 3)
+   &gt; 6,210.00 ECE121 (3105 x 2)
+   &gt; 6,210.00 MDP111 (3105 x 2)
+   &gt; 6,210.00 ASUx47 (3105 x 2)
+   &gt; 6,210.00 EPM111 (3105 x 2)
+
+ + 3105 مصاريف الساعة الإدارية
+ + 527.85 نسبة التكافل ( 1% من 52785 )
+ + 1583.55 مصاريف الاتحاد  ( 3% من 52785 )
+ = 58001.4 (EGP) "
+                          role="row"
+                          class="even"
+                        >
+                          <td>291563</td>
+                          <td>الخريف 2025</td>
+                          <td>CHEP Tuition Fees</td>
+                          <td>
+                            <b>القيمة</b>: 58001.4 of 58001.4 EGP
+                            <br />
+                            <b>الطريقة</b>: One Time<br />
+                            <b>تاريخ الاستحقاق</b>: 2025-12-01<br />
+                          </td>
+                          <td>
+                            <span class="badge badge-success" style="width: 100px">Paid</span>
+                          </td>
+                          <td></td>
+                        </tr>
+                        <tr
+                          id="251451"
+                          student_id="1002039"
+                          user_name="KHALED ELMORSSY REFAAT ELSADAAWY"
+                          service_id="32"
+                          method="0"
+                          amount="1633"
+                          due_date="2024-10-31"
+                          term_id="161"
+                          notes="
+ + 1633 المصاريف الأساسية للسنة الأولي
+ = 1633 (EGP) "
+                          role="row"
+                          class="odd"
+                        >
+                          <td>251451</td>
+                          <td>خريف 2024</td>
+                          <td>Specialized Tuition Fees for Freshmen</td>
+                          <td>
+                            <b>القيمة</b>: 1633 of 1633 EGP
+                            <br />
+                            <b>الطريقة</b>: One Time<br />
+                            <b>تاريخ الاستحقاق</b>: 2024-10-31<br />
+                          </td>
+                          <td>
+                            <span class="badge badge-success" style="width: 100px">Paid</span>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="dataTables_info" id="data_table_info" role="status" aria-live="polite">عرض 1 إلى 5 من 5</div>
+                    <div class="dataTables_paginate paging_simple_numbers" id="data_table_paginate">
+                      <a class="paginate_button previous disabled" aria-controls="data_table" data-dt-idx="0" tabindex="0" id="data_table_previous">السابق</a
+                      ><span><a class="paginate_button current" aria-controls="data_table" data-dt-idx="1" tabindex="0">1</a></span
+                      ><a class="paginate_button next disabled" aria-controls="data_table" data-dt-idx="2" tabindex="0" id="data_table_next">التالي</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Footer === -->
+      <footer class="main-footer fixed-btm">
+        حقوق النشر,
+        <a href="http://isc.eng.asu.edu.eg/cgi-sys/defaultwebpage.cgi" title="وحدة نظم المعلومات">وحدة نظم المعلومات</a>, <a href="https://eng.asu.edu.eg/" title="كلية الهندسة">كلية الهندسة</a>,
+        <a href="http://asu.edu.eg/" title="جامعة عين شمس">جامعة عين شمس</a>.
+      </footer>
+    </div>
+
+    <!-- === UX Script === -->
+    <script src="./config/js/dashboard.js"></script>
+
+    <!-- === Payment Table Functionality === -->
+    <script>
+      (function () {
+        // ===== PAYMENT DATA =====
+        const paymentData = [
+          {
+            id: '293657',
+            student_id: '1002039',
+            user_name: 'KHALED ELMORSSY REFAAT ELSADAAWY',
+            service_id: '17',
+            method: '0',
+            amount: '580.01',
+            due_date: '2025-10-31',
+            term_id: '176',
+            term: 'الخريف 2025',
+            type: 'CHEP Administration Fees',
+            value: '580.01 of 580.01 EGP',
+            payment_method: 'One Time',
+            status: 'Paid',
+            notes: '\n + 580.01 أجمالى المبلغ المستحق عن غرامة تأخير دفع مصاريف البرامج رسوم الساعات و مبلغها 58001.4 EGP  و تفصيلها كالاتي : \n > 580.01  (1%  من 58001.4) غرامة شهر أكتوبر\n = 580.01 (EGP) ',
+          },
+          {
+            id: '305199',
+            student_id: '1002039',
+            user_name: 'KHALED ELMORSSY REFAAT ELSADAAWY',
+            service_id: '34',
+            method: '0',
+            amount: '2768',
+            due_date: '2025-12-01',
+            term_id: '176',
+            term: 'الخريف 2025',
+            type: 'CHEP Tuition Fees for Freshmen',
+            value: '2768 of 2768 EGP',
+            payment_method: 'One Time',
+            status: 'Paid',
+            notes: '\n + 2768 المصاريف الأساسية للسنة الأولي\n = 2768 (EGP) ',
+          },
+          {
+            id: '291562',
+            student_id: '1002039',
+            user_name: 'KHALED ELMORSSY REFAAT ELSADAAWY',
+            service_id: '18',
+            method: '0',
+            amount: '775',
+            due_date: '2025-12-01',
+            term_id: '176',
+            term: 'الخريف 2025',
+            type: 'CHEP Dual Degree Requirements Fee',
+            value: '775 of 775 GBP',
+            payment_method: 'One Time',
+            status: 'Paid',
+            notes: '\n + 725 مصاريف جامعة إيست لندن للطلبة المستجدين\n + 50 الطالب محول من منستريم\n = 775 (GBP) ',
+          },
+          {
+            id: '291563',
+            student_id: '1002039',
+            user_name: 'KHALED ELMORSSY REFAAT ELSADAAWY',
+            service_id: '10',
+            method: '0',
+            amount: '58001.4',
+            due_date: '2025-12-01',
+            term_id: '176',
+            term: 'الخريف 2025',
+            type: 'CHEP Tuition Fees',
+            value: '58001.4 of 58001.4 EGP',
+            payment_method: 'One Time',
+            status: 'Paid',
+            notes:
+              '\n + 52785 مصاريف الساعات الدراسية للمصريين (سعر الساعة  3105)\n17 ساعة معتمدة مسجلة موزعة علي 7 مواد كالاتي:\n   > 9,315.00 PHM111 (3105 x 3)\n   > 9,315.00 PHM122 (3105 x 3)\n   > 9,315.00 PHM131 (3105 x 3)\n   > 6,210.00 ECE121 (3105 x 2)\n   > 6,210.00 MDP111 (3105 x 2)\n   > 6,210.00 ASUx47 (3105 x 2)\n   > 6,210.00 EPM111 (3105 x 2)\n\n + 3105 مصاريف الساعة الإدارية\n + 527.85 نسبة التكافل ( 1% من 52785 )\n + 1583.55 مصاريف الاتحاد  ( 3% من 52785 )\n = 58001.4 (EGP) ',
+          },
+          {
+            id: '251451',
+            student_id: '1002039',
+            user_name: 'KHALED ELMORSSY REFAAT ELSADAAWY',
+            service_id: '32',
+            method: '0',
+            amount: '1633',
+            due_date: '2024-10-31',
+            term_id: '161',
+            term: 'خريف 2024',
+            type: 'Specialized Tuition Fees for Freshmen',
+            value: '1633 of 1633 EGP',
+            payment_method: 'One Time',
+            status: 'Paid',
+            notes: '\n + 1633 المصاريف الأساسية للسنة الأولي\n = 1633 (EGP) ',
+          },
+        ];
+
+        // ===== STATE =====
+        let currentPage = 1;
+        let entriesPerPage = 10;
+        let searchTerm = '';
+
+        // ===== DOM ELEMENTS =====
+        const tableBody = document.querySelector('#data_table tbody');
+        const searchInput = document.querySelector('#data_table_filter input');
+        const entriesSelect = document.querySelector('#data_table_length select');
+        const tableInfo = document.getElementById('data_table_info');
+        const paginateContainer = document.getElementById('data_table_paginate');
+
+        // ===== HELPER FUNCTIONS =====
+        function filterItems(items, term) {
+          if (!term) return items;
+          const lowerTerm = term.toLowerCase();
+          return items.filter((item) => {
+            return (
+              item.id.toLowerCase().includes(lowerTerm) ||
+              item.term.toLowerCase().includes(lowerTerm) ||
+              item.type.toLowerCase().includes(lowerTerm) ||
+              item.value.toLowerCase().includes(lowerTerm) ||
+              item.status.toLowerCase().includes(lowerTerm) ||
+              item.due_date.toLowerCase().includes(lowerTerm)
+            );
+          });
+        }
+
+        function paginateItems(items, page, perPage) {
+          const start = (page - 1) * perPage;
+          const end = start + perPage;
+          return items.slice(start, end);
+        }
+
+        // ===== RENDER FUNCTIONS =====
+        function renderTableRows() {
+          let items = filterItems(paymentData, searchTerm);
+          const totalItems = items.length;
+          const totalPages = Math.ceil(totalItems / entriesPerPage);
+
+          // Adjust current page if needed
+          if (currentPage > totalPages) currentPage = totalPages || 1;
+
+          const paginatedItems = paginateItems(items, currentPage, entriesPerPage);
+
+          tableBody.innerHTML = '';
+
+          if (paginatedItems.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="6" class="dataTables_empty">لا يوجد بيان مطابق</td>';
+            tableBody.appendChild(row);
+          } else {
+            paginatedItems.forEach((item, index) => {
+              const row = document.createElement('tr');
+              row.id = item.id;
+              row.className = index % 2 === 0 ? 'odd' : 'even';
+              row.setAttribute('role', 'row');
+              row.setAttribute('student_id', item.student_id);
+              row.setAttribute('user_name', item.user_name);
+              row.setAttribute('service_id', item.service_id);
+              row.setAttribute('method', item.method);
+              row.setAttribute('amount', item.amount);
+              row.setAttribute('due_date', item.due_date);
+              row.setAttribute('term_id', item.term_id);
+              row.setAttribute('notes', item.notes);
+
+              row.innerHTML = `
+                <td>${item.id}</td>
+                <td>${item.term}</td>
+                <td>${item.type}</td>
+                <td>
+                  <b>القيمة</b>: ${item.value}<br />
+                  <b>الطريقة</b>: ${item.payment_method}<br />
+                  <b>تاريخ الاستحقاق</b>: ${item.due_date}<br />
+                </td>
+                <td>
+                  <span class="badge badge-success" style="width: 100px">${item.status}</span>
+                </td>
+                <td></td>
+              `;
+
+              tableBody.appendChild(row);
+            });
+          }
+
+          // Update info and pagination
+          renderTableInfo(totalItems, paginatedItems.length);
+          renderPagination(totalPages);
+        }
+
+        function renderTableInfo(totalItems, displayedItems) {
+          if (totalItems === 0) {
+            tableInfo.textContent = 'عرض 0 إلى 0 من 0';
+          } else {
+            const start = (currentPage - 1) * entriesPerPage + 1;
+            const end = start + displayedItems - 1;
+            tableInfo.textContent = `عرض ${start} إلى ${end} من ${totalItems}`;
+          }
+        }
+
+        function renderPagination(totalPages) {
+          paginateContainer.innerHTML = '';
+
+          // Previous button
+          const prevBtn = document.createElement('a');
+          prevBtn.className = `paginate_button previous ${currentPage === 1 ? 'disabled' : ''}`;
+          prevBtn.textContent = 'السابق';
+          prevBtn.href = 'javascript:void(0)';
+          if (currentPage > 1) {
+            prevBtn.addEventListener('click', () => {
+              currentPage--;
+              renderTableRows();
+            });
+          }
+          paginateContainer.appendChild(prevBtn);
+
+          // Page numbers
+          const pageSpan = document.createElement('span');
+          for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('a');
+            pageBtn.className = `paginate_button ${i === currentPage ? 'current' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.href = 'javascript:void(0)';
+            if (i !== currentPage) {
+              pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderTableRows();
+              });
+            }
+            pageSpan.appendChild(pageBtn);
+          }
+          paginateContainer.appendChild(pageSpan);
+
+          // Next button
+          const nextBtn = document.createElement('a');
+          nextBtn.className = `paginate_button next ${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}`;
+          nextBtn.textContent = 'التالي';
+          nextBtn.href = 'javascript:void(0)';
+          if (currentPage < totalPages) {
+            nextBtn.addEventListener('click', () => {
+              currentPage++;
+              renderTableRows();
+            });
+          }
+          paginateContainer.appendChild(nextBtn);
+        }
+
+        // ===== EVENT LISTENERS =====
+        // Real-time search
+        searchInput.addEventListener('input', (e) => {
+          searchTerm = e.target.value;
+          currentPage = 1;
+          renderTableRows();
+        });
+
+        // Entries per page change
+        entriesSelect.addEventListener('change', (e) => {
+          entriesPerPage = parseInt(e.target.value);
+          currentPage = 1;
+          renderTableRows();
+        });
+
+        // ===== INITIAL RENDER =====
+        renderTableRows();
+      })();
+    </script>
+  </body>
+</html>
