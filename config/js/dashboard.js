@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function checkAuth() {
   if (sessionStorage.getItem('isLoggedIn') !== 'true') {
     var isArabic = document.documentElement.lang === 'ar';
-    window.location.href = isArabic ? 'login-ar.html' : 'login.html';
+    window.location.href = isArabic ? 'login-ar ' : 'login ';
   }
 }
 
@@ -160,5 +160,5 @@ function setupEventListeners() {
 function logout() {
   sessionStorage.clear();
   var isArabic = document.documentElement.lang === 'ar';
-  window.location.href = 'login.html';
+  window.location.href = 'login ';
 }
